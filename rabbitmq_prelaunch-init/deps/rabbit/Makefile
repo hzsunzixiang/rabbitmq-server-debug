@@ -1,6 +1,6 @@
 PROJECT = rabbit
 PROJECT_DESCRIPTION = RabbitMQ
-PROJECT_MOD = rabbit_app
+PROJECT_MOD = rabbit
 
 define PROJECT_ENV
 [

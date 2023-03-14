@@ -1,4 +1,4 @@
--module(rabbit_app).
+-module(rabbit).
 -behaviour(application).
 
 -export([start/2]).
