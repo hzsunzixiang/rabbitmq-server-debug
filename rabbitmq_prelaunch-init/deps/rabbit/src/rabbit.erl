@@ -7,19 +7,18 @@
 -include_lib("kernel/include/logger.hrl").
 -include_lib("rabbit_common/include/logging.hrl").
 
-start(_Type, _Args) ->
-    run_prelaunch_second_phase(),
-    %%% Reset boot state and clear the stop reason again (it was already
-    %%% made in rabbitmq_prelaunch).
-    %%%
-    %%% This is important if the previous startup attempt failed after
-    %%% rabbitmq_prelaunch was started and the application is still
-    %%% running.
-    %rabbit_boot_state:set(booting),
-    %rabbit_prelaunch:clear_stop_reason(),
+start(normal, []) ->
+    %% Reset boot state and clear the stop reason again (it was already
+    %% made in rabbitmq_prelaunch).
+    %%
+    %% This is important if the previous startup attempt failed after
+    %% rabbitmq_prelaunch was started and the application is still
+    %% running.
+    rabbit_boot_state:set(booting),
+    rabbit_prelaunch:clear_stop_reason(),
 
-    %try
-    %    run_prelaunch_second_phase(),
+    try
+        run_prelaunch_second_phase(),
 
     %    ProductInfo = product_info(),
     %    case ProductInfo of
@@ -43,7 +42,7 @@ start(_Type, _Args) ->
     %    end,
     %    maybe_warn_about_release_series_eol(),
     %    log_motd(),
-    %    {ok, SupPid} = rabbit_sup:start_link(),
+        {ok, SupPid} = rabbit_sup:start_link(),
 
     %    %% When we load plugins later in this function, we refresh feature
     %    %% flags. If `feature_flags_v2' is enabled, `rabbit_ff_controller'
@@ -97,25 +96,24 @@ start(_Type, _Args) ->
     %    ok = rabbit_boot_steps:run_boot_steps([rabbit | Plugins]),
     %    rabbit_boot_state:set(core_started),
     %    run_postlaunch_phase(Plugins),
-    %    {ok, SupPid}
-    %catch
-    %    throw:{error, _} = Error ->
-    %        mnesia:stop(),
-    %        rabbit_prelaunch_errors:log_error(Error),
-    %        rabbit_prelaunch:set_stop_reason(Error),
-    %        rabbit_boot_state:set(stopped),
-    %        Error;
-    %    Class:Exception:Stacktrace ->
-    %        mnesia:stop(),
-    %        rabbit_prelaunch_errors:log_exception(
-    %          Class, Exception, Stacktrace),
-    %        Error = {error, Exception},
-    %        rabbit_prelaunch:set_stop_reason(Error),
-    %        rabbit_boot_state:set(stopped),
-    %        Error
-    %end.
+        {ok, SupPid}
+    catch
+        throw:{error, _} = Error ->
+            mnesia:stop(),
+            rabbit_prelaunch_errors:log_error(Error),
+            rabbit_prelaunch:set_stop_reason(Error),
+            rabbit_boot_state:set(stopped),
+            Error;
+        Class:Exception:Stacktrace ->
+            mnesia:stop(),
+            rabbit_prelaunch_errors:log_exception(
+              Class, Exception, Stacktrace),
+            Error = {error, Exception},
+            rabbit_prelaunch:set_stop_reason(Error),
+            rabbit_boot_state:set(stopped),
+            Error
+    end.
 
-	rabbit_sup:start_link().
 
 run_prelaunch_second_phase() ->
     %% Finish the prelaunch phase started by the `rabbitmq_prelaunch`

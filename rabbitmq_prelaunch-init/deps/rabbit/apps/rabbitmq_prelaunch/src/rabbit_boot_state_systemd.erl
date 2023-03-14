@@ -47,14 +47,14 @@ code_change(_OldVsn, State, _Extra) ->
 
 notify_boot_state(ready = BootState) ->
     Status = boot_state_to_desc(BootState),
-    ?LOG_DEBUG(
+    ?LOG_NOTICE(
        ?LOG_PREFIX "notifying of state `~s`",
        [BootState],
        #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
     systemd:notify([BootState, {status, Status}]);
 notify_boot_state(BootState) ->
     Status = boot_state_to_desc(BootState),
-    ?LOG_DEBUG(
+    ?LOG_NOTICE(
        ?LOG_PREFIX "sending non-systemd state (~s) as status description: "
        "\"~s\"",
        [BootState, Status],
