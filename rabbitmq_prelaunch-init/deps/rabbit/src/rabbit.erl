@@ -156,8 +156,8 @@ run_prelaunch_second_phase() ->
             ok
     end,
 
-    %% 1. Enabled plugins file.
-    %ok = rabbit_prelaunch_enabled_plugins_file:setup(Context),
+    % 1. Enabled plugins file.
+    ok = rabbit_prelaunch_enabled_plugins_file:setup(Context),
 
     %%% 2. Feature flags registry.
     %ok = rabbit_prelaunch_feature_flags:setup(Context),
