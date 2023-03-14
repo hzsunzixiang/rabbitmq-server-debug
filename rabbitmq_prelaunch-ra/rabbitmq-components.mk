@@ -24,6 +24,8 @@ dep_recon = hex 2.5.2
 dep_thoas = hex 0.4.0
 dep_observer_cli = hex 1.7.3
 dep_sysmon_handler = hex 1.3.0
+dep_ra = hex 2.4.5
+
 
 RABBITMQ_COMPONENTS = rabbit \
 		      rabbit_common \

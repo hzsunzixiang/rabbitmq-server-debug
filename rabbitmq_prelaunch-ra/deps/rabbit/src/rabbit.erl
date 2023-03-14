@@ -172,7 +172,7 @@ run_prelaunch_second_phase() ->
     ?LOG_DEBUG("Starting Mnesia"),
     ok = mnesia:start(),
 
-    %ok = rabbit_ra_systems:setup(Context),
+    ok = rabbit_ra_systems:setup(Context),
 
     ?LOG_DEBUG(""),
     ?LOG_DEBUG("== Prelaunch DONE =="),

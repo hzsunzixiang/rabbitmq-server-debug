@@ -138,7 +138,8 @@ APPS_DIR := $(CURDIR)/apps
 LOCAL_DEPS = sasl rabbitmq_prelaunch
 
 #BUILD_DEPS = rabbitmq_cli
-DEPS = ranch rabbit_common sysmon_handler recon observer_cli osiris syslog systemd seshat
+DEPS = ranch rabbit_common ra sysmon_handler recon observer_cli osiris syslog systemd seshat
+#DEPS = ranch rabbit_common ra sysmon_handler stdout_formatter recon redbug observer_cli osiris amqp10_common syslog systemd seshat
 TEST_DEPS = rabbitmq_ct_helpers rabbitmq_ct_client_helpers amqp_client meck proper
 
 PLT_APPS += mnesia
