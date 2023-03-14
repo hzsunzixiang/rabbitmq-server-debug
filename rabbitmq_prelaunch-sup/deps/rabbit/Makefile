@@ -1,12 +1,9 @@
-{application, 'rabbit', [
-	{description, "RabbitMQ"},
-	{vsn, ""},
-	{id, "90bec27"},
-	{modules, ['rabbit','rabbit_boot_steps','rabbit_db','rabbit_feature_flags','rabbit_ff_registry','rabbit_ff_registry_factory','rabbit_file','rabbit_mnesia','rabbit_mnesia_rename','rabbit_node_monitor','rabbit_nodes','rabbit_prelaunch_cluster','rabbit_prelaunch_enabled_plugins_file','rabbit_prelaunch_feature_flags','rabbit_prelaunch_logging','rabbit_ra_systems','rabbit_release_series','rabbit_sup','rabbit_upgrade','rabbit_version']},
-	{registered, [rabbit_sup]},
-	{applications, [kernel,stdlib,sasl,rabbitmq_prelaunch,ranch,rabbit_common,ra,sysmon_handler,recon,observer_cli,osiris,syslog,systemd,seshat]},
-	{mod, {rabbit, []}},
-	{env, [
+PROJECT = rabbit
+PROJECT_DESCRIPTION = RabbitMQ
+PROJECT_MOD = rabbit
+
+define PROJECT_ENV
+[
 	    {tcp_listeners, [5672]},
 	    {num_tcp_acceptors, 10},
 	    {ssl_listeners, []},
@@ -127,5 +124,39 @@
 
 			%% EOL date for the current release series, if known/announced
 			{release_series_eol_date, none}
-	  ]}
-]}.
+	  ]
+endef
+
+# With Erlang.mk default behavior, the value of `$(APPS_DIR)` is always
+# relative to the top-level executed Makefile. In our case, it could be
+# a plugin for instance. However, the rabbitmq_prelaunch application is
+# in this repository, not the plugin's. That's why we need to override
+# this value here.
+APPS_DIR := $(CURDIR)/apps
+
+#LOCAL_DEPS = sasl rabbitmq_prelaunch os_mon inets compiler public_key crypto ssl syntax_tools xmerl
+LOCAL_DEPS = sasl rabbitmq_prelaunch
+
+#BUILD_DEPS = rabbitmq_cli
+DEPS = ranch rabbit_common ra sysmon_handler recon observer_cli osiris syslog systemd seshat
+#DEPS = ranch rabbit_common ra sysmon_handler stdout_formatter recon redbug observer_cli osiris amqp10_common syslog systemd seshat
+TEST_DEPS = rabbitmq_ct_helpers rabbitmq_ct_client_helpers amqp_client meck proper
+
+PLT_APPS += mnesia
+
+dep_syslog = git https://github.com/schlagert/syslog 4.0.0
+dep_osiris = git https://github.com/rabbitmq/osiris v1.4.0
+dep_systemd = hex 0.6.1
+dep_seshat = hex 0.4.0
+
+
+DEP_EARLY_PLUGINS = rabbit_common/mk/rabbitmq-early-test.mk
+DEP_PLUGINS = rabbit_common/mk/rabbitmq-build.mk \
+	      rabbit_common/mk/rabbitmq-dist.mk \
+	      rabbit_common/mk/rabbitmq-run.mk \
+	      rabbit_common/mk/rabbitmq-test.mk \
+	      rabbit_common/mk/rabbitmq-tools.mk
+
+include ../../rabbitmq-components.mk
+include ../../erlang.mk
+
