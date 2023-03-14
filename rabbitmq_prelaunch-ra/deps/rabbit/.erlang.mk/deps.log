@@ -1,0 +1,13 @@
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/rabbit_common
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/rabbitmq_codegen
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/thoas
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/recon
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/credentials_obfuscation
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/cuttlefish
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/ranch
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/sysmon_handler
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/observer_cli
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/osiris
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/syslog
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/systemd
+/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-cluster/deps/seshat
