@@ -160,7 +160,7 @@ run_prelaunch_second_phase() ->
     ok = rabbit_prelaunch_enabled_plugins_file:setup(Context),
 
     %%% 2. Feature flags registry.
-    %ok = rabbit_prelaunch_feature_flags:setup(Context),
+    ok = rabbit_prelaunch_feature_flags:setup(Context),
 
     % 3. Logging.
     ok = rabbit_prelaunch_logging:setup(Context),
