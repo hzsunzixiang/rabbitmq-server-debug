@@ -303,39 +303,38 @@ $(SOURCE_DIST).zip: $(SOURCE_DIST).manifest
 #	git clean -xfffd deps
 #
 
-## --------------------------------------------------------------------
-## Packaging.
-## --------------------------------------------------------------------
-#
-#.PHONY: packages package-deb \
-#	package-rpm package-rpm-fedora package-rpm-suse \
-#	package-windows \
-#	package-generic-unix \
-#	docker-image
-#
-## This variable is exported so sub-make instances know where to find the
-## archive.
-#PACKAGES_SOURCE_DIST_FILE ?= $(firstword $(SOURCE_DIST_FILES))
-#
-#RABBITMQ_PACKAGING_TARGETS = package-deb package-rpm \
-#package-rpm-redhat package-rpm-fedora package-rpm-rhel6 package-rpm-rhel7 \
-#package-rpm-rhel8 package-rpm-suse package-rpm-opensuse package-rpm-sles11 \
-#package-windows
-#
-#ifneq ($(filter $(RABBITMQ_PACKAGING_TARGETS),$(MAKECMDGOALS)),)
-#ifeq ($(RABBITMQ_PACKAGING_REPO),)
-#$(error Cannot find rabbitmq-packaging repository dir; please clone from rabbitmq/rabbitmq-packaging and specify RABBITMQ_PACKAGING_REPO)
-#endif
-#endif
-#
-#$(RABBITMQ_PACKAGING_TARGETS): $(PACKAGES_SOURCE_DIST_FILE)
-#	$(verbose) $(MAKE) -C $(RABBITMQ_PACKAGING_REPO) $@ \
-#		SOURCE_DIST_FILE=$(abspath $(PACKAGES_SOURCE_DIST_FILE))
-#
-#package-generic-unix \
-#docker-image: $(PACKAGES_SOURCE_DIST_FILE)
-#	$(verbose) $(MAKE) -C packaging $@ \
-#		SOURCE_DIST_FILE=$(abspath $(PACKAGES_SOURCE_DIST_FILE))
-#
-#packages: package-deb package-rpm package-windows package-generic-unix
-#
+# --------------------------------------------------------------------
+# Packaging.
+# --------------------------------------------------------------------
+
+.PHONY: packages package-generic-unix
+
+# This variable is exported so sub-make instances know where to find the
+# archive.
+PACKAGES_SOURCE_DIST_FILE ?= $(firstword $(SOURCE_DIST_FILES))
+
+RABBITMQ_PACKAGING_TARGETS = package-deb package-rpm \
+package-rpm-redhat package-rpm-fedora package-rpm-rhel6 package-rpm-rhel7 \
+package-rpm-rhel8 package-rpm-suse package-rpm-opensuse package-rpm-sles11 \
+package-windows
+
+ifneq ($(filter $(RABBITMQ_PACKAGING_TARGETS),$(MAKECMDGOALS)),)
+ifeq ($(RABBITMQ_PACKAGING_REPO),)
+$(error Cannot find rabbitmq-packaging repository dir; please clone from rabbitmq/rabbitmq-packaging and specify RABBITMQ_PACKAGING_REPO)
+endif
+endif
+
+$(RABBITMQ_PACKAGING_TARGETS): $(PACKAGES_SOURCE_DIST_FILE)
+	$(verbose) $(MAKE) -C $(RABBITMQ_PACKAGING_REPO) $@ \
+		SOURCE_DIST_FILE=$(abspath $(PACKAGES_SOURCE_DIST_FILE))
+
+package-generic-unix: $(PACKAGES_SOURCE_DIST_FILE)
+	@echo "$(verbose) $(MAKE) -C packaging $@  SOURCE_DIST_FILE=$(abspath $(PACKAGES_SOURCE_DIST_FILE))"
+	$(verbose) $(MAKE) -C packaging $@  SOURCE_DIST_FILE=$(abspath $(PACKAGES_SOURCE_DIST_FILE))
+
+packages: package-generic-unix
+
+
+
+
+
