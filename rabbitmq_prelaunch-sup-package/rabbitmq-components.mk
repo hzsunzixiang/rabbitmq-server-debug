@@ -13,6 +13,20 @@ endif
 
 PROJECT_VERSION := $(RABBITMQ_VERSION)
 
+ifeq ($(PROJECT_VERSION),)
+PROJECT_VERSION := $(shell \
+if test -f git-revisions.txt; then \
+    head -n1 git-revisions.txt | \
+    awk '{print $$$(words $(PROJECT_DESCRIPTION) version);}'; \
+else \
+    (git describe --dirty --abbrev=7 --tags --always --first-parent \
+     2>/dev/null || echo rabbitmq_v0_0_0) | \
+    sed -e 's/^rabbitmq_v//' -e 's/^v//' -e 's/_/./g' -e 's/-/+/' \
+     -e 's/-/./g'; \
+fi)
+endif
+
+
 # Third-party dependencies version pinning.
 #
 # We do that in this file, which is copied in all projects, to ensure
