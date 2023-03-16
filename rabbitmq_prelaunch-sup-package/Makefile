@@ -123,14 +123,21 @@ ZIP_V = $(ZIP_V_$(V))
 .PHONY: $(SOURCE_DIST)
 .PHONY: clean-source-dist distclean-packages clean-unpacked-source-dist
 
+#$(SOURCE_DIST):
+#	@echo "SOURCE_DIST"
 $(SOURCE_DIST): $(ERLANG_MK_RECURSIVE_DEPS_LIST)
+	@echo "SOURCE_DIST" 
+	$(info $$SOURCE_DIST = $(SOURCE_DIST))
+	$(info $$@ = $(@))
 	$(verbose) mkdir -p $(dir $@)
+	@echo "$(gen_verbose) $(RSYNC) $(RSYNC_FLAGS) ./ $@/"
 	$(gen_verbose) $(RSYNC) $(RSYNC_FLAGS) ./ $@/
 	$(verbose) echo "$(PROJECT_DESCRIPTION) $(PROJECT_VERSION)" > "$@/git-revisions.txt"
 	$(verbose) echo "$(PROJECT) $$(git rev-parse HEAD) $$(git describe --tags --exact-match 2>/dev/null || git symbolic-ref -q --short HEAD)" >> "$@/git-revisions.txt"
 	$(verbose) echo "$$(TZ= git --no-pager log -n 1 --format='%cd' --date='format-local:%Y%m%d%H%M.%S')" > "$@.git-times.txt"
 	$(verbose) cat packaging/common/LICENSE.head > $@/LICENSE
 	$(verbose) mkdir -p $@/deps/licensing
+	# 对所有的 dep  做处理
 	$(verbose) set -e; for dep in $$(cat $(ERLANG_MK_RECURSIVE_DEPS_LIST) | LC_COLLATE=C sort); do \
 		$(RSYNC) $(RSYNC_FLAGS) \
 		 $$dep \
@@ -166,89 +173,93 @@ $(SOURCE_DIST): $(ERLANG_MK_RECURSIVE_DEPS_LIST)
 		 echo "$$(env TZ= git --no-pager log -n 1 --format='%cd' --date='format-local:%Y%m%d%H%M.%S')") \
 		 >> "$@.git-times.txt"; \
 	done
-	$(verbose) cat packaging/common/LICENSE.tail >> $@/LICENSE
-	$(verbose) find $@/deps/licensing -name 'LICENSE-*' -exec cp '{}' $@ \;
-	$(verbose) rm -rf $@/deps/licensing
-	$(verbose) for file in $$(find $@ -name '*.app.src'); do \
-		sed -E -i.bak \
-		  -e 's/[{]vsn[[:blank:]]*,[[:blank:]]*(""|"0.0.0")[[:blank:]]*}/{vsn, "$(PROJECT_VERSION)"}/' \
-		  -e 's/[{]broker_version_requirements[[:blank:]]*,[[:blank:]]*\[\][[:blank:]]*}/{broker_version_requirements, ["$(PROJECT_VERSION)"]}/' \
-		  $$file; \
-		rm $$file.bak; \
-	done
-	$(verbose) echo "PLUGINS := $(PLUGINS)" > $@/plugins.mk
-# Remember the latest Git timestamp.
-	$(verbose) sort -r < "$@.git-times.txt" | head -n 1 > "$@.git-time.txt"
-# Mix Hex component requires a cache file, otherwise it refuses to build
-# offline... That cache is an ETS table with all the applications we
-# depend on, plus some versioning informations and checksums. There
-# are two problems with that: the table contains a date (`last_update`
-# field) and `ets:tab2file()` produces a different file each time it's
-# called.
+#	$(verbose) cat packaging/common/LICENSE.tail >> $@/LICENSE
+#	$(verbose) find $@/deps/licensing -name 'LICENSE-*' -exec cp '{}' $@ \;
+#	$(verbose) rm -rf $@/deps/licensing
+#	$(verbose) for file in $$(find $@ -name '*.app.src'); do \
+#		sed -E -i.bak \
+#		  -e 's/[{]vsn[[:blank:]]*,[[:blank:]]*(""|"0.0.0")[[:blank:]]*}/{vsn, "$(PROJECT_VERSION)"}/' \
+#		  -e 's/[{]broker_version_requirements[[:blank:]]*,[[:blank:]]*\[\][[:blank:]]*}/{broker_version_requirements, ["$(PROJECT_VERSION)"]}/' \
+#		  $$file; \
+#		rm $$file.bak; \
+#	done
+#	$(verbose) echo "PLUGINS := $(PLUGINS)" > $@/plugins.mk
+## Remember the latest Git timestamp.
+#	$(verbose) sort -r < "$@.git-times.txt" | head -n 1 > "$@.git-time.txt"
+## Mix Hex component requires a cache file, otherwise it refuses to build
+## offline... That cache is an ETS table with all the applications we
+## depend on, plus some versioning informations and checksums. There
+## are two problems with that: the table contains a date (`last_update`
+## field) and `ets:tab2file()` produces a different file each time it's
+## called.
+##
+## To make our source archive reproducible, we fix the time of the
+## `last_update` field to the last Git commit and dump the content of the
+## table as an Erlang term to a text file.
+##
+## The ETS file must be recreated before compiling RabbitMQ. See the
+## `restore-hex-cache-ets-file` Make target.
+#	$(verbose) $(call erlang,$(call dump_hex_cache_to_erl_term,$(call core_native_path,$@),$(call core_native_path,$@.git-time.txt)))
+## Fix file timestamps to have reproducible source archives.
+#	$(verbose) find $@ -print0 | xargs -0 touch -t "$$(cat "$@.git-time.txt")"
+#	$(verbose) rm "$@.git-times.txt" "$@.git-time.txt"
 #
-# To make our source archive reproducible, we fix the time of the
-# `last_update` field to the last Git commit and dump the content of the
-# table as an Erlang term to a text file.
+#define dump_hex_cache_to_erl_term
+#  In = "$(1)/deps/.hex/cache.ets",
+#  Out = "$(1)/deps/.hex/cache.erl",
+#  {ok, DateStr} = file:read_file("$(2)"),
+#  {match, Date} = re:run(DateStr,
+#    "^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\.([0-9]{2})",
+#    [{capture, all_but_first, list}]),
+#  [Year, Month, Day, Hour, Min, Sec] = [erlang:list_to_integer(V) || V <- Date],
+#  {ok, Tab} = ets:file2tab(In),
+#  true = ets:insert(Tab, {last_update, {{Year, Month, Day}, {Hour, Min, Sec}}}),
+#  Props = [
+#    Prop
+#    || {Key, _} = Prop <- ets:info(Tab),
+#    Key =:= name orelse
+#    Key =:= type orelse
+#    Key =:= protection orelse
+#    Key =:= named_table orelse
+#    Key =:= keypos orelse
+#    Key =:= heir orelse
+#    Key =:= read_concurrency orelse
+#    Key =:= write_concurrency orelse
+#    Key =:= compressed],
+#  Entries = ets:tab2list(Tab),
+#  ok = file:write_file(Out, io_lib:format("~w.~n~w.~n", [Props, Entries])),
+#  ok = file:delete(In),
+#  init:stop().
+#endef
 #
-# The ETS file must be recreated before compiling RabbitMQ. See the
-# `restore-hex-cache-ets-file` Make target.
-	$(verbose) $(call erlang,$(call dump_hex_cache_to_erl_term,$(call core_native_path,$@),$(call core_native_path,$@.git-time.txt)))
-# Fix file timestamps to have reproducible source archives.
-	$(verbose) find $@ -print0 | xargs -0 touch -t "$$(cat "$@.git-time.txt")"
-	$(verbose) rm "$@.git-times.txt" "$@.git-time.txt"
-
-define dump_hex_cache_to_erl_term
-  In = "$(1)/deps/.hex/cache.ets",
-  Out = "$(1)/deps/.hex/cache.erl",
-  {ok, DateStr} = file:read_file("$(2)"),
-  {match, Date} = re:run(DateStr,
-    "^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\.([0-9]{2})",
-    [{capture, all_but_first, list}]),
-  [Year, Month, Day, Hour, Min, Sec] = [erlang:list_to_integer(V) || V <- Date],
-  {ok, Tab} = ets:file2tab(In),
-  true = ets:insert(Tab, {last_update, {{Year, Month, Day}, {Hour, Min, Sec}}}),
-  Props = [
-    Prop
-    || {Key, _} = Prop <- ets:info(Tab),
-    Key =:= name orelse
-    Key =:= type orelse
-    Key =:= protection orelse
-    Key =:= named_table orelse
-    Key =:= keypos orelse
-    Key =:= heir orelse
-    Key =:= read_concurrency orelse
-    Key =:= write_concurrency orelse
-    Key =:= compressed],
-  Entries = ets:tab2list(Tab),
-  ok = file:write_file(Out, io_lib:format("~w.~n~w.~n", [Props, Entries])),
-  ok = file:delete(In),
-  init:stop().
-endef
-
 $(SOURCE_DIST).manifest: $(SOURCE_DIST)
+	@echo "manifest: $(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
+		find $(notdir $(SOURCE_DIST)) | LC_COLLATE=C sort > $@"
 	$(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
 		find $(notdir $(SOURCE_DIST)) | LC_COLLATE=C sort > $@
 
+
+## 这里定义 tar的一些选项
 ifeq ($(shell tar --version | grep -c "GNU tar"),0)
-# Skip all flags if this is Darwin (a.k.a. macOS, a.k.a. OS X)
-ifeq ($(shell uname | grep -c "Darwin"),0)
-TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS = --uid 0 \
-				    --gid 0 \
-				    --numeric-owner \
-				    --no-acls \
-				    --no-fflags \
-				    --no-xattrs
-endif
+    # Skip all flags if this is Darwin (a.k.a. macOS, a.k.a. OS X)
+    ifeq ($(shell uname | grep -c "Darwin"),0)
+    TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS = --uid 0 \
+    				    --gid 0 \
+    				    --numeric-owner \
+    				    --no-acls \
+    				    --no-fflags \
+    				    --no-xattrs
+    endif
 else
-TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS = --owner 0 \
-				    --group 0 \
-				    --numeric-owner
+    TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS = --owner 0 \
+    				    --group 0 \
+    				    --numeric-owner
 endif
 
 $(SOURCE_DIST).tar.gz: $(SOURCE_DIST).manifest
 	$(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
 		$(TAR) $(TAR_V) $(TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS) --no-recursion -T $(SOURCE_DIST).manifest -cf - | \
-		$(GZIP) --best > $@
+		$(GZIP) --best > $@)
 
 $(SOURCE_DIST).tar.bz2: $(SOURCE_DIST).manifest
 	$(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
@@ -256,6 +267,11 @@ $(SOURCE_DIST).tar.bz2: $(SOURCE_DIST).manifest
 		$(BZIP2) > $@
 
 $(SOURCE_DIST).tar.xz: $(SOURCE_DIST).manifest
+	$(info $$SOURCE_DIST.tar.gz = $(SOURCE_DIST))
+	$(info $$(dir $(SOURCE_DIST)) = $(dir $(SOURCE_DIST)))
+	@echo "Here : $(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
+		$(TAR) $(TAR_V) $(TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS) --no-recursion -T $(SOURCE_DIST).manifest -cf - | \
+		$(XZ) > $@"
 	$(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
 		$(TAR) $(TAR_V) $(TAR_FLAGS_FOR_REPRODUCIBLE_BUILDS) --no-recursion -T $(SOURCE_DIST).manifest -cf - | \
 		$(XZ) > $@
@@ -265,27 +281,27 @@ $(SOURCE_DIST).zip: $(SOURCE_DIST).manifest
 	$(gen_verbose) cd $(dir $(SOURCE_DIST)) && \
 		$(ZIP) $(ZIP_V) --names-stdin $@ < $(SOURCE_DIST).manifest
 
-clean:: clean-source-dist
-
-clean-source-dist:
-	$(gen_verbose) rm -rf -- $(SOURCE_DIST_BASE)-*
-
-distclean:: distclean-packages
-
-distclean-packages:
-	$(gen_verbose) rm -rf -- $(PACKAGES_DIR)
-
-## If a dependency doesn't have a clean target - do not call it
-clean-unpacked-source-dist:
-	for d in deps/*; do \
-		if test -f $$d/Makefile; then \
-			(! make -n clean) || (make -C $$d clean || exit $$?); \
-		fi; \
-	done
-
-clean-deps:
-	git clean -xfffd deps
-
+#clean:: clean-source-dist
+#
+#clean-source-dist:
+#	$(gen_verbose) rm -rf -- $(SOURCE_DIST_BASE)-*
+#
+#distclean:: distclean-packages
+#
+#distclean-packages:
+#	$(gen_verbose) rm -rf -- $(PACKAGES_DIR)
+#
+### If a dependency doesn't have a clean target - do not call it
+#clean-unpacked-source-dist:
+#	for d in deps/*; do \
+#		if test -f $$d/Makefile; then \
+#			(! make -n clean) || (make -C $$d clean || exit $$?); \
+#		fi; \
+#	done
+#
+#clean-deps:
+#	git clean -xfffd deps
+#
 
 ## --------------------------------------------------------------------
 ## Packaging.
