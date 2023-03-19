@@ -1,0 +1,1570 @@
+
+make dist DIST_AS_EZS=true  V=2   > debug.txt 2>&1
+
+erlang.mk:30: Please upgrade to GNU Make 4 or later: https://erlang.mk/guide/installation.html
+set -x; rm -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ rm -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
+set -x; set -e; for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; \
+		if [ -z "" ] && ! (echo "rabbit rabbit_common rabbitmq_cli rabbitmq_codegen " | grep -qw "$(basename "$dep")") && [ ! -L $dep ] && [ -f $dep/ebin/dep_built ]; then \
+			:; \
+		elif [ -f $dep/GNUmakefile ] || [ -f $dep/makefile ] || [ -f $dep/Makefile ]; then \
+			make -C $dep IS_DEP=1; \
+			if [ ! -L $dep ] && [ -d $dep/ebin ]; then touch $dep/ebin/dep_built; fi; \
+		else \
+			echo "Error: No Makefile to build dependency $dep." >&2; \
+			exit 2; \
+		fi \
+	fi \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common
++ grep -qw rabbit_common
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/GNUmakefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/makefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/Makefile ']'
++ make -C /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common IS_DEP=1
+make[1]: Entering directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common'
+set -x; set -e; for dep in        ; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log; \
+		make -C $dep  IS_APP=1; \
+	fi \
+done
++ set -e
+set -x; set -e; for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; \
+		if [ -z "" ] && ! (echo "rabbit rabbit_common rabbitmq_cli rabbitmq_codegen " | grep -qw "$(basename "$dep")") && [ ! -L $dep ] && [ -f $dep/ebin/dep_built ]; then \
+			:; \
+		elif [ -f $dep/GNUmakefile ] || [ -f $dep/makefile ] || [ -f $dep/Makefile ]; then \
+			make -C $dep IS_DEP=1; \
+			if [ ! -L $dep ] && [ -d $dep/ebin ]; then touch $dep/ebin/dep_built; fi; \
+		else \
+			echo "Error: No Makefile to build dependency $dep." >&2; \
+			exit 2; \
+		fi \
+	fi \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen
++ grep -qw rabbitmq_codegen
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen/GNUmakefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen/makefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen/Makefile ']'
++ make -C /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen IS_DEP=1
+make[2]: Entering directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen'
+make[2]: Leaving directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen'
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen ']'
++ '[' -d /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen/ebin ']'
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas
++ grep -qw thoas
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon
++ grep -qw recon
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbitmq_codegen /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation
++ grep -qw credentials_obfuscation
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation/ebin/dep_built ']'
++ :
+set -x; make --no-print-directory rabbit_common.d
++ make --no-print-directory rabbit_common.d
+set -x; :
++ :
+set -x; make --no-print-directory app-build
++ make --no-print-directory app-build
+set -x; :
++ :
+set -x; :
++ :
+make[1]: Leaving directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common'
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common ']'
++ '[' -d /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/ebin ']'
++ touch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/ebin/dep_built
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit
++ grep -qw rabbit
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/GNUmakefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/makefile ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/Makefile ']'
++ make -C /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit IS_DEP=1
+make[1]: Entering directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit'
+set -x; set -e; for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch ; do \
+	mkdir -p $dep/ebin; \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch/ebin
+set -x; set -e; for dep in  /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log; \
+		make -C $dep  IS_APP=1; \
+	fi \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch
++ make -C /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch IS_APP=1
+make[2]: Entering directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch'
+set -x; set -e; for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; \
+		if [ -z "" ] && ! (echo "rabbit rabbit_common rabbitmq_cli rabbitmq_codegen " | grep -qw "$(basename "$dep")") && [ ! -L $dep ] && [ -f $dep/ebin/dep_built ]; then \
+			:; \
+		elif [ -f $dep/GNUmakefile ] || [ -f $dep/makefile ] || [ -f $dep/Makefile ]; then \
+			make -C $dep IS_DEP=1; \
+			if [ ! -L $dep ] && [ -d $dep/ebin ]; then touch $dep/ebin/dep_built; fi; \
+		else \
+			echo "Error: No Makefile to build dependency $dep." >&2; \
+			exit 2; \
+		fi \
+	fi \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish
++ grep -qw cuttlefish
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ :
+set -x; make --no-print-directory rabbitmq_prelaunch.d
++ make --no-print-directory rabbitmq_prelaunch.d
+set -x; :
++ :
+set -x; make --no-print-directory app-build
++ make --no-print-directory app-build
+set -x; :
++ :
+set -x; :
++ :
+make[2]: Leaving directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch'
+set -x; set -e; for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat; do \
+	if grep -qs ^$dep$ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; then \
+		:; \
+	else \
+		echo $dep >> /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log; \
+		if [ -z "" ] && ! (echo "rabbit rabbit_common rabbitmq_cli rabbitmq_codegen " | grep -qw "$(basename "$dep")") && [ ! -L $dep ] && [ -f $dep/ebin/dep_built ]; then \
+			:; \
+		elif [ -f $dep/GNUmakefile ] || [ -f $dep/makefile ] || [ -f $dep/Makefile ]; then \
+			make -C $dep IS_DEP=1; \
+			if [ ! -L $dep ] && [ -d $dep/ebin ]; then touch $dep/ebin/dep_built; fi; \
+		else \
+			echo "Error: No Makefile to build dependency $dep." >&2; \
+			exit 2; \
+		fi \
+	fi \
+done
++ set -e
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch
++ grep -qw ranch
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra
++ grep -qw ra
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler
++ grep -qw sysmon_handler
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli
++ grep -qw observer_cli
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris
++ grep -qw osiris
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog
++ grep -qw syslog
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd
++ grep -qw systemd
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd/ebin/dep_built ']'
++ :
++ for dep in /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qs '^/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat$' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/deps.log
++ echo /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ '[' -z '' ']'
++ echo 'rabbit rabbit_common rabbitmq_cli rabbitmq_codegen '
+++ basename /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat
++ grep -qw seshat
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat ']'
++ '[' -f /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat/ebin/dep_built ']'
++ :
+set -x; make --no-print-directory rabbit.d
++ make --no-print-directory rabbit.d
+set -x; :
++ :
+set -x; make --no-print-directory app-build
++ make --no-print-directory app-build
+set -x; :
++ :
+set -x; :
++ :
+make[1]: Leaving directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit'
++ '[' '!' -L /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit ']'
++ '[' -d /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/ebin ']'
++ touch /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/ebin/dep_built
+set -x; :
++ :
+set -x; \
+if command -v flock >/dev/null; then \
+	flock plugins.lock \
+	sh -c 'make do-dist \
+	DIST_PLUGINS_LIST="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/recursive-deps-list.log \
+	 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log"'; \
+elif command -v lockf >/dev/null; then \
+	lockf plugins.lock \
+	sh -c 'make do-dist \
+	DIST_PLUGINS_LIST="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/recursive-deps-list.log \
+	 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log"'; \
+else \
+	make do-dist \
+	DIST_PLUGINS_LIST="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/recursive-deps-list.log \
+	 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log"; \
+fi
++ command -v flock
++ flock plugins.lock sh -c 'make do-dist \
+	DIST_PLUGINS_LIST="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/recursive-deps-list.log \
+	 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/.erlang.mk/apps.log"'
+make[1]: Entering directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist'
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8 plugins/aten-0.5.8.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8 plugins/aten-0.5.8.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/aten/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/aten/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8/
+sending incremental file list
+./
+ebin/
+ebin/aten.app
+ebin/aten.beam
+ebin/aten_app.beam
+ebin/aten_detect.beam
+ebin/aten_detector.beam
+ebin/aten_emitter.beam
+ebin/aten_sink.beam
+ebin/aten_sup.beam
+
+sent 25,916 bytes  received 179 bytes  52,190.00 bytes/sec
+total size is 25,311  speedup is 0.97
+set -x; (cd plugins && \
+	find "aten-0.5.8" | LC_COLLATE=C sort \
+	> "aten-0.5.8.manifest" && \
+	zip  --names-stdin "aten-0.5.8.ez" \
+	< "aten-0.5.8.manifest")
++ cd plugins
++ find aten-0.5.8
++ LC_COLLATE=C
++ sort
++ zip --names-stdin aten-0.5.8.ez
+  adding: aten-0.5.8/ (stored 0%)
+  adding: aten-0.5.8/ebin/ (stored 0%)
+  adding: aten-0.5.8/ebin/aten.app (deflated 55%)
+  adding: aten-0.5.8/ebin/aten.beam (deflated 20%)
+  adding: aten-0.5.8/ebin/aten_app.beam (deflated 23%)
+  adding: aten-0.5.8/ebin/aten_detect.beam (deflated 14%)
+  adding: aten-0.5.8/ebin/aten_detector.beam (deflated 15%)
+  adding: aten-0.5.8/ebin/aten_emitter.beam (deflated 16%)
+  adding: aten-0.5.8/ebin/aten_sink.beam (deflated 15%)
+  adding: aten-0.5.8/ebin/aten_sup.beam (deflated 15%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/aten-0.5.8.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0 plugins/credentials_obfuscation-3.2.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0 plugins/credentials_obfuscation-3.2.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/credentials_obfuscation/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0/
+sending incremental file list
+./
+ebin/
+ebin/credentials_obfuscation.app
+ebin/credentials_obfuscation.beam
+ebin/credentials_obfuscation_app.beam
+ebin/credentials_obfuscation_pbe.beam
+ebin/credentials_obfuscation_sup.beam
+ebin/credentials_obfuscation_svc.beam
+include/
+include/credentials_obfuscation.hrl
+
+sent 23,270 bytes  received 164 bytes  46,868.00 bytes/sec
+total size is 22,649  speedup is 0.97
+set -x; (cd plugins && \
+	find "credentials_obfuscation-3.2.0" | LC_COLLATE=C sort \
+	> "credentials_obfuscation-3.2.0.manifest" && \
+	zip  --names-stdin "credentials_obfuscation-3.2.0.ez" \
+	< "credentials_obfuscation-3.2.0.manifest")
++ cd plugins
++ find credentials_obfuscation-3.2.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin credentials_obfuscation-3.2.0.ez
+  adding: credentials_obfuscation-3.2.0/ (stored 0%)
+  adding: credentials_obfuscation-3.2.0/ebin/ (stored 0%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation.app (deflated 59%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation.beam (deflated 18%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation_app.beam (deflated 24%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation_pbe.beam (deflated 17%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation_sup.beam (deflated 18%)
+  adding: credentials_obfuscation-3.2.0/ebin/credentials_obfuscation_svc.beam (deflated 14%)
+  adding: credentials_obfuscation-3.2.0/include/ (stored 0%)
+  adding: credentials_obfuscation-3.2.0/include/credentials_obfuscation.hrl (stored 0%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/credentials_obfuscation-3.2.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0 plugins/cuttlefish-3.1.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0 plugins/cuttlefish-3.1.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/cuttlefish/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0/
+sending incremental file list
+./
+ebin/
+ebin/conf_parse.beam
+ebin/cuttlefish.app
+ebin/cuttlefish.beam
+ebin/cuttlefish_advanced.beam
+ebin/cuttlefish_bytesize.beam
+ebin/cuttlefish_conf.beam
+ebin/cuttlefish_datatypes.beam
+ebin/cuttlefish_duration.beam
+ebin/cuttlefish_duration_parse.beam
+ebin/cuttlefish_effective.beam
+ebin/cuttlefish_enum.beam
+ebin/cuttlefish_error.beam
+ebin/cuttlefish_escript.beam
+ebin/cuttlefish_flag.beam
+ebin/cuttlefish_generator.beam
+ebin/cuttlefish_mapping.beam
+ebin/cuttlefish_rebar_plugin.beam
+ebin/cuttlefish_schema.beam
+ebin/cuttlefish_translation.beam
+ebin/cuttlefish_unit.beam
+ebin/cuttlefish_util.beam
+ebin/cuttlefish_validator.beam
+ebin/cuttlefish_variable.beam
+ebin/cuttlefish_vmargs.beam
+priv/
+priv/erlang_vm.schema
+
+sent 236,950 bytes  received 510 bytes  474,920.00 bytes/sec
+total size is 235,122  speedup is 0.99
+set -x; (cd plugins && \
+	find "cuttlefish-3.1.0" | LC_COLLATE=C sort \
+	> "cuttlefish-3.1.0.manifest" && \
+	zip  --names-stdin "cuttlefish-3.1.0.ez" \
+	< "cuttlefish-3.1.0.manifest")
++ cd plugins
++ find cuttlefish-3.1.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin cuttlefish-3.1.0.ez
+  adding: cuttlefish-3.1.0/ (stored 0%)
+  adding: cuttlefish-3.1.0/ebin/ (stored 0%)
+  adding: cuttlefish-3.1.0/ebin/conf_parse.beam (deflated 23%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish.app (deflated 62%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish.beam (deflated 12%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_advanced.beam (deflated 22%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_bytesize.beam (deflated 19%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_conf.beam (deflated 17%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_datatypes.beam (deflated 13%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_duration.beam (deflated 16%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_duration_parse.beam (deflated 19%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_effective.beam (deflated 15%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_enum.beam (deflated 15%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_error.beam (deflated 14%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_escript.beam (deflated 14%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_flag.beam (deflated 20%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_generator.beam (deflated 17%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_mapping.beam (deflated 14%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_rebar_plugin.beam (deflated 16%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_schema.beam (deflated 16%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_translation.beam (deflated 14%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_unit.beam (deflated 16%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_util.beam (deflated 15%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_validator.beam (deflated 14%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_variable.beam (deflated 15%)
+  adding: cuttlefish-3.1.0/ebin/cuttlefish_vmargs.beam (deflated 19%)
+  adding: cuttlefish-3.1.0/priv/ (stored 0%)
+  adding: cuttlefish-3.1.0/priv/erlang_vm.schema (deflated 69%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/cuttlefish-3.1.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0 plugins/enough-0.1.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0 plugins/enough-0.1.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/enough/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/enough/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0/
+sending incremental file list
+./
+ebin/
+ebin/enough.app
+ebin/enough.beam
+
+sent 25,547 bytes  received 65 bytes  51,224.00 bytes/sec
+total size is 25,320  speedup is 0.99
+set -x; (cd plugins && \
+	find "enough-0.1.0" | LC_COLLATE=C sort \
+	> "enough-0.1.0.manifest" && \
+	zip  --names-stdin "enough-0.1.0.ez" \
+	< "enough-0.1.0.manifest")
++ cd plugins
++ find enough-0.1.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin enough-0.1.0.ez
+  adding: enough-0.1.0/ (stored 0%)
+  adding: enough-0.1.0/ebin/ (stored 0%)
+  adding: enough-0.1.0/ebin/enough.app (deflated 47%)
+  adding: enough-0.1.0/ebin/enough.beam (deflated 12%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/enough-0.1.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8 plugins/gen_batch_server-0.8.8.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8 plugins/gen_batch_server-0.8.8.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/gen_batch_server/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/gen_batch_server/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8/
+sending incremental file list
+./
+ebin/
+ebin/gen_batch_server.app
+ebin/gen_batch_server.beam
+
+sent 19,774 bytes  received 65 bytes  39,678.00 bytes/sec
+total size is 19,538  speedup is 0.98
+set -x; (cd plugins && \
+	find "gen_batch_server-0.8.8" | LC_COLLATE=C sort \
+	> "gen_batch_server-0.8.8.manifest" && \
+	zip  --names-stdin "gen_batch_server-0.8.8.ez" \
+	< "gen_batch_server-0.8.8.manifest")
++ cd plugins
++ find gen_batch_server-0.8.8
++ LC_COLLATE=C
++ sort
++ zip --names-stdin gen_batch_server-0.8.8.ez
+  adding: gen_batch_server-0.8.8/ (stored 0%)
+  adding: gen_batch_server-0.8.8/ebin/ (stored 0%)
+  adding: gen_batch_server-0.8.8/ebin/gen_batch_server.app (deflated 52%)
+  adding: gen_batch_server-0.8.8/ebin/gen_batch_server.beam (deflated 14%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/gen_batch_server-0.8.8.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2 plugins/getopt-1.0.2.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2 plugins/getopt-1.0.2.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/getopt/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/getopt/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2/
+sending incremental file list
+./
+ebin/
+ebin/getopt.app
+ebin/getopt.beam
+
+sent 36,214 bytes  received 65 bytes  72,558.00 bytes/sec
+total size is 35,984  speedup is 0.99
+set -x; (cd plugins && \
+	find "getopt-1.0.2" | LC_COLLATE=C sort \
+	> "getopt-1.0.2.manifest" && \
+	zip  --names-stdin "getopt-1.0.2.ez" \
+	< "getopt-1.0.2.manifest")
++ cd plugins
++ find getopt-1.0.2
++ LC_COLLATE=C
++ sort
++ zip --names-stdin getopt-1.0.2.ez
+  adding: getopt-1.0.2/ (stored 0%)
+  adding: getopt-1.0.2/ebin/ (stored 0%)
+  adding: getopt-1.0.2/ebin/getopt.app (deflated 47%)
+  adding: getopt-1.0.2/ebin/getopt.beam (deflated 13%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/getopt-1.0.2.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3 plugins/observer_cli-1.7.3.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3 plugins/observer_cli-1.7.3.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/observer_cli/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3/
+sending incremental file list
+./
+ebin/
+ebin/observer_cli.app
+ebin/observer_cli.beam
+ebin/observer_cli_application.beam
+ebin/observer_cli_escriptize.beam
+ebin/observer_cli_ets.beam
+ebin/observer_cli_help.beam
+ebin/observer_cli_inet.beam
+ebin/observer_cli_lib.beam
+ebin/observer_cli_mnesia.beam
+ebin/observer_cli_plugin.beam
+ebin/observer_cli_port.beam
+ebin/observer_cli_process.beam
+ebin/observer_cli_store.beam
+ebin/observer_cli_system.beam
+include/
+include/observer_cli.hrl
+
+sent 232,370 bytes  received 316 bytes  465,372.00 bytes/sec
+total size is 231,217  speedup is 0.99
+set -x; (cd plugins && \
+	find "observer_cli-1.7.3" | LC_COLLATE=C sort \
+	> "observer_cli-1.7.3.manifest" && \
+	zip  --names-stdin "observer_cli-1.7.3.ez" \
+	< "observer_cli-1.7.3.manifest")
++ cd plugins
++ find observer_cli-1.7.3
++ LC_COLLATE=C
++ sort
++ zip --names-stdin observer_cli-1.7.3.ez
+  adding: observer_cli-1.7.3/ (stored 0%)
+  adding: observer_cli-1.7.3/ebin/ (stored 0%)
+  adding: observer_cli-1.7.3/ebin/observer_cli.app (deflated 58%)
+  adding: observer_cli-1.7.3/ebin/observer_cli.beam (deflated 17%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_application.beam (deflated 15%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_escriptize.beam (deflated 13%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_ets.beam (deflated 12%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_help.beam (deflated 9%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_inet.beam (deflated 14%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_lib.beam (deflated 17%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_mnesia.beam (deflated 12%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_plugin.beam (deflated 15%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_port.beam (deflated 14%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_process.beam (deflated 15%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_store.beam (deflated 16%)
+  adding: observer_cli-1.7.3/ebin/observer_cli_system.beam (deflated 14%)
+  adding: observer_cli-1.7.3/include/ (stored 0%)
+  adding: observer_cli-1.7.3/include/observer_cli.hrl (deflated 68%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/observer_cli-1.7.3.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3 plugins/osiris-1.3.3.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3 plugins/osiris-1.3.3.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/osiris/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3/
+sending incremental file list
+./
+ebin/
+ebin/osiris.app
+ebin/osiris.beam
+ebin/osiris_app.beam
+ebin/osiris_bench.beam
+ebin/osiris_counters.beam
+ebin/osiris_log.beam
+ebin/osiris_log_shared.beam
+ebin/osiris_replica.beam
+ebin/osiris_replica_reader.beam
+ebin/osiris_replica_reader_sup.beam
+ebin/osiris_retention.beam
+ebin/osiris_server_sup.beam
+ebin/osiris_sup.beam
+ebin/osiris_tracking.beam
+ebin/osiris_util.beam
+ebin/osiris_writer.beam
+
+sent 232,150 bytes  received 331 bytes  464,962.00 bytes/sec
+total size is 230,970  speedup is 0.99
+set -x; (cd plugins && \
+	find "osiris-1.3.3" | LC_COLLATE=C sort \
+	> "osiris-1.3.3.manifest" && \
+	zip  --names-stdin "osiris-1.3.3.ez" \
+	< "osiris-1.3.3.manifest")
++ cd plugins
++ find osiris-1.3.3
++ LC_COLLATE=C
++ sort
++ zip --names-stdin osiris-1.3.3.ez
+  adding: osiris-1.3.3/ (stored 0%)
+  adding: osiris-1.3.3/ebin/ (stored 0%)
+  adding: osiris-1.3.3/ebin/osiris.app (deflated 50%)
+  adding: osiris-1.3.3/ebin/osiris.beam (deflated 12%)
+  adding: osiris-1.3.3/ebin/osiris_app.beam (deflated 21%)
+  adding: osiris-1.3.3/ebin/osiris_bench.beam (deflated 15%)
+  adding: osiris-1.3.3/ebin/osiris_counters.beam (deflated 16%)
+  adding: osiris-1.3.3/ebin/osiris_log.beam (deflated 14%)
+  adding: osiris-1.3.3/ebin/osiris_log_shared.beam (deflated 16%)
+  adding: osiris-1.3.3/ebin/osiris_replica.beam (deflated 14%)
+  adding: osiris-1.3.3/ebin/osiris_replica_reader.beam (deflated 13%)
+  adding: osiris-1.3.3/ebin/osiris_replica_reader_sup.beam (deflated 20%)
+  adding: osiris-1.3.3/ebin/osiris_retention.beam (deflated 14%)
+  adding: osiris-1.3.3/ebin/osiris_server_sup.beam (deflated 16%)
+  adding: osiris-1.3.3/ebin/osiris_sup.beam (deflated 14%)
+  adding: osiris-1.3.3/ebin/osiris_tracking.beam (deflated 17%)
+  adding: osiris-1.3.3/ebin/osiris_util.beam (deflated 18%)
+  adding: osiris-1.3.3/ebin/osiris_writer.beam (deflated 15%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/osiris-1.3.3.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5 plugins/ra-2.4.5.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5 plugins/ra-2.4.5.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ra/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5/
+sending incremental file list
+./
+ebin/
+ebin/ra.app
+ebin/ra.beam
+ebin/ra_app.beam
+ebin/ra_bench.beam
+ebin/ra_counters.beam
+ebin/ra_dbg.beam
+ebin/ra_directory.beam
+ebin/ra_env.beam
+ebin/ra_file_handle.beam
+ebin/ra_flru.beam
+ebin/ra_leaderboard.beam
+ebin/ra_lib.beam
+ebin/ra_log.beam
+ebin/ra_log_ets.beam
+ebin/ra_log_meta.beam
+ebin/ra_log_pre_init.beam
+ebin/ra_log_reader.beam
+ebin/ra_log_segment.beam
+ebin/ra_log_segment_writer.beam
+ebin/ra_log_snapshot.beam
+ebin/ra_log_sup.beam
+ebin/ra_log_wal.beam
+ebin/ra_log_wal_sup.beam
+ebin/ra_machine.beam
+ebin/ra_machine_ets.beam
+ebin/ra_machine_simple.beam
+ebin/ra_metrics_ets.beam
+ebin/ra_monitors.beam
+ebin/ra_server.beam
+ebin/ra_server_proc.beam
+ebin/ra_server_sup.beam
+ebin/ra_server_sup_sup.beam
+ebin/ra_snapshot.beam
+ebin/ra_sup.beam
+ebin/ra_system.beam
+ebin/ra_system_sup.beam
+ebin/ra_systems_sup.beam
+
+sent 588,397 bytes  received 730 bytes  1,178,254.00 bytes/sec
+total size is 585,798  speedup is 0.99
+set -x; (cd plugins && \
+	find "ra-2.4.5" | LC_COLLATE=C sort \
+	> "ra-2.4.5.manifest" && \
+	zip  --names-stdin "ra-2.4.5.ez" \
+	< "ra-2.4.5.manifest")
++ cd plugins
++ find ra-2.4.5
++ LC_COLLATE=C
++ sort
++ zip --names-stdin ra-2.4.5.ez
+  adding: ra-2.4.5/ (stored 0%)
+  adding: ra-2.4.5/ebin/ (stored 0%)
+  adding: ra-2.4.5/ebin/ra.app (deflated 60%)
+  adding: ra-2.4.5/ebin/ra.beam (deflated 12%)
+  adding: ra-2.4.5/ebin/ra_app.beam (deflated 22%)
+  adding: ra-2.4.5/ebin/ra_bench.beam (deflated 15%)
+  adding: ra-2.4.5/ebin/ra_counters.beam (deflated 14%)
+  adding: ra-2.4.5/ebin/ra_dbg.beam (deflated 15%)
+  adding: ra-2.4.5/ebin/ra_directory.beam (deflated 11%)
+  adding: ra-2.4.5/ebin/ra_env.beam (deflated 17%)
+  adding: ra-2.4.5/ebin/ra_file_handle.beam (deflated 22%)
+  adding: ra-2.4.5/ebin/ra_flru.beam (deflated 12%)
+  adding: ra-2.4.5/ebin/ra_leaderboard.beam (deflated 15%)
+  adding: ra-2.4.5/ebin/ra_lib.beam (deflated 15%)
+  adding: ra-2.4.5/ebin/ra_log.beam (deflated 14%)
+  adding: ra-2.4.5/ebin/ra_log_ets.beam (deflated 9%)
+  adding: ra-2.4.5/ebin/ra_log_meta.beam (deflated 11%)
+  adding: ra-2.4.5/ebin/ra_log_pre_init.beam (deflated 9%)
+  adding: ra-2.4.5/ebin/ra_log_reader.beam (deflated 16%)
+  adding: ra-2.4.5/ebin/ra_log_segment.beam (deflated 10%)
+  adding: ra-2.4.5/ebin/ra_log_segment_writer.beam (deflated 13%)
+  adding: ra-2.4.5/ebin/ra_log_snapshot.beam (deflated 14%)
+  adding: ra-2.4.5/ebin/ra_log_sup.beam (deflated 10%)
+  adding: ra-2.4.5/ebin/ra_log_wal.beam (deflated 12%)
+  adding: ra-2.4.5/ebin/ra_log_wal_sup.beam (deflated 16%)
+  adding: ra-2.4.5/ebin/ra_machine.beam (deflated 7%)
+  adding: ra-2.4.5/ebin/ra_machine_ets.beam (deflated 16%)
+  adding: ra-2.4.5/ebin/ra_machine_simple.beam (deflated 20%)
+  adding: ra-2.4.5/ebin/ra_metrics_ets.beam (deflated 17%)
+  adding: ra-2.4.5/ebin/ra_monitors.beam (deflated 10%)
+  adding: ra-2.4.5/ebin/ra_server.beam (deflated 16%)
+  adding: ra-2.4.5/ebin/ra_server_proc.beam (deflated 17%)
+  adding: ra-2.4.5/ebin/ra_server_sup.beam (deflated 16%)
+  adding: ra-2.4.5/ebin/ra_server_sup_sup.beam (deflated 12%)
+  adding: ra-2.4.5/ebin/ra_snapshot.beam (deflated 9%)
+  adding: ra-2.4.5/ebin/ra_sup.beam (deflated 11%)
+  adding: ra-2.4.5/ebin/ra_system.beam (deflated 8%)
+  adding: ra-2.4.5/ebin/ra_system_sup.beam (deflated 7%)
+  adding: ra-2.4.5/ebin/ra_systems_sup.beam (deflated 7%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ra-2.4.5.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd plugins/rabbit-fedd0fd.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd plugins/rabbit-fedd0fd.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd/
+sending incremental file list
+./
+ebin/
+ebin/rabbit.app
+ebin/rabbit.beam
+ebin/rabbit_boot_steps.beam
+ebin/rabbit_db.beam
+ebin/rabbit_feature_flags.beam
+ebin/rabbit_ff_registry.beam
+ebin/rabbit_ff_registry_factory.beam
+ebin/rabbit_file.beam
+ebin/rabbit_mnesia.beam
+ebin/rabbit_mnesia_rename.beam
+ebin/rabbit_node_monitor.beam
+ebin/rabbit_nodes.beam
+ebin/rabbit_prelaunch_cluster.beam
+ebin/rabbit_prelaunch_enabled_plugins_file.beam
+ebin/rabbit_prelaunch_feature_flags.beam
+ebin/rabbit_prelaunch_logging.beam
+ebin/rabbit_ra_systems.beam
+ebin/rabbit_release_series.beam
+ebin/rabbit_sup.beam
+ebin/rabbit_upgrade.beam
+ebin/rabbit_version.beam
+priv/
+priv/schema/
+priv/schema/rabbit.schema
+
+sent 458,667 bytes  received 457 bytes  918,248.00 bytes/sec
+total size is 456,927  speedup is 1.00
+set -x; (cd plugins && \
+	find "rabbit-fedd0fd" | LC_COLLATE=C sort \
+	> "rabbit-fedd0fd.manifest" && \
+	zip  --names-stdin "rabbit-fedd0fd.ez" \
+	< "rabbit-fedd0fd.manifest")
++ cd plugins
++ find rabbit-fedd0fd
++ LC_COLLATE=C
++ sort
++ zip --names-stdin rabbit-fedd0fd.ez
+  adding: rabbit-fedd0fd/ (stored 0%)
+  adding: rabbit-fedd0fd/ebin/ (stored 0%)
+  adding: rabbit-fedd0fd/ebin/rabbit.app (deflated 62%)
+  adding: rabbit-fedd0fd/ebin/rabbit.beam (deflated 20%)
+  adding: rabbit-fedd0fd/ebin/rabbit_boot_steps.beam (deflated 21%)
+  adding: rabbit-fedd0fd/ebin/rabbit_db.beam (deflated 10%)
+  adding: rabbit-fedd0fd/ebin/rabbit_feature_flags.beam (deflated 16%)
+  adding: rabbit-fedd0fd/ebin/rabbit_ff_registry.beam (deflated 14%)
+  adding: rabbit-fedd0fd/ebin/rabbit_ff_registry_factory.beam (deflated 14%)
+  adding: rabbit-fedd0fd/ebin/rabbit_file.beam (deflated 18%)
+  adding: rabbit-fedd0fd/ebin/rabbit_mnesia.beam (deflated 16%)
+  adding: rabbit-fedd0fd/ebin/rabbit_mnesia_rename.beam (deflated 15%)
+  adding: rabbit-fedd0fd/ebin/rabbit_node_monitor.beam (deflated 18%)
+  adding: rabbit-fedd0fd/ebin/rabbit_nodes.beam (deflated 12%)
+  adding: rabbit-fedd0fd/ebin/rabbit_prelaunch_cluster.beam (deflated 10%)
+  adding: rabbit-fedd0fd/ebin/rabbit_prelaunch_enabled_plugins_file.beam (deflated 8%)
+  adding: rabbit-fedd0fd/ebin/rabbit_prelaunch_feature_flags.beam (deflated 9%)
+  adding: rabbit-fedd0fd/ebin/rabbit_prelaunch_logging.beam (deflated 16%)
+  adding: rabbit-fedd0fd/ebin/rabbit_ra_systems.beam (deflated 13%)
+  adding: rabbit-fedd0fd/ebin/rabbit_release_series.beam (deflated 14%)
+  adding: rabbit-fedd0fd/ebin/rabbit_sup.beam (deflated 8%)
+  adding: rabbit-fedd0fd/ebin/rabbit_upgrade.beam (deflated 13%)
+  adding: rabbit-fedd0fd/ebin/rabbit_version.beam (deflated 22%)
+  adding: rabbit-fedd0fd/priv/ (stored 0%)
+  adding: rabbit-fedd0fd/priv/schema/ (stored 0%)
+  adding: rabbit-fedd0fd/priv/schema/rabbit.schema (deflated 82%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit-fedd0fd.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd plugins/rabbitmq_prelaunch-fedd0fd.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd plugins/rabbitmq_prelaunch-fedd0fd.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit/apps/rabbitmq_prelaunch/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd/
+sending incremental file list
+./
+ebin/
+ebin/rabbit_boot_state.beam
+ebin/rabbit_boot_state_sup.beam
+ebin/rabbit_boot_state_systemd.beam
+ebin/rabbit_boot_state_xterm_titlebar.beam
+ebin/rabbit_logger_fmt_helpers.beam
+ebin/rabbit_logger_json_fmt.beam
+ebin/rabbit_logger_std_h.beam
+ebin/rabbit_logger_text_fmt.beam
+ebin/rabbit_prelaunch.beam
+ebin/rabbit_prelaunch_app.beam
+ebin/rabbit_prelaunch_conf.beam
+ebin/rabbit_prelaunch_dist.beam
+ebin/rabbit_prelaunch_early_logging.beam
+ebin/rabbit_prelaunch_erlang_compat.beam
+ebin/rabbit_prelaunch_errors.beam
+ebin/rabbit_prelaunch_file.beam
+ebin/rabbit_prelaunch_sighandler.beam
+ebin/rabbit_prelaunch_sup.beam
+ebin/rabbitmq_prelaunch.app
+
+sent 173,263 bytes  received 388 bytes  347,302.00 bytes/sec
+total size is 171,842  speedup is 0.99
+set -x; (cd plugins && \
+	find "rabbitmq_prelaunch-fedd0fd" | LC_COLLATE=C sort \
+	> "rabbitmq_prelaunch-fedd0fd.manifest" && \
+	zip  --names-stdin "rabbitmq_prelaunch-fedd0fd.ez" \
+	< "rabbitmq_prelaunch-fedd0fd.manifest")
++ cd plugins
++ find rabbitmq_prelaunch-fedd0fd
++ LC_COLLATE=C
++ sort
++ zip --names-stdin rabbitmq_prelaunch-fedd0fd.ez
+  adding: rabbitmq_prelaunch-fedd0fd/ (stored 0%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/ (stored 0%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_boot_state.beam (deflated 11%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_boot_state_sup.beam (deflated 11%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_boot_state_systemd.beam (deflated 10%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_boot_state_xterm_titlebar.beam (deflated 11%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_logger_fmt_helpers.beam (deflated 14%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_logger_json_fmt.beam (deflated 15%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_logger_std_h.beam (deflated 15%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_logger_text_fmt.beam (deflated 11%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch.beam (deflated 16%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_app.beam (deflated 17%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_conf.beam (deflated 14%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_dist.beam (deflated 14%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_early_logging.beam (deflated 15%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_erlang_compat.beam (deflated 8%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_errors.beam (deflated 11%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_file.beam (deflated 13%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_sighandler.beam (deflated 14%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbit_prelaunch_sup.beam (deflated 8%)
+  adding: rabbitmq_prelaunch-fedd0fd/ebin/rabbitmq_prelaunch.app (deflated 61%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbitmq_prelaunch-fedd0fd.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd plugins/rabbit_common-fedd0fd.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd plugins/rabbit_common-fedd0fd.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/rabbit_common/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd/
+sending incremental file list
+./
+ebin/
+ebin/app_utils.beam
+ebin/code_version.beam
+ebin/credit_flow.beam
+ebin/delegate.beam
+ebin/delegate_sup.beam
+ebin/file_handle_cache.beam
+ebin/file_handle_cache_stats.beam
+ebin/gen_server2.beam
+ebin/mirrored_supervisor_locks.beam
+ebin/mnesia_sync.beam
+ebin/pmon.beam
+ebin/priority_queue.beam
+ebin/rabbit_amqp_connection.beam
+ebin/rabbit_amqqueue_common.beam
+ebin/rabbit_auth_backend_dummy.beam
+ebin/rabbit_auth_mechanism.beam
+ebin/rabbit_authn_backend.beam
+ebin/rabbit_authz_backend.beam
+ebin/rabbit_basic_common.beam
+ebin/rabbit_binary_generator.beam
+ebin/rabbit_binary_parser.beam
+ebin/rabbit_cert_info.beam
+ebin/rabbit_channel_common.beam
+ebin/rabbit_command_assembler.beam
+ebin/rabbit_common.app
+ebin/rabbit_control_misc.beam
+ebin/rabbit_core_metrics.beam
+ebin/rabbit_data_coercion.beam
+ebin/rabbit_date_time.beam
+ebin/rabbit_env.beam
+ebin/rabbit_error_logger_handler.beam
+ebin/rabbit_event.beam
+ebin/rabbit_exchange_type.beam
+ebin/rabbit_framing_amqp_0_8.beam
+ebin/rabbit_framing_amqp_0_9_1.beam
+ebin/rabbit_heartbeat.beam
+ebin/rabbit_http_util.beam
+ebin/rabbit_json.beam
+ebin/rabbit_log.beam
+ebin/rabbit_misc.beam
+ebin/rabbit_msg_store_index.beam
+ebin/rabbit_net.beam
+ebin/rabbit_nodes_common.beam
+ebin/rabbit_numerical.beam
+ebin/rabbit_password_hashing.beam
+ebin/rabbit_pbe.beam
+ebin/rabbit_peer_discovery_backend.beam
+ebin/rabbit_policy_validator.beam
+ebin/rabbit_queue_collector.beam
+ebin/rabbit_registry.beam
+ebin/rabbit_registry_class.beam
+ebin/rabbit_resource_monitor_misc.beam
+ebin/rabbit_runtime.beam
+ebin/rabbit_runtime_parameter.beam
+ebin/rabbit_semver.beam
+ebin/rabbit_semver_parser.beam
+ebin/rabbit_ssl_options.beam
+ebin/rabbit_types.beam
+ebin/rabbit_writer.beam
+ebin/supervisor2.beam
+ebin/vm_memory_monitor.beam
+ebin/worker_pool.beam
+ebin/worker_pool_sup.beam
+ebin/worker_pool_worker.beam
+include/
+include/logging.hrl
+include/rabbit.hrl
+include/rabbit_core_metrics.hrl
+include/rabbit_framing.hrl
+include/rabbit_memory.hrl
+include/rabbit_misc.hrl
+include/rabbit_msg_store.hrl
+include/resource.hrl
+
+sent 974,823 bytes  received 1,403 bytes  1,952,452.00 bytes/sec
+total size is 969,340  speedup is 0.99
+set -x; (cd plugins && \
+	find "rabbit_common-fedd0fd" | LC_COLLATE=C sort \
+	> "rabbit_common-fedd0fd.manifest" && \
+	zip  --names-stdin "rabbit_common-fedd0fd.ez" \
+	< "rabbit_common-fedd0fd.manifest")
++ cd plugins
++ find rabbit_common-fedd0fd
++ LC_COLLATE=C
++ sort
++ zip --names-stdin rabbit_common-fedd0fd.ez
+  adding: rabbit_common-fedd0fd/ (stored 0%)
+  adding: rabbit_common-fedd0fd/ebin/ (stored 0%)
+  adding: rabbit_common-fedd0fd/ebin/app_utils.beam (deflated 19%)
+  adding: rabbit_common-fedd0fd/ebin/code_version.beam (deflated 24%)
+  adding: rabbit_common-fedd0fd/ebin/credit_flow.beam (deflated 13%)
+  adding: rabbit_common-fedd0fd/ebin/delegate.beam (deflated 17%)
+  adding: rabbit_common-fedd0fd/ebin/delegate_sup.beam (deflated 11%)
+  adding: rabbit_common-fedd0fd/ebin/file_handle_cache.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/file_handle_cache_stats.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/gen_server2.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/mirrored_supervisor_locks.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/mnesia_sync.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/pmon.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/priority_queue.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_amqp_connection.beam (deflated 9%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_amqqueue_common.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_auth_backend_dummy.beam (deflated 6%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_auth_mechanism.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_authn_backend.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_authz_backend.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_basic_common.beam (deflated 4%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_binary_generator.beam (deflated 8%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_binary_parser.beam (deflated 22%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_cert_info.beam (deflated 9%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_channel_common.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_command_assembler.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_common.app (deflated 57%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_control_misc.beam (deflated 15%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_core_metrics.beam (deflated 20%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_data_coercion.beam (deflated 13%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_date_time.beam (deflated 10%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_env.beam (deflated 19%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_error_logger_handler.beam (deflated 10%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_event.beam (deflated 8%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_exchange_type.beam (deflated 8%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_framing_amqp_0_8.beam (deflated 20%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_framing_amqp_0_9_1.beam (deflated 18%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_heartbeat.beam (deflated 11%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_http_util.beam (deflated 17%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_json.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_log.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_misc.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_msg_store_index.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_net.beam (deflated 15%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_nodes_common.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_numerical.beam (deflated 15%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_password_hashing.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_pbe.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_peer_discovery_backend.beam (deflated 3%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_policy_validator.beam (deflated 15%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_queue_collector.beam (deflated 7%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_registry.beam (deflated 18%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_registry_class.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_resource_monitor_misc.beam (deflated 10%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_runtime.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_runtime_parameter.beam (deflated 13%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_semver.beam (deflated 15%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_semver_parser.beam (deflated 20%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_ssl_options.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_types.beam (deflated 1%)
+  adding: rabbit_common-fedd0fd/ebin/rabbit_writer.beam (deflated 8%)
+  adding: rabbit_common-fedd0fd/ebin/supervisor2.beam (deflated 16%)
+  adding: rabbit_common-fedd0fd/ebin/vm_memory_monitor.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/ebin/worker_pool.beam (deflated 13%)
+  adding: rabbit_common-fedd0fd/ebin/worker_pool_sup.beam (deflated 12%)
+  adding: rabbit_common-fedd0fd/ebin/worker_pool_worker.beam (deflated 14%)
+  adding: rabbit_common-fedd0fd/include/ (stored 0%)
+  adding: rabbit_common-fedd0fd/include/logging.hrl (deflated 64%)
+  adding: rabbit_common-fedd0fd/include/rabbit.hrl (deflated 64%)
+  adding: rabbit_common-fedd0fd/include/rabbit_core_metrics.hrl (deflated 73%)
+  adding: rabbit_common-fedd0fd/include/rabbit_framing.hrl (deflated 76%)
+  adding: rabbit_common-fedd0fd/include/rabbit_memory.hrl (deflated 33%)
+  adding: rabbit_common-fedd0fd/include/rabbit_misc.hrl (deflated 29%)
+  adding: rabbit_common-fedd0fd/include/rabbit_msg_store.hrl (deflated 30%)
+  adding: rabbit_common-fedd0fd/include/resource.hrl (deflated 31%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/rabbit_common-fedd0fd.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0 plugins/ranch-2.1.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0 plugins/ranch-2.1.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/ranch/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0/
+sending incremental file list
+./
+ebin/
+ebin/ranch.app
+ebin/ranch.appup
+ebin/ranch.beam
+ebin/ranch_acceptor.beam
+ebin/ranch_acceptors_sup.beam
+ebin/ranch_app.beam
+ebin/ranch_conns_sup.beam
+ebin/ranch_conns_sup_sup.beam
+ebin/ranch_crc32c.beam
+ebin/ranch_embedded_sup.beam
+ebin/ranch_listener_sup.beam
+ebin/ranch_protocol.beam
+ebin/ranch_proxy_header.beam
+ebin/ranch_server.beam
+ebin/ranch_server_proxy.beam
+ebin/ranch_ssl.beam
+ebin/ranch_sup.beam
+ebin/ranch_tcp.beam
+ebin/ranch_transport.beam
+
+sent 161,958 bytes  received 388 bytes  324,692.00 bytes/sec
+total size is 160,598  speedup is 0.99
+set -x; (cd plugins && \
+	find "ranch-2.1.0" | LC_COLLATE=C sort \
+	> "ranch-2.1.0.manifest" && \
+	zip  --names-stdin "ranch-2.1.0.ez" \
+	< "ranch-2.1.0.manifest")
++ cd plugins
++ find ranch-2.1.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin ranch-2.1.0.ez
+  adding: ranch-2.1.0/ (stored 0%)
+  adding: ranch-2.1.0/ebin/ (stored 0%)
+  adding: ranch-2.1.0/ebin/ranch.app (deflated 54%)
+  adding: ranch-2.1.0/ebin/ranch.appup (deflated 85%)
+  adding: ranch-2.1.0/ebin/ranch.beam (deflated 16%)
+  adding: ranch-2.1.0/ebin/ranch_acceptor.beam (deflated 13%)
+  adding: ranch-2.1.0/ebin/ranch_acceptors_sup.beam (deflated 15%)
+  adding: ranch-2.1.0/ebin/ranch_app.beam (deflated 17%)
+  adding: ranch-2.1.0/ebin/ranch_conns_sup.beam (deflated 14%)
+  adding: ranch-2.1.0/ebin/ranch_conns_sup_sup.beam (deflated 17%)
+  adding: ranch-2.1.0/ebin/ranch_crc32c.beam (deflated 8%)
+  adding: ranch-2.1.0/ebin/ranch_embedded_sup.beam (deflated 13%)
+  adding: ranch-2.1.0/ebin/ranch_listener_sup.beam (deflated 14%)
+  adding: ranch-2.1.0/ebin/ranch_protocol.beam (deflated 20%)
+  adding: ranch-2.1.0/ebin/ranch_proxy_header.beam (deflated 14%)
+  adding: ranch-2.1.0/ebin/ranch_server.beam (deflated 18%)
+  adding: ranch-2.1.0/ebin/ranch_server_proxy.beam (deflated 15%)
+  adding: ranch-2.1.0/ebin/ranch_ssl.beam (deflated 11%)
+  adding: ranch-2.1.0/ebin/ranch_sup.beam (deflated 16%)
+  adding: ranch-2.1.0/ebin/ranch_tcp.beam (deflated 11%)
+  adding: ranch-2.1.0/ebin/ranch_transport.beam (deflated 9%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/ranch-2.1.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2 plugins/recon-2.5.2.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2 plugins/recon-2.5.2.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/recon/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2/
+sending incremental file list
+./
+ebin/
+ebin/recon.app
+ebin/recon.beam
+ebin/recon_alloc.beam
+ebin/recon_lib.beam
+ebin/recon_map.beam
+ebin/recon_rec.beam
+ebin/recon_trace.beam
+
+sent 109,321 bytes  received 160 bytes  218,962.00 bytes/sec
+total size is 108,762  speedup is 0.99
+set -x; (cd plugins && \
+	find "recon-2.5.2" | LC_COLLATE=C sort \
+	> "recon-2.5.2.manifest" && \
+	zip  --names-stdin "recon-2.5.2.ez" \
+	< "recon-2.5.2.manifest")
++ cd plugins
++ find recon-2.5.2
++ LC_COLLATE=C
++ sort
++ zip --names-stdin recon-2.5.2.ez
+  adding: recon-2.5.2/ (stored 0%)
+  adding: recon-2.5.2/ebin/ (stored 0%)
+  adding: recon-2.5.2/ebin/recon.app (deflated 53%)
+  adding: recon-2.5.2/ebin/recon.beam (deflated 14%)
+  adding: recon-2.5.2/ebin/recon_alloc.beam (deflated 20%)
+  adding: recon-2.5.2/ebin/recon_lib.beam (deflated 18%)
+  adding: recon-2.5.2/ebin/recon_map.beam (deflated 14%)
+  adding: recon-2.5.2/ebin/recon_rec.beam (deflated 17%)
+  adding: recon-2.5.2/ebin/recon_trace.beam (deflated 16%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/recon-2.5.2.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0 plugins/seshat-0.4.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0 plugins/seshat-0.4.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/seshat/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0/
+sending incremental file list
+./
+ebin/
+ebin/seshat.app
+ebin/seshat.beam
+ebin/seshat_app.beam
+ebin/seshat_counters_server.beam
+ebin/seshat_sup.beam
+
+sent 14,086 bytes  received 122 bytes  28,416.00 bytes/sec
+total size is 13,657  speedup is 0.96
+set -x; (cd plugins && \
+	find "seshat-0.4.0" | LC_COLLATE=C sort \
+	> "seshat-0.4.0.manifest" && \
+	zip  --names-stdin "seshat-0.4.0.ez" \
+	< "seshat-0.4.0.manifest")
++ cd plugins
++ find seshat-0.4.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin seshat-0.4.0.ez
+  adding: seshat-0.4.0/ (stored 0%)
+  adding: seshat-0.4.0/ebin/ (stored 0%)
+  adding: seshat-0.4.0/ebin/seshat.app (deflated 52%)
+  adding: seshat-0.4.0/ebin/seshat.beam (deflated 17%)
+  adding: seshat-0.4.0/ebin/seshat_app.beam (deflated 23%)
+  adding: seshat-0.4.0/ebin/seshat_counters_server.beam (deflated 17%)
+  adding: seshat-0.4.0/ebin/seshat_sup.beam (deflated 16%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/seshat-0.4.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0 plugins/syslog-4.0.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0 plugins/syslog-4.0.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/syslog/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0/
+sending incremental file list
+./
+ebin/
+ebin/syslog.app
+ebin/syslog.beam
+ebin/syslog_error_h.beam
+ebin/syslog_lager_backend.beam
+ebin/syslog_lib.beam
+ebin/syslog_logger.beam
+ebin/syslog_logger_h.beam
+ebin/syslog_monitor.beam
+ebin/syslog_rfc3164.beam
+ebin/syslog_rfc5424.beam
+include/
+include/syslog.hrl
+
+sent 92,116 bytes  received 240 bytes  184,712.00 bytes/sec
+total size is 91,251  speedup is 0.99
+set -x; (cd plugins && \
+	find "syslog-4.0.0" | LC_COLLATE=C sort \
+	> "syslog-4.0.0.manifest" && \
+	zip  --names-stdin "syslog-4.0.0.ez" \
+	< "syslog-4.0.0.manifest")
++ cd plugins
++ find syslog-4.0.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin syslog-4.0.0.ez
+  adding: syslog-4.0.0/ (stored 0%)
+  adding: syslog-4.0.0/ebin/ (stored 0%)
+  adding: syslog-4.0.0/ebin/syslog.app (deflated 54%)
+  adding: syslog-4.0.0/ebin/syslog.beam (deflated 14%)
+  adding: syslog-4.0.0/ebin/syslog_error_h.beam (deflated 19%)
+  adding: syslog-4.0.0/ebin/syslog_lager_backend.beam (deflated 14%)
+  adding: syslog-4.0.0/ebin/syslog_lib.beam (deflated 18%)
+  adding: syslog-4.0.0/ebin/syslog_logger.beam (deflated 15%)
+  adding: syslog-4.0.0/ebin/syslog_logger_h.beam (deflated 15%)
+  adding: syslog-4.0.0/ebin/syslog_monitor.beam (deflated 15%)
+  adding: syslog-4.0.0/ebin/syslog_rfc3164.beam (deflated 15%)
+  adding: syslog-4.0.0/ebin/syslog_rfc5424.beam (deflated 16%)
+  adding: syslog-4.0.0/include/ (stored 0%)
+  adding: syslog-4.0.0/include/syslog.hrl (deflated 64%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/syslog-4.0.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0 plugins/sysmon_handler-1.3.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0 plugins/sysmon_handler-1.3.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/sysmon_handler/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0/
+sending incremental file list
+./
+ebin/
+ebin/sysmon_handler.app
+ebin/sysmon_handler_app.beam
+ebin/sysmon_handler_example_handler.beam
+ebin/sysmon_handler_filter.beam
+ebin/sysmon_handler_sup.beam
+ebin/sysmon_handler_testhandler.beam
+include/
+include/sysmon_handler.hrl
+priv/
+priv/sysmon_handler.schema
+
+sent 25,633 bytes  received 187 bytes  51,640.00 bytes/sec
+total size is 24,905  speedup is 0.96
+set -x; (cd plugins && \
+	find "sysmon_handler-1.3.0" | LC_COLLATE=C sort \
+	> "sysmon_handler-1.3.0.manifest" && \
+	zip  --names-stdin "sysmon_handler-1.3.0.ez" \
+	< "sysmon_handler-1.3.0.manifest")
++ cd plugins
++ find sysmon_handler-1.3.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin sysmon_handler-1.3.0.ez
+  adding: sysmon_handler-1.3.0/ (stored 0%)
+  adding: sysmon_handler-1.3.0/ebin/ (stored 0%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler.app (deflated 59%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler_app.beam (deflated 23%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler_example_handler.beam (deflated 18%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler_filter.beam (deflated 16%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler_sup.beam (deflated 15%)
+  adding: sysmon_handler-1.3.0/ebin/sysmon_handler_testhandler.beam (deflated 29%)
+  adding: sysmon_handler-1.3.0/include/ (stored 0%)
+  adding: sysmon_handler-1.3.0/include/sysmon_handler.hrl (deflated 47%)
+  adding: sysmon_handler-1.3.0/priv/ (stored 0%)
+  adding: sysmon_handler-1.3.0/priv/sysmon_handler.schema (deflated 83%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/sysmon_handler-1.3.0.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1 plugins/systemd-0.6.1.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1 plugins/systemd-0.6.1.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/systemd/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1/
+sending incremental file list
+./
+ebin/
+ebin/systemd.app
+ebin/systemd.beam
+ebin/systemd_app.beam
+ebin/systemd_journal_h.beam
+ebin/systemd_kmsg_formatter.beam
+ebin/systemd_protocol.beam
+ebin/systemd_socket.beam
+ebin/systemd_sup.beam
+ebin/systemd_watchdog.beam
+include/
+include/systemd.hrl
+
+sent 50,303 bytes  received 221 bytes  101,048.00 bytes/sec
+total size is 49,496  speedup is 0.98
+set -x; (cd plugins && \
+	find "systemd-0.6.1" | LC_COLLATE=C sort \
+	> "systemd-0.6.1.manifest" && \
+	zip  --names-stdin "systemd-0.6.1.ez" \
+	< "systemd-0.6.1.manifest")
++ cd plugins
++ find systemd-0.6.1
++ LC_COLLATE=C
++ sort
++ zip --names-stdin systemd-0.6.1.ez
+  adding: systemd-0.6.1/ (stored 0%)
+  adding: systemd-0.6.1/ebin/ (stored 0%)
+  adding: systemd-0.6.1/ebin/systemd.app (deflated 56%)
+  adding: systemd-0.6.1/ebin/systemd.beam (deflated 12%)
+  adding: systemd-0.6.1/ebin/systemd_app.beam (deflated 20%)
+  adding: systemd-0.6.1/ebin/systemd_journal_h.beam (deflated 14%)
+  adding: systemd-0.6.1/ebin/systemd_kmsg_formatter.beam (deflated 15%)
+  adding: systemd-0.6.1/ebin/systemd_protocol.beam (deflated 15%)
+  adding: systemd-0.6.1/ebin/systemd_socket.beam (deflated 14%)
+  adding: systemd-0.6.1/ebin/systemd_sup.beam (deflated 11%)
+  adding: systemd-0.6.1/ebin/systemd_watchdog.beam (deflated 14%)
+  adding: systemd-0.6.1/include/ (stored 0%)
+  adding: systemd-0.6.1/include/systemd.hrl (deflated 48%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/systemd-0.6.1.manifest
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0 plugins/thoas-0.4.0.ez
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0 plugins/thoas-0.4.0.ez
+set -x; mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0
++ mkdir -p /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0
+set -x; rsync -a -v \
+	--exclude '/ebin/dep_built' \
+	--exclude '/ebin/test' \
+	--include '/ebin/***' \
+	--include '/include/***' \
+	--include '/priv/***' \
+	--exclude '*' \
+	/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0/
++ rsync -a -v --exclude /ebin/dep_built --exclude /ebin/test --include '/ebin/***' --include '/include/***' --include '/priv/***' --exclude '*' /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/deps/thoas/ /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0/
+sending incremental file list
+./
+ebin/
+ebin/thoas.app
+ebin/thoas.beam
+ebin/thoas_decode.beam
+ebin/thoas_encode.beam
+
+sent 125,128 bytes  received 103 bytes  250,462.00 bytes/sec
+total size is 124,737  speedup is 1.00
+set -x; (cd plugins && \
+	find "thoas-0.4.0" | LC_COLLATE=C sort \
+	> "thoas-0.4.0.manifest" && \
+	zip  --names-stdin "thoas-0.4.0.ez" \
+	< "thoas-0.4.0.manifest")
++ cd plugins
++ find thoas-0.4.0
++ LC_COLLATE=C
++ sort
++ zip --names-stdin thoas-0.4.0.ez
+  adding: thoas-0.4.0/ (stored 0%)
+  adding: thoas-0.4.0/ebin/ (stored 0%)
+  adding: thoas-0.4.0/ebin/thoas.app (deflated 51%)
+  adding: thoas-0.4.0/ebin/thoas.beam (deflated 13%)
+  adding: thoas-0.4.0/ebin/thoas_decode.beam (deflated 26%)
+  adding: thoas-0.4.0/ebin/thoas_encode.beam (deflated 26%)
+set -x; rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0.manifest
++ rm -rf /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0 /home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/plugins/thoas-0.4.0.manifest
+set -x; unwanted=''; \
+test -z "$unwanted" || (echo " RM     $unwanted" && rm -rf $unwanted)
++ unwanted=
++ test -z ''
+make[1]: Leaving directory `/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist'
