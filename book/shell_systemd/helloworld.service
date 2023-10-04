@@ -1,0 +1,9 @@
+[Unit]
+Description=HelloWorld Service
+
+[Service]
+Type=notify
+ExecStart=/usr/local/bin/helloworld.sh
+
+[Install]
+WantedBy=multi-user.target

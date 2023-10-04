@@ -51,6 +51,7 @@ notify_boot_state(ready = BootState) ->
        ?LOG_PREFIX "notifying of state `~s`",
        [BootState],
        #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    io:format(standard_error, "notifying of state: ~p, in notify_boot_state. here log system has  not initiated~n", [BootState]),
     systemd:notify([BootState, {status, Status}]);
 notify_boot_state(BootState) ->
     Status = boot_state_to_desc(BootState),
@@ -59,6 +60,7 @@ notify_boot_state(BootState) ->
        "\"~s\"",
        [BootState, Status],
        #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    io:format(standard_error, "sending non-systemd state notifying of state: ~p, in notify_boot_state. here log system has  not initiated~n", [BootState]),
     systemd:notify({status, Status}).
 
 boot_state_to_desc(stopped) ->
