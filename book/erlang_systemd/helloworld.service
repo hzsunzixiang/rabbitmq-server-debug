@@ -3,7 +3,7 @@ Description=HelloWorld Service
 
 [Service]
 Type=notify
-ExecStart=/home/ericksun/install/otp-26.1/bin/erl -pa /home/ericksun/program/rabbitmq-server-debug/book/erlang_systemd/de/systemd/ebin -pa /home/ericksun/program/rabbitmq-server-debug/book/erlang_systemd/deps/enough/ebin  -noshell -noinput -detached  -s  application ensure_all_started erlang_systemd
+ExecStart=/home/ericksun/install/otp-26.1/bin/erl -pa /home/ericksun/program/rabbitmq-server-debug/book/erlang_systemd/deps/systemd/ebin -pa /home/ericksun/program/rabbitmq-server-debug/book/erlang_systemd/deps/enough/ebin -pa /home/ericksun/program/rabbitmq-server-debug/book/erlang_systemd/ebin -detached -s application ensure_all_started erlang_systemd
 
 
 [Install]
