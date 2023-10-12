@@ -90,6 +90,7 @@ do_run() ->
     %% Load rabbitmq-env.conf, redo logging setup and continue.
     Context1 = rabbit_env:get_context_after_logging_init(Context0),
     ?assertMatch(#{}, Context1),
+    %% 这里只是初始化配置，并没有安装， 安装是在rabbit_app.erl: ok = rabbit_prelaunch_logging:setup(Context),
     ok = rabbit_prelaunch_early_logging:setup_early_logging(Context1),
     rabbit_env:log_process_env(),
 

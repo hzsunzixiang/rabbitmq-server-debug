@@ -164,7 +164,7 @@ run_prelaunch_second_phase() ->
     %%% 2. Feature flags registry.
     %ok = rabbit_prelaunch_feature_flags:setup(Context),
 
-    % 3. Logging.
+    % 3. Logging. 安装logger handler
     ok = rabbit_prelaunch_logging:setup(Context),
 
     %%% 4. Clustering.
