@@ -2,9 +2,9 @@
 f().
 %% load all the modules
 
-LogFile="trace_prelaunch.txt".
+LogFile="trace_prelaunch_1013.1.txt".
 LogPath="/home/ericksun/program/rabbitmq-server-debug/rabbitmq-server-rabbitmq_prelaunch/trace_log/".
-LogNum=50000
+LogNum=50000,
 LP = fun() -> [code:ensure_loaded(list_to_atom(filename:rootname(filename:basename(F)))) || P <- code:get_path(), F <- filelib:wildcard(P ++ "/*.beam")] end.
 LP().  %% sync
 

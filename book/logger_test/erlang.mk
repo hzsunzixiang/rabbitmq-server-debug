@@ -4446,7 +4446,7 @@ ERLANG_MK_QUERY_SHELL_DEPS_FILE = $(ERLANG_MK_TMP)/query-shell-deps.log
 
 # Configuration.
 
-ERLC_OPTS ?= -Werror +debug_info +warn_export_vars +warn_shadow_vars \
+ERLC_OPTS ?= +debug_info +warn_export_vars +warn_shadow_vars \
 	+warn_obsolete_guard # +bin_opt_info +warn_export_all +warn_missing_spec
 COMPILE_FIRST ?=
 COMPILE_FIRST_PATHS = $(addprefix src/,$(addsuffix .erl,$(COMPILE_FIRST)))

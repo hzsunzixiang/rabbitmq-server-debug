@@ -22,7 +22,6 @@
          use_colored_logging/1,
          translate_formatter_conf/2,
          translate_journald_fields_conf/2]).
--export([filter_log_event/2]).
 -export([filter_discarded_message/2]).
 
 -ifdef(TEST).

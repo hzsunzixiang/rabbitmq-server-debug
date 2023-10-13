@@ -1,0 +1,80 @@
+-module(logger_test_sup).
+-behaviour(supervisor).
+-include_lib("kernel/include/logger.hrl").
+-include_lib("logging.hrl").
+
+-export([start_link/0]).
+-export([init/1]).
+%-compile([{nowarn_unused_function, [prepare_logger]}]).
+-compile(export_all).
+-compile(nowarn_export_all).
+
+start_link() ->
+	supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+init([]) ->
+	Procs = [],
+	{ok, {{one_for_one, 1, 5}, Procs}}.
+
+prepare_logger() ->
+    io:format("helloworld"),
+    finish.
+
+%rabbit_prelaunch_early_logging:do_setup_early_logging(#{os_type=>{unix,linux}, var_origins=>#{os_type=>default, log_levels=>default, interactive_shell=>default, output_supports_colors=>default}, log_levels=>#{"prelaunch"=>notice}, interactive_shell=>false, output_supports_colors=>true})
+%
+do_setup_early_logging(#{log_levels := LogLevels} = Context) ->
+    add_rmqlog_filter(LogLevels),
+    ok = logger:update_handler_config(
+           default, main_handler_config(Context)).
+
+main_handler_config(Context) ->
+    #{formatter=>{rabbit_logger_text_fmt,#{single_line => false,use_colors => false}}, filter_default=>log}.
+
+add_primary_filters() ->
+    ok = logger:add_primary_filter(
+          progress_reports, {fun logger_filters:progress/2, stop}),
+    ok = logger:add_primary_filter(
+          discarded_messages, {fun filter_discarded_message/2, stop}).
+
+add_rmqlog_filter() ->
+    ok = add_primary_filters(),
+    ok = logger:add_handler_filter(
+           default, ?FILTER_NAME, {fun filter_log_event/2,  #{global=>info, prelaunch=>notice} }),
+    ok = logger:set_primary_config(level, all).
+
+filter_discarded_message(#{level := error,
+                           meta := #{error_logger := #{emulator := true, tag := error}},
+                           msg := {"~s~n", Msg}}, OnMatch) ->
+    case string:find(Msg, "Discarding message") of
+        nomatch ->
+            ignore;
+        _ ->
+            OnMatch
+    end;
+
+
+%23:36:38.469958 <0.167.0> rabbit_prelaunch_early_logging:filter_log_event(#{meta=>#{line=>80, pid=><0.167.0>, time=>1697168198346474, file=>"rabbit_prelaunch.erl", gl=><0.165.0>, domain=>[rabbitmq,prelaunch], mfa=>{rabbit_prelaunch,do_run,0}}, msg=>{string,[]}, level=>debug}, #{global=>info, prelaunch=>notice})
+
+
+%filter_log_event( #{meta := #{domain := ?RMQLOG_DOMAIN_GLOBAL}} = LogEvent,  FilterConfig) ->
+%    LogEvent.
+%%    stop.
+%%    ignore.
+%filter_discarded_message(_LogEvent, _OnMatch) ->
+%    ignore.
+
+filter_discarded_message(#{level := error,
+                           meta := #{error_logger := #{emulator := true, tag := error}},
+                           msg := {"~s~n", Msg}}, OnMatch) ->
+    case string:find(Msg, "Discarding message") of
+        nomatch ->
+            ignore;
+        _ ->
+            OnMatch
+    end;
+filter_discarded_message(_LogEvent, _OnMatch) ->
+    ignore.
+
+
+
+

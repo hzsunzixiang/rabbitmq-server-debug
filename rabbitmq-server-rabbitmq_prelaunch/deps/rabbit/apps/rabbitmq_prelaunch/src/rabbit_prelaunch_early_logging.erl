@@ -59,14 +59,21 @@ add_rmqlog_filter(LogLevels) ->
                           ({K, V}, FC) when is_atom(K) -> FC#{K => V};
                           ({K, V}, FC) -> FC#{list_to_atom(K) => V}
                       end, #{}, maps:to_list(LogLevels)),
+	FilterConfig0 = empty_test(FilterConfig0),
+
     FilterConfig1 = case maps:is_key(global, FilterConfig0) of
                         true  -> FilterConfig0;
                         false -> FilterConfig0#{global => ?DEFAULT_LOG_LEVEL}
                     end,
+	FilterConfig1 = empty_test(FilterConfig1),
+
     ok = logger:add_handler_filter(
            default, ?FILTER_NAME, {fun filter_log_event/2, FilterConfig1}),
     ok = logger:set_primary_config(level, all),
     ok = persistent_term:put(?CONFIGURED_KEY, true).
+
+empty_test(Content) ->
+    Content.
 
 add_primary_filters() ->
     ok = logger:add_primary_filter(
