@@ -452,10 +452,11 @@ set_ERL_CRASH_DUMP_envvar(Context) ->
 %% @returns an absolute path to a directory.
 
 get_log_base_dir(#{log_base_dir := LogBaseDirFromEnv} = Context) ->
-    case rabbit_env:has_var_been_overridden(Context, log_base_dir) of
-        false -> application:get_env(rabbit, log_root, LogBaseDirFromEnv);
-        true  -> LogBaseDirFromEnv
-    end.
+    application:get_env(rabbit, log_root, LogBaseDirFromEnv).
+    %case rabbit_env:has_var_been_overridden(Context, log_base_dir) of
+    %    false -> application:get_env(rabbit, log_root, LogBaseDirFromEnv);
+    %    true  -> LogBaseDirFromEnv
+    %end.
 
 %% -------------------------------------------------------------------
 %% Logger's handlers configuration.
@@ -995,7 +996,8 @@ handle_default_main_output(
   #{global := #{outputs := Outputs} = GlobalConfig} = LogConfig,
   #{main_log_file := MainLogFile} = Context) ->
     NoOutputsConfigured = Outputs =:= [],
-    Overridden = rabbit_env:has_var_been_overridden(Context, main_log_file),
+    %Overridden = rabbit_env:has_var_been_overridden(Context, main_log_file),
+    Overridden = false,
     Outputs1 = if
                    NoOutputsConfigured orelse Overridden ->
                        Output0 = log_file_var_to_output(MainLogFile),
