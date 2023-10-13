@@ -2,5 +2,6 @@
 
 src/logger_test_sup.erl:: src/logging.hrl; @touch $@
 src/rabbit_prelaunch_early_logging.erl:: src/logging.hrl; @touch $@
+src/rabbit_prelaunch_logging.erl:: src/logging.hrl; @touch $@
 
 COMPILE_FIRST +=
