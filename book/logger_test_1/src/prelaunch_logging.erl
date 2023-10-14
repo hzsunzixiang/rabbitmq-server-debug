@@ -752,23 +752,6 @@ assign_handler_ids(
 assign_handler_ids([], _, Result) ->
     lists:reverse(Result).
 
-log_test_messages() ->
-    ?LOG_DEBUG("Logging: testing debug log level",
-               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_INFO("Logging: testing info log level",
-              #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_NOTICE("Logging: testing notice log level",
-                #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_WARNING("Logging: testing warning log level",
-                 #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_ERROR("Logging: testing error log level",
-               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_CRITICAL("Logging: testing critical log level",
-                  #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_ALERT("Logging: testing alert log level",
-               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
-    ?LOG_EMERGENCY("Logging: testing emergency log level",
-                   #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}).
 
 format_id(Format, Args, #{config_run_number := RunNum}) ->
     list_to_atom(rabbit_misc:format("rmq_~b_" ++ Format, [RunNum | Args])).
@@ -1128,3 +1111,22 @@ log_file_var_to_output(Filename) ->
     #{module => rabbit_logger_std_h,
       config => #{type => file,
                   file => Filename}}.
+
+log_test_messages() ->
+    ?LOG_DEBUG("Logging: testing debug log level",
+               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_INFO("Logging: testing info log level",
+              #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_NOTICE("Logging: testing notice log level",
+                #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_WARNING("Logging: testing warning log level",
+                 #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_ERROR("Logging: testing error log level",
+               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_CRITICAL("Logging: testing critical log level",
+                  #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_ALERT("Logging: testing alert log level",
+               #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}),
+    ?LOG_EMERGENCY("Logging: testing emergency log level",
+                   #{domain => ?RMQLOG_DOMAIN_PRELAUNCH}).
+
