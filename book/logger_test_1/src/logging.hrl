@@ -11,7 +11,8 @@
 -define(RMQLOG_DOMAIN_QUEUE,      ?DEFINE_RMQLOG_DOMAIN(queue)).
 -define(RMQLOG_DOMAIN_UPGRADE,    ?DEFINE_RMQLOG_DOMAIN(upgrade)).
 
--define(DEFAULT_LOG_LEVEL, info).
+%-define(DEFAULT_LOG_LEVEL, info).
+-define(DEFAULT_LOG_LEVEL, debug).
 -define(FILTER_NAME, rmqlog_filter).
 
 -define(IS_STD_H_COMPAT(Mod),
