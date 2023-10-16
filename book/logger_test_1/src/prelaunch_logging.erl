@@ -754,7 +754,7 @@ assign_handler_ids([], _, Result) ->
 
 
 format_id(Format, Args, #{config_run_number := RunNum}) ->
-    list_to_atom(rabbit_misc:format("rmq_~b_" ++ Format, [RunNum | Args])).
+    list_to_atom(format("rmq_~b_" ++ Format, [RunNum | Args])).
 
 
 format(Fmt, Args) -> lists:flatten(io_lib:format(Fmt, Args)).
