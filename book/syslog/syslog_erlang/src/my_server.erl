@@ -12,8 +12,8 @@
 -export([terminate/2]).
 -export([code_change/3]).
 
--record(state, {
-}).
+-record(state, {log}).
+
 
 %% API.
 
@@ -25,14 +25,13 @@ start_link() ->
 %% gen_server.
 
 init([]) ->
-	{ok, #state{}}.
-
-handle_call(log_info, _From, State) ->
     syslog:start(),
     {ok,Log} = syslog:open("Beuha", [cons, perror, pid], local0),
+	{ok, #state{log = Log}}.
+
+handle_call(log_info, _From, #state{log=Log}=State) ->
     syslog:log(Log, err, "error happens"),
 	syslog:log(Log, info, "process count: ~w", [length(processes())]),
-	syslog:close(Log),
 	{reply, ok, State}.
 
 handle_cast(_Msg, State) ->
@@ -41,7 +40,8 @@ handle_cast(_Msg, State) ->
 handle_info(_Info, State) ->
 	{noreply, State}.
 
-terminate(_Reason, _State) ->
+terminate(_Reason, #state{log=Log}) ->
+	syslog:close(Log),
 	ok.
 
 code_change(_OldVsn, State, _Extra) ->
