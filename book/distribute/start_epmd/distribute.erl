@@ -3,13 +3,25 @@
 -compile(nowarn_export_all).
 
 -define(DistTcpPort, 25672).
-
+% 如果先调用 ensure_epmd , 启动之后看不到节点名
 start() ->
     context_to_app_env_vars_no_logging(),
-    %ensure_epmd(),
+    ensure_epmd(),
     net_kernel:start(['rabbit@centos7-mq1', shortnames, 60*1000 div 4]),
     timer:sleep(10000000000),
     'this is an end'.
+
+ensure_epmd() ->
+    Exe = get_erl_path(),
+    %Exe = "/home/ericksun/install/otp-26.1/lib/erlang/erts-14.1/bin/erl",
+    ID = random(1000000000),
+    Port = open_port(
+             {spawn_executable, Exe},
+             [{args, ["-boot", "no_dot_erlang",
+                      "-sname", format("epmd-starter-~b", [ID]),
+                      "-noinput", "-s", "erlang", "halt"]},
+              exit_status, stderr_to_stdout, use_stdio]),
+    port_shutdown_loop(Port).
 
 random(N) ->
     rand:uniform(N).
@@ -29,6 +41,7 @@ get_erl_path() ->
 
 
 port_shutdown_loop(Port) ->
+    io:format("port_shutdown_loop..."),
     receive
         {Port, {exit_status, _Rc}} -> ok;
         {Port, closed}             -> ok;
@@ -43,17 +56,6 @@ port_shutdown_loop(Port) ->
         after 5000 -> ok
         end
     end.
-
-ensure_epmd() ->
-    Exe = get_erl_path(),
-    ID = random(1000000000),
-    Port = open_port(
-             {spawn_executable, Exe},
-             [{args, ["-boot", "no_dot_erlang",
-                      "-sname", format("epmd-starter-~b", [ID]),
-                      "-noinput", "-s", "erlang", "halt"]},
-              exit_status, stderr_to_stdout, use_stdio]),
-    port_shutdown_loop(Port).
 
 context_to_app_env_vars_no_logging() ->
     Fun = fun({App, Param, Value}) ->
