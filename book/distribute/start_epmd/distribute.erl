@@ -3,6 +3,7 @@
 -compile(nowarn_export_all).
 
 -define(DistTcpPort, 25672).
+
 % 如果先调用 ensure_epmd , 启动之后看不到节点名
 start() ->
     context_to_app_env_vars_no_logging(),
@@ -11,6 +12,7 @@ start() ->
     timer:sleep(10000000000),
     'this is an end'.
 
+% 这里的意思随便启动一个节点，随之退出，这样epmd就能跟着这个节点自动启动
 ensure_epmd() ->
     Exe = get_erl_path(),
     %Exe = "/home/ericksun/install/otp-26.1/lib/erlang/erts-14.1/bin/erl",
