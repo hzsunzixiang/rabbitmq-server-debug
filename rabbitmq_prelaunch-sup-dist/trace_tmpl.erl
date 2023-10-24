@@ -1,8 +1,9 @@
 f().
 %% load all the modules
-LogFile="trace_prelaunch1024.1.txt".
 {ok, CurrentDir} = file:get_cwd().
-LogPath=CurrentDir ++ "/trace_log/".
+LogFileName = "/trace_prelaunch1024.1.txt".
+LogDir = CurrentDir ++ "/trace_log".
+LogFile = LogDir ++ LogFileName.
 %LogPath="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/trace_log/".
 LogNum=500000,
 LP = fun() -> [code:ensure_loaded(list_to_atom(filename:rootname(filename:basename(F)))) || P <- code:get_path(), F <- filelib:wildcard(P ++ "/*.beam")] end.
