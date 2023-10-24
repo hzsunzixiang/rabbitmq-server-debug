@@ -178,7 +178,7 @@ run_prelaunch_second_phase() ->
     ?LOG_DEBUG("== Prelaunch DONE =="),
 
     case IsInitialPass of
-        true  -> rabbit_prelaunch:initial_pass_finished();
+       true  -> rabbit_prelaunch:initial_pass_finished();
         false -> ok
     end,
     ok.
