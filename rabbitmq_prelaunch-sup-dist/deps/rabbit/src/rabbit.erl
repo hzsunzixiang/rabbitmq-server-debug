@@ -1099,6 +1099,31 @@ get_default_data_param(Param) ->
             Value
     end.
 
+
+%%---------------------------------------------------------------------------
+%% Data directory.
+
+-spec data_dir() -> DataDir when
+      DataDir :: file:filename().
+%% @doc Returns the data directory.
+%%
+%% This directory is used by many subsystems to store their files, either
+%% directly underneath or in subdirectories.
+%%
+%% Here are a few examples:
+%% <ul>
+%% <li>Mnesia</li>
+%% <li>Feature flags state</li>
+%% <li>Ra systems's WAL and segment files</li>
+%% <li>Classic queues' messages</li>
+%% </ul>
+
+data_dir() ->
+    {ok, DataDir} = application:get_env(rabbit, data_dir),
+    DataDir.
+
+
+
 %%---------------------------------------------------------------------------
 %% logging
 
