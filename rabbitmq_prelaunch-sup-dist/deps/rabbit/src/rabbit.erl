@@ -21,6 +21,7 @@
 
 -export([start/2, stop/1, prep_stop/1]).
 -export([start_apps/1, start_apps/2, stop_apps/1]).
+-export([data_dir/0]).
 -export([product_info/0,
          product_name/0,
          product_version/0,
