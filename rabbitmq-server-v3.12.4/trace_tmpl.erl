@@ -3,15 +3,13 @@ f().
 {ok, CurrentDir} = file:get_cwd().
 LogFileName = "/trace_prelaunch1025.1.txt".
 LogDir = CurrentDir ++ "/trace_log".
-LogFile = LogDir ++ LogFileName.
 %LogPath="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/trace_log/".
 LogNum=500000,
 LP = fun() -> [code:ensure_loaded(list_to_atom(filename:rootname(filename:basename(F)))) || P <- code:get_path(), F <- filelib:wildcard(P ++ "/*.beam")] end.
 LP().  %% sync
-
-FileName= string:concat(LogPath, LogFile).
+FileName= string:concat(LogDir, LogFileName).  %LogPath = LogDir ++ LogFileName.
 file:delete(FileName).
-file:make_dir(LogPath).
+file:make_dir(LogDir).
 
 DirTmp=[aten, base64url, credentials_obfuscation, cuttlefish, enough, gen_batch_server, getopt, observer_cli, osiris, rabbit, rabbit_common, rabbitmq_codegen, ranch, recon, seshat, syslog, sysmon_handler, systemd, thoas].
 
