@@ -19,13 +19,13 @@ DirsNoPrefix=DirTmp--DirDel.
 
 {ok, CurrentDir} = file:get_cwd().
 Prefix = CurrentDir ++ "/plugins/".
-Dirs2 = [filelib:wildcard(Prefix++atom_to_list(P)++"-*") || P <- DirsNoPrefix].
+Dirs = [filelib:wildcard(Prefix++atom_to_list(P)++"-*") || P <- DirsNoPrefix].
 
 %% the rabbitmq_prelaunch
 %% Prelaunch = CurrentDir.
 Kernel = "/home/ericksun/install/otp-26.1/lib/erlang/lib/kernel-9.1".
 %Dirs2=[Prelaunch | Dirs1].
-Dirs=[Dirs2 | [Kernel]].
+%Dirs=[Dirs2 | [Kernel]].
 %Dirs=[Prelaunch | Dirs1 ].
 ListModAll=[list_to_atom(filename:rootname(filename:basename(F))) || P <- Dirs, F <- filelib:wildcard(P ++ "/ebin/*.beam")].
 %ListModeAdd=[logger_backend,logger,logger_config,logger_disk_log_h,logger_filters,logger_formatter,logger_handler_watcher,logger_h_common,logger_olp,logger_proxy,logger_server,logger_simple_h,logger_std_h,logger_sup].
