@@ -267,7 +267,8 @@ CLI_SCRIPTS_LOCK = $(CLI_SCRIPTS_DIR).lock
 CLI_ESCRIPTS_LOCK = $(CLI_ESCRIPTS_DIR).lock
 
 ifneq ($(filter-out rabbit_common amqp10_common rabbitmq_stream_common,$(PROJECT)),)
-dist:: install-cli
+#dist:: install-cli
+dist:: 
 test-build:: install-cli
 endif
 

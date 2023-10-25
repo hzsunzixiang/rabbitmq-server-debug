@@ -1,1 +1,0 @@
-application:loaded_applications().

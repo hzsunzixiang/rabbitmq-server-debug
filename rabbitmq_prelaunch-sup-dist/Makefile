@@ -475,29 +475,6 @@ install-erlapp: dist
 	$(verbose) echo "Put your EZs here and use rabbitmq-plugins to enable them." \
 		> $(DESTDIR)$(RMQ_ERLAPP_DIR)/$(notdir $(DIST_DIR))/README
 
-CLI_ESCRIPTS_DIR = escript
-
-install-escripts:
-	$(verbose) $(MAKE) -C $(DEPS_DIR)/rabbitmq_cli install \
-		PREFIX="$(RMQ_ERLAPP_DIR)/$(CLI_ESCRIPTS_DIR)"
-
-install-scripts: install-escripts
-	$(verbose) mkdir -p $(DESTDIR)$(RMQ_ERLAPP_DIR)/sbin
-	$(inst_verbose) for script in $(SCRIPTS); do \
-		cp "$(DEPS_DIR)/rabbit/scripts/$$script" \
-			"$(DESTDIR)$(RMQ_ERLAPP_DIR)/sbin"; \
-		chmod 0755 "$(DESTDIR)$(RMQ_ERLAPP_DIR)/sbin/$$script"; \
-	done
-
-# FIXME: We do symlinks to scripts in $(RMQ_ERLAPP_DIR))/sbin but this
-# code assumes a certain hierarchy to make relative symlinks.
-install-bin: install-scripts install-autocomplete-scripts
-	$(verbose) mkdir -p $(DESTDIR)$(RMQ_BINDIR)
-	$(inst_verbose) for script in $(SCRIPTS); do \
-		test -e $(DESTDIR)$(RMQ_BINDIR)/$$script || \
-			ln -sf ../lib/$(notdir $(RMQ_ERLAPP_DIR))/sbin/$$script \
-			 $(DESTDIR)$(RMQ_BINDIR)/$$script; \
-	done
 
 install-autocomplete-scripts:
 	$(verbose) mkdir -p $(DESTDIR)$(RMQ_AUTOCOMPLETE_DIR)
@@ -530,18 +507,6 @@ install-windows-erlapp: dist
 	$(verbose) echo "Put your EZs here and use rabbitmq-plugins.bat to enable them." \
 		> $(DESTDIR)$(WINDOWS_PREFIX)/$(notdir $(DIST_DIR))/README.txt
 	$(verbose) $(UNIX_TO_DOS) $(DESTDIR)$(WINDOWS_PREFIX)/plugins/README.txt
-
-install-windows-escripts:
-	$(verbose) $(MAKE) -C $(DEPS_DIR)/rabbitmq_cli install \
-		PREFIX="$(WINDOWS_PREFIX)/$(CLI_ESCRIPTS_DIR)"
-
-install-windows-scripts: install-windows-escripts
-	$(verbose) mkdir -p $(DESTDIR)$(WINDOWS_PREFIX)/sbin
-	$(inst_verbose) for script in $(WINDOWS_SCRIPTS); do \
-		cp "$(DEPS_DIR)/rabbit/scripts/$$script" \
-			"$(DESTDIR)$(WINDOWS_PREFIX)/sbin"; \
-		chmod 0755 "$(DESTDIR)$(WINDOWS_PREFIX)/sbin/$$script"; \
-	done
 
 install-windows-docs: install-windows-erlapp
 	$(verbose) mkdir -p $(DESTDIR)$(WINDOWS_PREFIX)/etc
