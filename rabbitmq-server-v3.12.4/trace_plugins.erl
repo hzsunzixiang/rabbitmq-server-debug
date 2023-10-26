@@ -30,7 +30,7 @@ Dirs = [filelib:wildcard(Prefix++atom_to_list(P)++"-*") || P <- DirsNoPrefix].
 ListModAll=[list_to_atom(filename:rootname(filename:basename(F))) || P <- Dirs, F <- filelib:wildcard(P ++ "/ebin/*.beam")].
 %ListModeAdd=[logger_backend,logger,logger_config,logger_disk_log_h,logger_filters,logger_formatter,logger_handler_watcher,logger_h_common,logger_olp,logger_proxy,logger_server,logger_simple_h,logger_std_h,logger_sup].
 %ListModeAdd=[logger,logger_disk_log_h,logger_filters,logger_formatter,logger_h_common,logger_simple_h,logger_std_h].
-ListModeAdd=[net_adm].
+ListModeAdd=[net_adm, rpc].
 ListModeDelete=[rabbit_plugins, rabbit_misc, rabbit_file].
 
 ListMod=(ListModAll++ListModeAdd)--ListModeDelete.
