@@ -1,7 +1,7 @@
 f().
 %% load all the modules
 {ok, CurrentDir} = file:get_cwd().
-LogFileName = "/trace_prelaunch1026.1.txt".
+LogFileName = "/trace_prelaunch1026.3.txt".
 LogDir = CurrentDir ++ "/trace_log".
 %LogPath="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/trace_log/".
 LogNum=50000,
@@ -31,7 +31,7 @@ ListModAll=[list_to_atom(filename:rootname(filename:basename(F))) || P <- Dirs, 
 %ListModeAdd=[logger_backend,logger,logger_config,logger_disk_log_h,logger_filters,logger_formatter,logger_handler_watcher,logger_h_common,logger_olp,logger_proxy,logger_server,logger_simple_h,logger_std_h,logger_sup].
 %ListModeAdd=[logger,logger_disk_log_h,logger_filters,logger_formatter,logger_h_common,logger_simple_h,logger_std_h].
 ListModeAdd=[net_adm, rpc].
-ListModeDelete=[rabbit_plugins, rabbit_misc, rabbit_file].
+ListModeDelete=[rabbit_plugins, rabbit_misc, rabbit_file, supervisor2, delegate_sup, rabbit_table, rabbit_env, rabbit_semver_parser,priority_queue].
 
 ListMod=(ListModAll++ListModeAdd)--ListModeDelete.
 %lists:member(rabbit_env,  ListMod).
