@@ -1,7 +1,7 @@
 f().
 %% load all the modules
 {ok, CurrentDir} = file:get_cwd().
-LogFileName = "/trace_cluster_1104.1.txt".
+LogFileName = "/trace_cluster_1105.1.txt".
 LogDir = CurrentDir ++ "/trace_log".
 %LogPath="/home/ericksun/program/rabbitmq-server-debug/rabbitmq_prelaunch-sup-dist/trace_log/".
 LogNum=50000,
@@ -25,7 +25,7 @@ Dirs = [filelib:wildcard(Prefix++atom_to_list(P)++"-*") || P <- DirsNoPrefix].
 ListModAll=[list_to_atom(filename:rootname(filename:basename(F))) || P <- Dirs, F <- filelib:wildcard(P ++ "/ebin/*.beam")].
 %ListModeAdd=[logger_backend,logger,logger_config,logger_disk_log_h,logger_filters,logger_formatter,logger_handler_watcher,logger_h_common,logger_olp,logger_proxy,logger_server,logger_simple_h,logger_std_h,logger_sup].
 %ListModeAdd=[logger,logger_disk_log_h,logger_filters,logger_formatter,logger_h_common,logger_simple_h,logger_std_h].
-ListModeAdd=[net_adm, rpc].
+ListModeAdd=[net_adm, mnesia, rpc].
 ListModeDelete=[rabbit_plugins, rabbit_misc, rabbit_file, supervisor2, delegate_sup, rabbit_table, rabbit_env, rabbit_semver_parser,priority_queue, rabbit_prelaunch_logging, file_handle_cache, rabbit_semver, rabbit_log, rabbit_ff_registry_factory, app_utils, rabbit_boot_steps, gen_server2].
 
 ListMod=(ListModAll++ListModeAdd)--ListModeDelete.
