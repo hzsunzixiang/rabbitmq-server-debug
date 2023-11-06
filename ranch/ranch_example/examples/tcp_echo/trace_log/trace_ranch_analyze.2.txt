@@ -1,0 +1,4321 @@
+
+抓到了业务的，但是前半部分分析没在这里
+4:24:28.350265 <0.32573.0> ranch_app:start(normal, [])
+
+4:24:28.350541 <0.32573.0> ranch_app:consider_profiling()
+
+4:24:28.350655 <0.32573.0> ranch_app:consider_profiling/0 --> not_profiling
+
+4:24:28.350781 <0.32573.0>  '--> ranch_app:start/2
+
+4:24:28.350893 <0.32573.0> ranch_sup:start_link()
+
+4:24:28.351118 <0.32574.0> ranch_sup:init([])
+
+4:24:28.351337 <0.32574.0> ranch_sup:init/1 --> {ok,{#{intensity => 1,period => 5},
+     [#{id => ranch_server,start => {ranch_server,start_link,[]}}]}}
+
+4:24:28.351559 <0.32574.0>  '--> supervisor:init/1
+
+4:24:28.351677 <0.32574.0> ranch_server:start_link()
+
+4:24:28.351738 <0.32575.0> ranch_server:init([])
+
+4:24:28.351786 <0.32575.0> ranch_server:'-init/1-lc$^0/1-0-'([])
+
+4:24:28.352077 <0.32575.0> ranch_server:'-init/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.352197 <0.32575.0>  '--> ranch_server:init/1
+
+4:24:28.352320 <0.32575.0> ranch_server:'-init/1-lc$^1/1-1-'([])
+
+4:24:28.352382 <0.32575.0> ranch_server:'-init/1-lc$^1/1-1-'/1 --> []
+
+4:24:28.352433 <0.32575.0>  '--> ranch_server:init/1
+
+4:24:28.352467 <0.32575.0> ranch_server:init/1 --> {ok,{state,[]}}
+
+4:24:28.352507 <0.32575.0>  '--> gen_server:init_it/2
+
+4:24:28.352605 <0.32574.0> ranch_server:start_link/0 --> {ok,<0.32575.0>}
+
+4:24:28.352689 <0.32574.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.352732 <0.32573.0> ranch_sup:start_link/0 --> {ok,<0.32574.0>}
+
+4:24:28.352773 <0.32573.0> ranch_app:start/2 --> {ok,<0.32574.0>}
+
+4:24:28.352813 <0.32573.0>  '--> application_master:start_it_old/4
+
+4:24:28.352850 <0.32578.0> tcp_echo_app:start(normal, [])
+
+4:24:28.352888 <0.32578.0> ranch:start_listener(tcp_echo, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, [])
+
+4:24:28.352990 <0.32578.0> ranch:normalize_opts(#{socket_opts=>[{port,5555}]})
+
+4:24:28.353081 <0.32578.0> ranch:normalize_opts/1 --> #{socket_opts=>[{port,5555}]}
+
+4:24:28.353181 <0.32578.0>  '--> ranch:start_listener/5
+
+4:24:28.353229 <0.32578.0> ranch:validate_transport_opts(#{socket_opts=>[{port,5555}]})
+
+4:24:28.353290 <0.32578.0> ranch:'-validate_transport_opts/1-fun-0-'(socket_opts, [{port,5555}], ok, #{socket_opts=>[{port,5555}]})
+
+4:24:28.353459 <0.32578.0> ranch:validate_transport_opt(socket_opts, [{port,5555}], #{socket_opts=>[{port,5555}]})
+
+4:24:28.353554 <0.32578.0> ranch:validate_transport_opt/3 --> true
+
+4:24:28.353631 <0.32578.0>  '--> ranch:'-validate_transport_opts/1-fun-0-'/4
+
+4:24:28.353678 <0.32578.0> ranch:'-validate_transport_opts/1-fun-0-'/4 --> ok
+
+4:24:28.353719 <0.32578.0>  '--> maps:fold_1/4
+
+4:24:28.353752 <0.32578.0> ranch:validate_transport_opts/1 --> ok
+
+4:24:28.353789 <0.32578.0>  '--> ranch:start_listener/5
+
+4:24:28.353890 <0.32574.0> ranch_listener_sup:start_link(tcp_echo, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, [])
+
+4:24:28.353982 <0.32574.0> ranch_server:set_new_listener_opts(tcp_echo, 1024, #{socket_opts=>[{port,5555}]}, [], [tcp_echo,ranch_tcp,#{socket_opts => [{port,5555}]},echo_protocol,[]])
+
+4:24:28.354090 <0.32575.0> ranch_server:handle_call({set_new_listener_opts,tcp_echo,1024,
+                       #{socket_opts => [{port,5555}]},
+                       [],
+                       [tcp_echo,ranch_tcp,
+                        #{socket_opts => [{port,5555}]},
+                        echo_protocol,[]]}, {<0.32574.0>,[alias|#Ref<0.0.4169475.3636422955.1867579393.113819>]}, {state,[]})
+
+4:24:28.354254 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,{state,[]}}
+
+4:24:28.354348 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.354389 <0.32574.0> ranch_server:set_new_listener_opts/5 --> ok
+
+4:24:28.354431 <0.32574.0>  '--> ranch_listener_sup:start_link/5
+
+4:24:28.354465 <0.32579.0> ranch_listener_sup:init({tcp_echo,ranch_tcp,echo_protocol,logger})
+
+4:24:28.354508 <0.32579.0> ranch_server:set_listener_sup(tcp_echo, <0.32579.0>)
+
+4:24:28.354550 <0.32575.0> ranch_server:handle_call({set_listener_sup,tcp_echo,<0.32579.0>}, {<0.32579.0>,[alias|#Ref<0.0.4170115.3636422955.1867579393.113823>]}, {state,[]})
+
+4:24:28.354667 <0.32575.0> ranch_server:set_monitored_process({listener_sup,tcp_echo}, <0.32579.0>, {state,[]})
+
+4:24:28.354757 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.354850 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.354899 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.354997 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.355077 <0.32579.0> ranch_server:set_listener_sup/2 --> ok
+
+4:24:28.355124 <0.32579.0>  '--> ranch_listener_sup:init/1
+
+4:24:28.355180 <0.32579.0> ranch_listener_sup:init/1 --> {ok,{#{strategy => rest_for_one},
+     [#{id => ranch_conns_sup_sup,
+        start =>
+            {ranch_conns_sup_sup,start_link,
+                                 [tcp_echo,ranch_tcp,echo_protocol,logger]},
+        type => supervisor},
+      #{id => ranch_acceptors_sup,
+        start => {ranch_acceptors_sup,start_link,[tcp_echo,ranch_tcp,logger]},
+        type => supervisor}]}}
+
+4:24:28.355348 <0.32579.0>  '--> supervisor:init/1
+
+4:24:28.355393 <0.32579.0> ranch_conns_sup_sup:start_link(tcp_echo, ranch_tcp, echo_protocol, logger)
+
+4:24:28.355478 <0.32579.0> ranch_server:cleanup_connections_sups(tcp_echo)
+
+4:24:28.355526 <0.32579.0> ranch_server:cleanup_connections_sups/1 --> ok
+
+4:24:28.355563 <0.32579.0>  '--> ranch_conns_sup_sup:start_link/4
+
+4:24:28.355596 <0.32580.0> ranch_conns_sup_sup:init({tcp_echo,ranch_tcp,echo_protocol,logger})
+
+4:24:28.355641 <0.32580.0> ranch_server:get_transport_options(tcp_echo)
+
+4:24:28.355677 <0.32580.0> ranch_server:get_transport_options/1 --> #{socket_opts=>[{port,5555}]}
+
+4:24:28.355762 <0.32580.0>  '--> ranch_conns_sup_sup:init/1
+
+4:24:28.355807 <0.32580.0> ranch_server:set_stats_counters(tcp_echo, {atomics,#Ref<0.3636422955.1867644929.113829>})
+
+4:24:28.355858 <0.32575.0> ranch_server:handle_call({set_stats_counters,tcp_echo,{atomics,#Ref<0.3636422955.1867644929.113829>}}, {<0.32580.0>,[alias|#Ref<0.0.4170243.3636422955.1867579393.113830>]}, {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.355967 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.356077 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.356124 <0.32580.0> ranch_server:set_stats_counters/2 --> ok
+
+4:24:28.356177 <0.32580.0>  '--> ranch_conns_sup_sup:init/1
+
+4:24:28.356262 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([1,2,3,4,5,6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356361 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([2,3,4,5,6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356478 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([3,4,5,6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356577 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([4,5,6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356675 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([5,6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356775 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([6,7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.356928 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([7,8,9,10], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.357024 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'("\b\t\n", logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.357117 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'("\t\n", logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.357230 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'("\n", logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.357329 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'([], logger, echo_protocol, ranch_tcp, tcp_echo, #{socket_opts=>[{port,5555}]})
+
+4:24:28.357419 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> []
+
+4:24:28.357464 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.357504 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.357642 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.357691 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.357887 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.357940 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.358178 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.358223 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.358518 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.358580 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.359087 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.359173 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,5},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,5,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.359577 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.359665 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,4},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,4,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,5},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,5,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.360141 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.360188 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,3},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,3,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,4},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,4,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,5},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,5,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.360691 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.360769 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,2},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,2,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,3},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,3,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,4},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,4,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,5},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,5,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.361328 <0.32580.0>  '--> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6
+
+4:24:28.361413 <0.32580.0> ranch_conns_sup_sup:'-init/1-lc$^0/1-0-'/6 --> [#{id => {ranch_conns_sup,1},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,1,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,2},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,2,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,3},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,3,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,4},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,4,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,5},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,5,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,6},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,6,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,7},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,7,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,8},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,8,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,9},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,9,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor},
+ #{id => {ranch_conns_sup,10},
+   start =>
+       {ranch_conns_sup,start_link,
+                        [tcp_echo,10,ranch_tcp,
+                         #{socket_opts => [{port,5555}]},
+                         echo_protocol,logger]},
+   type => supervisor}]
+
+4:24:28.362047 <0.32580.0>  '--> ranch_conns_sup_sup:init/1
+
+4:24:28.362094 <0.32580.0> ranch_conns_sup_sup:init/1 --> {ok,{#{intensity => 5},
+     [#{id => {ranch_conns_sup,1},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,1,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,2},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,2,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,3},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,3,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,4},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,4,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,5},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,5,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,6},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,6,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,7},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,7,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,8},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,8,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,9},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,9,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor},
+      #{id => {ranch_conns_sup,10},
+        start =>
+            {ranch_conns_sup,start_link,
+                             [tcp_echo,10,ranch_tcp,
+                              #{socket_opts => [{port,5555}]},
+                              echo_protocol,logger]},
+        type => supervisor}]}}
+
+4:24:28.362969 <0.32580.0>  '--> supervisor:init/1
+
+4:24:28.363056 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 1, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.363148 <0.32581.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 1, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.363238 <0.32581.0> ranch_server:set_connections_sup(tcp_echo, 1, <0.32581.0>)
+
+4:24:28.363305 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,1,<0.32581.0>}, {<0.32581.0>,[alias|#Ref<0.0.4170371.3636422955.1867579393.113832>]}, {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.363430 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,1}, <0.32581.0>, {state,[{{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.363539 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.363646 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.363691 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.363814 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.363871 <0.32581.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.363919 <0.32581.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.363953 <0.32581.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.363989 <0.32581.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.364028 <0.32581.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.364074 <0.32581.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.364119 <0.32581.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.364154 <0.32581.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.364187 <0.32581.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.364223 <0.32581.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.364259 <0.32581.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.364305 <0.32581.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.364340 <0.32581.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.364385 <0.32581.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.364416 <0.32581.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,1,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.364516 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32581.0>}
+
+4:24:28.364565 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.364612 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 2, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.364693 <0.32582.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 2, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.364791 <0.32582.0> ranch_server:set_connections_sup(tcp_echo, 2, <0.32582.0>)
+
+4:24:28.364866 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,2,<0.32582.0>}, {<0.32582.0>,[alias|#Ref<0.0.4170499.3636422955.1867579393.113835>]}, {state,[{{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.365011 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,2}, <0.32582.0>, {state,[{{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.365126 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.365245 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.365291 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.365439 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.365484 <0.32582.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.365522 <0.32582.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.365557 <0.32582.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.365595 <0.32582.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.365644 <0.32582.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.365678 <0.32582.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.365722 <0.32582.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.365757 <0.32582.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.365788 <0.32582.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.365855 <0.32582.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.365937 <0.32582.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.365976 <0.32582.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.366017 <0.32582.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.366072 <0.32582.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.366107 <0.32582.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,2,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.366233 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32582.0>}
+
+4:24:28.366327 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.366376 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 3, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.366461 <0.32583.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 3, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.366554 <0.32583.0> ranch_server:set_connections_sup(tcp_echo, 3, <0.32583.0>)
+
+4:24:28.366648 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,3,<0.32583.0>}, {<0.32583.0>,[alias|#Ref<0.0.4170627.3636422955.1867579393.113838>]}, {state,[{{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.366799 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,3}, <0.32583.0>, {state,[{{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.366940 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.367095 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.367146 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.367295 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.367340 <0.32583.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.367409 <0.32583.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.367443 <0.32583.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.367482 <0.32583.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.367520 <0.32583.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.367551 <0.32583.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.367596 <0.32583.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.367634 <0.32583.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.367678 <0.32583.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.367714 <0.32583.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.367750 <0.32583.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.367780 <0.32583.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.367872 <0.32583.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.369155 <0.32583.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.369664 <0.32583.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,3,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.369929 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32583.0>}
+
+4:24:28.370429 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.370690 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 4, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.370836 <0.32584.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 4, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.370971 <0.32584.0> ranch_server:set_connections_sup(tcp_echo, 4, <0.32584.0>)
+
+4:24:28.371045 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,4,<0.32584.0>}, {<0.32584.0>,[alias|#Ref<0.0.4170755.3636422955.1867579393.113841>]}, {state,[{{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.371220 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,4}, <0.32584.0>, {state,[{{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.371395 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.371555 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.371607 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.371796 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.371841 <0.32584.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.371880 <0.32584.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.371912 <0.32584.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.372023 <0.32584.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.372113 <0.32584.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.372163 <0.32584.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.372228 <0.32584.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.372266 <0.32584.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.372298 <0.32584.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.372334 <0.32584.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.372417 <0.32584.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.372465 <0.32584.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.372503 <0.32584.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.372553 <0.32584.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.372587 <0.32584.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,4,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.372709 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32584.0>}
+
+4:24:28.372788 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.372834 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 5, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.372922 <0.32585.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 5, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.373031 <0.32585.0> ranch_server:set_connections_sup(tcp_echo, 5, <0.32585.0>)
+
+4:24:28.373119 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,5,<0.32585.0>}, {<0.32585.0>,[alias|#Ref<0.0.4170883.3636422955.1867579393.113844>]}, {state,[{{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.373304 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,5}, <0.32585.0>, {state,[{{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.373485 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.373661 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.373726 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.373926 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.374179 <0.32585.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.374250 <0.32585.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.374285 <0.32585.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.374331 <0.32585.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.374400 <0.32585.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.374435 <0.32585.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.374485 <0.32585.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.374523 <0.32585.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.374556 <0.32585.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.374591 <0.32585.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.374665 <0.32585.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.374701 <0.32585.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.374737 <0.32585.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.374782 <0.32585.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.374815 <0.32585.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,5,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.374945 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32585.0>}
+
+4:24:28.375044 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.375090 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 6, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.375178 <0.32586.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 6, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.375274 <0.32586.0> ranch_server:set_connections_sup(tcp_echo, 6, <0.32586.0>)
+
+4:24:28.375359 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,6,<0.32586.0>}, {<0.32586.0>,[alias|#Ref<0.0.4171011.3636422955.1867579393.113847>]}, {state,[{{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.375559 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,6}, <0.32586.0>, {state,[{{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.375760 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.375979 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.376044 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.376263 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.376317 <0.32586.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.376356 <0.32586.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.376389 <0.32586.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.376434 <0.32586.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.376493 <0.32586.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.376528 <0.32586.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.376578 <0.32586.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.376621 <0.32586.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.376654 <0.32586.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.376693 <0.32586.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.376742 <0.32586.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.376775 <0.32586.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.376810 <0.32586.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.376859 <0.32586.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.376892 <0.32586.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,6,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.377015 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32586.0>}
+
+4:24:28.377114 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.377166 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 7, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.377251 <0.32587.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 7, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.377348 <0.32587.0> ranch_server:set_connections_sup(tcp_echo, 7, <0.32587.0>)
+
+4:24:28.377432 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,7,<0.32587.0>}, {<0.32587.0>,[alias|#Ref<0.0.4171139.3636422955.1867579393.113850>]}, {state,[{{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.377644 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,7}, <0.32587.0>, {state,[{{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.377851 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.378061 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.378107 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+                {conns_sup,tcp_echo,7}},
+               {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.378339 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.378383 <0.32587.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.378421 <0.32587.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.378466 <0.32587.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.378503 <0.32587.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.378547 <0.32587.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.378581 <0.32587.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.378625 <0.32587.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.378672 <0.32587.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.378710 <0.32587.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.378758 <0.32587.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.378797 <0.32587.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.378846 <0.32587.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.378884 <0.32587.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.379009 <0.32587.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.379112 <0.32587.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,7,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.379259 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32587.0>}
+
+4:24:28.379344 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.379387 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 8, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.379508 <0.32588.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 8, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.379619 <0.32588.0> ranch_server:set_connections_sup(tcp_echo, 8, <0.32588.0>)
+
+4:24:28.379706 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,8,<0.32588.0>}, {<0.32588.0>,[alias|#Ref<0.0.4171267.3636422955.1867579393.113853>]}, {state,[{{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.379960 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,8}, <0.32588.0>, {state,[{{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.380198 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.380431 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.380474 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+                {conns_sup,tcp_echo,8}},
+               {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+                {conns_sup,tcp_echo,7}},
+               {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.380749 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.380811 <0.32588.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.380856 <0.32588.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.380894 <0.32588.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.380982 <0.32588.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.381034 <0.32588.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.381070 <0.32588.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.381121 <0.32588.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.381160 <0.32588.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.381198 <0.32588.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.381236 <0.32588.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.381287 <0.32588.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.381337 <0.32588.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.381410 <0.32588.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.381491 <0.32588.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.381538 <0.32588.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,8,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.381664 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32588.0>}
+
+4:24:28.381752 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.381798 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 9, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.381888 <0.32589.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 9, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.382020 <0.32589.0> ranch_server:set_connections_sup(tcp_echo, 9, <0.32589.0>)
+
+4:24:28.382111 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,9,<0.32589.0>}, {<0.32589.0>,[alias|#Ref<0.0.4171395.3636422955.1867579393.113856>]}, {state,[{{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.382401 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,9}, <0.32589.0>, {state,[{{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.382695 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+         {conns_sup,tcp_echo,9}},
+        {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.382998 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.383048 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+                {conns_sup,tcp_echo,9}},
+               {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+                {conns_sup,tcp_echo,8}},
+               {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+                {conns_sup,tcp_echo,7}},
+               {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.383375 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.383461 <0.32589.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.383510 <0.32589.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.383550 <0.32589.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.383615 <0.32589.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.383660 <0.32589.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.383696 <0.32589.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.383747 <0.32589.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.383787 <0.32589.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.383840 <0.32589.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.383892 <0.32589.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.383975 <0.32589.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.384021 <0.32589.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.384063 <0.32589.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.384113 <0.32589.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.384151 <0.32589.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,9,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.384291 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32589.0>}
+
+4:24:28.384369 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.384427 <0.32580.0> ranch_conns_sup:start_link(tcp_echo, 10, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.384521 <0.32590.0> ranch_conns_sup:init(<0.32580.0>, tcp_echo, 10, ranch_tcp, #{socket_opts=>[{port,5555}]}, echo_protocol, logger)
+
+4:24:28.384642 <0.32590.0> ranch_server:set_connections_sup(tcp_echo, 10, <0.32590.0>)
+
+4:24:28.384735 <0.32575.0> ranch_server:handle_call({set_connections_sup,tcp_echo,10,<0.32590.0>}, {<0.32590.0>,[alias|#Ref<0.0.4171523.3636422955.1867579393.113859>]}, {state,[{{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+         {conns_sup,tcp_echo,9}},
+        {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.385062 <0.32575.0> ranch_server:set_monitored_process({conns_sup,tcp_echo,10}, <0.32590.0>, {state,[{{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+         {conns_sup,tcp_echo,9}},
+        {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.385390 <0.32575.0> ranch_server:set_monitored_process/3 --> {state,[{{#Ref<0.3636422955.1867513857.113860>,<0.32590.0>},
+         {conns_sup,tcp_echo,10}},
+        {{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+         {conns_sup,tcp_echo,9}},
+        {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]}
+
+4:24:28.385736 <0.32575.0>  '--> ranch_server:handle_call/3
+
+4:24:28.385789 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113860>,<0.32590.0>},
+                {conns_sup,tcp_echo,10}},
+               {{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+                {conns_sup,tcp_echo,9}},
+               {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+                {conns_sup,tcp_echo,8}},
+               {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+                {conns_sup,tcp_echo,7}},
+               {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.386170 <0.32590.0> ranch_server:set_connections_sup/3 --> ok
+
+4:24:28.386245 <0.32590.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.386291 <0.32590.0> ranch_server:get_max_connections(tcp_echo)
+
+4:24:28.386357 <0.32590.0> ranch_server:get_max_connections/1 --> 1024
+
+4:24:28.386400 <0.32590.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.386438 <0.32590.0> ranch_conns_sup:get_alarms(#{socket_opts=>[{port,5555}]})
+
+4:24:28.386492 <0.32590.0> ranch_conns_sup:get_alarms/1 --> #{}
+
+4:24:28.386532 <0.32590.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.386569 <0.32590.0> ranch_server:get_protocol_options(tcp_echo)
+
+4:24:28.386610 <0.32590.0> ranch_server:get_protocol_options/1 --> []
+
+4:24:28.386666 <0.32590.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.386703 <0.32590.0> ranch_server:get_stats_counters(tcp_echo)
+
+4:24:28.386742 <0.32590.0> ranch_server:get_stats_counters/1 --> {atomics,#Ref<0.3636422955.1867644929.113829>}
+
+4:24:28.386795 <0.32590.0>  '--> ranch_conns_sup:init/7
+
+4:24:28.386833 <0.32590.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,10,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [])
+
+4:24:28.387071 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.387133 <0.32580.0> ranch_conns_sup:start_link/6 --> {ok,<0.32590.0>}
+
+4:24:28.387220 <0.32580.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.387271 <0.32579.0> ranch_conns_sup_sup:start_link/4 --> {ok,<0.32580.0>}
+
+4:24:28.387327 <0.32579.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.387367 <0.32579.0> ranch_acceptors_sup:start_link(tcp_echo, ranch_tcp, logger)
+
+4:24:28.387459 <0.32591.0> ranch_acceptors_sup:init([tcp_echo,ranch_tcp,logger])
+
+4:24:28.387536 <0.32591.0> ranch_server:get_transport_options(tcp_echo)
+
+4:24:28.387589 <0.32591.0> ranch_server:get_transport_options/1 --> #{socket_opts=>[{port,5555}]}
+
+4:24:28.387655 <0.32591.0>  '--> ranch_acceptors_sup:init/1
+
+4:24:28.387697 <0.32591.0> ranch_acceptors_sup:start_listen_sockets(tcp_echo, 1, ranch_tcp, #{socket_opts=>[{port,5555}]}, logger)
+
+4:24:28.387806 <0.32591.0> ranch_acceptors_sup:start_listen_socket(tcp_echo, ranch_tcp, #{socket_opts=>[{port,5555}]}, logger)
+
+4:24:28.387924 <0.32591.0> ranch_tcp:listen(#{socket_opts=>[{port,5555}]})
+
+4:24:28.387999 <0.32591.0> ranch_tcp:cleanup(#{socket_opts=>[{port,5555}]})
+
+4:24:28.388070 <0.32591.0> ranch_tcp:cleanup/1 --> ok
+
+4:24:28.388162 <0.32591.0>  '--> ranch_tcp:listen/1
+
+4:24:28.388211 <0.32591.0> ranch_tcp:prepare_socket_opts([{port,5555}], logger)
+
+4:24:28.388304 <0.32591.0> ranch:set_option_default([{port,5555}], backlog, 1024)
+
+4:24:28.388408 <0.32591.0> ranch:set_option_default/3 --> [{backlog,1024},{port,5555}]
+
+4:24:28.388502 <0.32591.0>  '--> ranch_tcp:prepare_socket_opts/2
+
+4:24:28.388569 <0.32591.0> ranch:set_option_default([{backlog,1024},{port,5555}], nodelay, true)
+
+4:24:28.388663 <0.32575.0> ranch_server:handle_call({set_addr,tcp_echo,{{0,0,0,0},5555}}, {<0.32591.0>,[alias|#Ref<0.0.4171651.3636422955.1867579393.113863>]}, {state,[{{#Ref<0.3636422955.1867513857.113860>,<0.32590.0>},
+         {conns_sup,tcp_echo,10}},
+        {{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+         {conns_sup,tcp_echo,9}},
+        {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+         {conns_sup,tcp_echo,8}},
+        {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+         {conns_sup,tcp_echo,7}},
+        {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+         {conns_sup,tcp_echo,6}},
+        {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+         {conns_sup,tcp_echo,5}},
+        {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+         {conns_sup,tcp_echo,4}},
+        {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+         {conns_sup,tcp_echo,3}},
+        {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+         {conns_sup,tcp_echo,2}},
+        {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+         {conns_sup,tcp_echo,1}},
+        {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+         {listener_sup,tcp_echo}}]})
+
+4:24:28.389975 <0.32575.0> ranch_server:handle_call/3 --> {reply,ok,
+       {state,[{{#Ref<0.3636422955.1867513857.113860>,<0.32590.0>},
+                {conns_sup,tcp_echo,10}},
+               {{#Ref<0.3636422955.1867513857.113857>,<0.32589.0>},
+                {conns_sup,tcp_echo,9}},
+               {{#Ref<0.3636422955.1867513857.113854>,<0.32588.0>},
+                {conns_sup,tcp_echo,8}},
+               {{#Ref<0.3636422955.1867513857.113851>,<0.32587.0>},
+                {conns_sup,tcp_echo,7}},
+               {{#Ref<0.3636422955.1867513857.113848>,<0.32586.0>},
+                {conns_sup,tcp_echo,6}},
+               {{#Ref<0.3636422955.1867513857.113845>,<0.32585.0>},
+                {conns_sup,tcp_echo,5}},
+               {{#Ref<0.3636422955.1867513857.113842>,<0.32584.0>},
+                {conns_sup,tcp_echo,4}},
+               {{#Ref<0.3636422955.1867513857.113839>,<0.32583.0>},
+                {conns_sup,tcp_echo,3}},
+               {{#Ref<0.3636422955.1867513857.113836>,<0.32582.0>},
+                {conns_sup,tcp_echo,2}},
+               {{#Ref<0.3636422955.1867513857.113833>,<0.32581.0>},
+                {conns_sup,tcp_echo,1}},
+               {{#Ref<0.3636422955.1867513857.113826>,<0.32579.0>},
+                {listener_sup,tcp_echo}}]}}
+
+4:24:28.390768 <0.32575.0>  '--> gen_server:try_handle_call/4
+
+4:24:28.391076 <0.32591.0> ranch:set_option_default/3 --> [{nodelay,true},{backlog,1024},{port,5555}]
+
+4:24:28.391496 <0.32591.0>  '--> ranch_tcp:prepare_socket_opts/2
+
+4:24:28.391808 <0.32591.0> ranch:set_option_default([{nodelay,true},{backlog,1024},{port,5555}], send_timeout, 30000)
+
+4:24:28.391974 <0.32591.0> ranch:set_option_default/3 --> [{send_timeout,30000},{nodelay,true},{backlog,1024},{port,5555}]
+
+4:24:28.392519 <0.32591.0>  '--> ranch_tcp:prepare_socket_opts/2
+
+4:24:28.392630 <0.32591.0> ranch:set_option_default([{send_timeout,30000},{nodelay,true},{backlog,1024},{port,5555}], send_timeout_close, true)
+
+4:24:28.392754 <0.32591.0> ranch:set_option_default/3 --> [{send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}]
+
+4:24:28.392918 <0.32591.0>  '--> ranch_tcp:prepare_socket_opts/2
+
+4:24:28.393013 <0.32591.0> ranch_tcp:disallowed_listen_options()
+
+4:24:28.393061 <0.32591.0> ranch_tcp:disallowed_listen_options/0 --> [active,header,mode,packet,packet_size,line_delimiter,reuseaddr]
+
+4:24:28.393143 <0.32591.0>  '--> ranch_tcp:prepare_socket_opts/2
+
+4:24:28.393184 <0.32591.0> ranch:filter_options([{send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], [binary,{active,false},{packet,raw},{reuseaddr,true}], logger)
+
+4:24:28.393342 <0.32591.0> ranch:filter_user_options([{send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.393476 <0.32591.0> ranch:filter_user_options([{send_timeout,30000},{nodelay,true},{backlog,1024},{port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.393599 <0.32591.0> ranch:filter_user_options([{nodelay,true},{backlog,1024},{port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.393723 <0.32591.0> ranch:filter_user_options([{backlog,1024},{port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.393874 <0.32591.0> ranch:filter_user_options([{port,5555}], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.393990 <0.32591.0> ranch:filter_user_options([], [active,header,mode,packet,packet_size,line_delimiter,reuseaddr], logger)
+
+4:24:28.394090 <0.32591.0> ranch:filter_user_options/3 --> []
+
+4:24:28.394170 <0.32591.0>  '--> ranch:filter_user_options/3
+
+4:24:28.394212 <0.32591.0> ranch:filter_user_options/3 --> [{port,5555}]
+
+4:24:28.394275 <0.32591.0>  '--> ranch:filter_user_options/3
+
+4:24:28.394314 <0.32591.0> ranch:filter_user_options/3 --> [{backlog,1024},{port,5555}]
+
+4:24:28.394362 <0.32591.0>  '--> ranch:filter_user_options/3
+
+4:24:28.394403 <0.32591.0> ranch:filter_user_options/3 --> [{nodelay,true},{backlog,1024},{port,5555}]
+
+4:24:28.394455 <0.32591.0>  '--> ranch:filter_user_options/3
+
+4:24:28.394493 <0.32591.0> ranch:filter_user_options/3 --> [{send_timeout,30000},{nodelay,true},{backlog,1024},{port,5555}]
+
+4:24:28.394595 <0.32591.0>  '--> ranch:filter_user_options/3
+
+4:24:28.394675 <0.32591.0> ranch:filter_user_options/3 --> [{send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}]
+
+4:24:28.394791 <0.32591.0>  '--> ranch:filter_options/4
+
+4:24:28.394853 <0.32591.0> ranch:merge_options({send_timeout_close,true}, [binary,{active,false},{packet,raw},{reuseaddr,true}])
+
+4:24:28.394970 <0.32591.0> ranch:merge_options/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true}]
+
+4:24:28.395085 <0.32591.0>  '--> lists:foldl/3
+
+4:24:28.395128 <0.32591.0> ranch:merge_options({send_timeout,30000}, [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true}])
+
+4:24:28.395226 <0.32591.0> ranch:merge_options/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000}]
+
+4:24:28.395347 <0.32591.0>  '--> lists:foldl_1/3
+
+4:24:28.395394 <0.32591.0> ranch:merge_options({nodelay,true}, [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000}])
+
+4:24:28.395511 <0.32591.0> ranch:merge_options/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true}]
+
+4:24:28.395685 <0.32591.0>  '--> lists:foldl_1/3
+
+4:24:28.395771 <0.32591.0> ranch:merge_options({backlog,1024}, [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true}])
+
+4:24:28.395906 <0.32591.0> ranch:merge_options/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024}]
+
+4:24:28.396048 <0.32591.0>  '--> lists:foldl_1/3
+
+4:24:28.396096 <0.32591.0> ranch:merge_options({port,5555}, [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024}])
+
+4:24:28.396252 <0.32591.0> ranch:merge_options/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}]
+
+4:24:28.396398 <0.32591.0>  '--> lists:foldl_1/3
+
+4:24:28.396459 <0.32591.0> ranch:filter_options/4 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}]
+
+4:24:28.396657 <0.32591.0> ranch_tcp:prepare_socket_opts/2 --> [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}]
+
+4:24:28.396799 <0.32591.0>  '--> ranch_tcp:listen/1
+
+4:24:28.396872 <0.32591.0> gen_tcp:listen(0, [binary,
+ {active,false},
+ {packet,raw},
+ {reuseaddr,true},
+ {send_timeout_close,true},
+ {send_timeout,30000},
+ {nodelay,true},
+ {backlog,1024},
+ {port,5555}])
+
+4:24:28.397082 <0.32591.0> gen_tcp:listen/2 --> {ok,#Port<0.11>}
+
+4:24:28.397181 <0.32591.0> ranch_tcp:listen/1 --> {ok,#Port<0.11>}
+
+4:24:28.397232 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_socket/4
+
+4:24:28.397275 <0.32591.0> ranch_acceptors_sup:'-start_listen_socket/4-fun-0-'(#Port<0.11>)
+
+4:24:28.397319 <0.32591.0> ranch_acceptors_sup:'-start_listen_socket/4-fun-0-'/1 --> ok
+
+4:24:28.397363 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_socket/4
+
+4:24:28.397400 <0.32591.0> ranch_acceptors_sup:start_listen_socket/4 --> #Port<0.11>
+
+4:24:28.397453 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_sockets/5
+
+4:24:28.397491 <0.32591.0> ranch_tcp:sockname(#Port<0.11>)
+
+4:24:28.397529 <0.32591.0> ranch_tcp:sockname/1 --> {ok,{{0,0,0,0},5555}}
+
+4:24:28.397576 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_sockets/5
+
+4:24:28.397613 <0.32591.0> ranch_acceptors_sup:'-start_listen_sockets/5-lc$^0/1-0-'([], tcp_echo, ranch_tcp, logger, #{socket_opts=>[{port,5555}]})
+
+4:24:28.397724 <0.32591.0> ranch_acceptors_sup:'-start_listen_sockets/5-lc$^0/1-0-'/5 --> []
+
+4:24:28.397817 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_sockets/5
+
+4:24:28.397863 <0.32591.0> ranch_server:set_addr(tcp_echo, {{0,0,0,0},5555})
+
+4:24:28.397928 <0.32591.0> ranch_server:set_addr/2 --> ok
+
+4:24:28.397969 <0.32591.0>  '--> ranch_acceptors_sup:start_listen_sockets/5
+
+4:24:28.398012 <0.32591.0> ranch_acceptors_sup:start_listen_sockets/5 --> [{1,#Port<0.11>}]
+
+4:24:28.398059 <0.32591.0>  '--> ranch_acceptors_sup:init/1
+
+4:24:28.398105 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([1,2,3,4,5,6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398197 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([2,3,4,5,6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398319 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([3,4,5,6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398429 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([4,5,6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398551 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([5,6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398658 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([6,7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398763 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([7,8,9,10], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.398858 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'("\b\t\n", [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.399006 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'("\t\n", [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.399108 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'("\n", [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.399205 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'([], [{1,#Port<0.11>}], [ranch_tcp,logger], tcp_echo, 1)
+
+4:24:28.399304 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> []
+
+4:24:28.399403 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.399494 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.399663 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.399714 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.399897 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.399998 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.400202 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.400260 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.400519 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.400602 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.400943 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.401006 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,5},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.401390 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.401473 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,4},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,4,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,5},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.401844 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.401925 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,3},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,3,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,4},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,4,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,5},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.402342 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.402426 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,2},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,2,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,3},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,3,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,4},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,4,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,5},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.402928 <0.32591.0>  '--> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5
+
+4:24:28.403031 <0.32591.0> ranch_acceptors_sup:'-init/1-lc$^0/1-0-'/5 --> [#{id => {acceptor,<0.32591.0>,1},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,1,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,2},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,2,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,3},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,3,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,4},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,4,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,5},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,6},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,7},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,8},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,9},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,[tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+ #{id => {acceptor,<0.32591.0>,10},
+   shutdown => brutal_kill,
+   start =>
+       {ranch_acceptor,start_link,
+                       [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]
+
+4:24:28.403534 <0.32591.0>  '--> ranch_acceptors_sup:init/1
+
+4:24:28.403599 <0.32591.0> ranch_acceptors_sup:init/1 --> {ok,{#{intensity => 5},
+     [#{id => {acceptor,<0.32591.0>,1},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,1,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,2},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,2,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,3},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,3,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,4},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,4,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,5},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,5,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,6},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,6,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,7},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,7,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,8},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,8,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,9},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,9,#Port<0.11>,ranch_tcp,logger]}},
+      #{id => {acceptor,<0.32591.0>,10},
+        shutdown => brutal_kill,
+        start =>
+            {ranch_acceptor,start_link,
+                            [tcp_echo,10,#Port<0.11>,ranch_tcp,logger]}}]}}
+
+4:24:28.404583 <0.32591.0>  '--> supervisor:init/1
+
+4:24:28.404687 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 1, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.404839 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 1)
+
+4:24:28.404911 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.404964 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405088 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405233 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405397 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405524 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405647 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.405765 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.405947 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.406054 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.406153 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.406251 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.406302 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.406424 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.406473 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.406527 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.406569 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.406621 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.406665 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.406767 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.406894 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.406992 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.407068 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.407176 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.407276 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.407411 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.407490 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.407639 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.407720 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.407868 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.407975 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.408108 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.408174 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.408314 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.408472 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.408536 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32582.0>
+
+4:24:28.408619 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.408667 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32592.0>}
+
+4:24:28.408735 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.408775 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 2, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.408833 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 2)
+
+4:24:28.408878 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.408919 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409116 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409260 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409390 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409521 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409661 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.409774 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.409878 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.410016 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.410611 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.411170 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.411543 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.411685 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.411770 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.411880 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.411941 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.412055 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.412129 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.412190 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.412233 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.412332 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.412439 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.412564 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.412680 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.412836 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.412923 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.413077 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.413187 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.413316 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.413421 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.413581 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.413686 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.413821 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.413965 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.414033 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32583.0>
+
+4:24:28.414142 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.414201 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32593.0>}
+
+4:24:28.414254 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.414295 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 3, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.414350 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 3)
+
+4:24:28.414404 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.414447 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.414569 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.414739 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.414895 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.415025 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.415142 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.415278 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.415380 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.415497 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.415598 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.415706 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.415794 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.415886 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.415939 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.416041 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.416124 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.416275 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.416337 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.416402 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.416477 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.416583 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.416672 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.416800 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.416874 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.416995 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.417053 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.417162 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.417299 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.417424 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.417511 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.417647 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.417709 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.417856 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.418008 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.418075 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32584.0>
+
+4:24:28.418159 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.418237 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32594.0>}
+
+4:24:28.418294 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.418340 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 4, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.418424 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 4)
+
+4:24:28.418472 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.418516 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.418640 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.418811 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.418960 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.419079 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.419205 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.419528 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.419644 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.419759 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.419876 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.419979 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.420070 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.420181 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.420261 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.420340 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.420385 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.420472 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.420539 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.420638 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.420708 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.420810 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.420876 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.420989 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.421055 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.421163 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.421243 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.421349 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.421438 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.421554 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.421620 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.421749 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.421821 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.421963 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.422109 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.422183 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32585.0>
+
+4:24:28.422273 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.422322 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32595.0>}
+
+4:24:28.422377 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.422415 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 5, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.422469 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 5)
+
+4:24:28.422513 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.422553 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.422705 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.422843 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.422979 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.423109 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.423239 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.423358 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.423456 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.423533 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.423596 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.423700 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.423767 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.423815 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.423857 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.423911 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.423954 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.424045 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.424139 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.424266 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.424342 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.424425 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.424491 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.424600 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.424676 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.424784 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.424855 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.424982 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.425046 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.425179 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.425244 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.425379 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.425442 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.425585 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.425777 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.425826 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32586.0>
+
+4:24:28.425884 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.425931 <0.32592.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32582.0>)
+
+4:24:28.426010 <0.32592.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32582.0>, #Ref<0.3636422955.1867513857.113874>)
+
+4:24:28.426093 <0.32592.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426146 <0.32592.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426234 <0.32593.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32583.0>)
+
+4:24:28.426308 <0.32593.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32583.0>, #Ref<0.3636422955.1867513857.113876>)
+
+4:24:28.426385 <0.32593.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426467 <0.32593.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426531 <0.32594.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32584.0>)
+
+4:24:28.426644 <0.32594.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32584.0>, #Ref<0.3636422955.1867513857.113878>)
+
+4:24:28.426747 <0.32594.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426828 <0.32594.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.426892 <0.32595.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32585.0>)
+
+4:24:28.426944 <0.32595.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32585.0>, #Ref<0.3636422955.1867513857.113880>)
+
+4:24:28.427039 <0.32595.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427100 <0.32595.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427147 <0.32596.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32586.0>)
+
+4:24:28.427231 <0.32596.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32586.0>, #Ref<0.3636422955.1867513857.113882>)
+
+4:24:28.427335 <0.32596.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427413 <0.32596.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427487 <0.32597.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32587.0>)
+
+4:24:28.427586 <0.32597.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32587.0>, #Ref<0.3636422955.1867513857.113884>)
+
+4:24:28.427695 <0.32597.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427768 <0.32597.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.427815 <0.32598.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32588.0>)
+
+4:24:28.427921 <0.32598.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32588.0>, #Ref<0.3636422955.1867513857.113886>)
+
+4:24:28.428013 <0.32598.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428066 <0.32598.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428110 <0.32599.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32589.0>)
+
+4:24:28.428179 <0.32599.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32589.0>, #Ref<0.3636422955.1867513857.113888>)
+
+4:24:28.428275 <0.32599.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428327 <0.32599.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428386 <0.32600.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32590.0>)
+
+4:24:28.428467 <0.32600.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32590.0>, #Ref<0.3636422955.1867513857.113890>)
+
+4:24:28.428560 <0.32600.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428645 <0.32600.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428698 <0.32601.0> ranch_acceptor:init(#Port<0.11>, ranch_tcp, logger, <0.32581.0>)
+
+4:24:28.428757 <0.32601.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32581.0>, #Ref<0.3636422955.1867513857.113892>)
+
+4:24:28.428834 <0.32601.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428886 <0.32601.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:28.428977 <0.32579.0> ranch_acceptors_sup:start_link/3 --> {ok,<0.32591.0>}
+
+4:24:28.429054 <0.32579.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.429170 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32596.0>}
+
+4:24:28.429279 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.429332 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 6, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.429386 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 6)
+
+4:24:28.429443 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.429490 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.429603 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.429751 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.429921 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.430074 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.430216 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.430337 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.431087 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.431556 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.431728 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.431974 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.432109 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.432225 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.432283 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.432367 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.432425 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.432537 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.432596 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.432696 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.432787 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.432901 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.432983 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.433103 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.433181 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.433593 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.433684 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.433805 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.433888 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.434011 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.434128 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.434265 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.434334 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.434472 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.434740 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.434822 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32587.0>
+
+4:24:28.434914 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.434963 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32597.0>}
+
+4:24:28.435019 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.435061 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 7, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.435135 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 7)
+
+4:24:28.435183 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.435226 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.435354 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.435526 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.435681 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.435826 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.435936 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.436051 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.436156 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.436257 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.436349 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.436433 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.436500 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.436614 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.436666 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.436718 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.436767 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.436823 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.436870 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.436927 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.436977 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.437070 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.437167 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.437290 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.437353 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.437460 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.437558 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.437690 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.437778 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.437902 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.437964 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.438089 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.438152 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.438292 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.438432 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.438482 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32588.0>
+
+4:24:28.438547 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.438592 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32598.0>}
+
+4:24:28.438645 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.438688 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 8, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.438743 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 8)
+
+4:24:28.438788 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.438829 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.438985 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.439116 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.439254 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.439368 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.439517 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.439626 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.439727 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.439830 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.439922 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.440015 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.440081 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.440133 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440179 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.440238 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440283 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.440389 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440445 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.440558 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440631 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.440746 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440804 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.440917 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.440982 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.441092 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.441175 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.441308 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.441377 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.441512 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.441579 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.441717 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.441782 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.441913 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.442072 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.442141 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32589.0>
+
+4:24:28.442235 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.442288 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32599.0>}
+
+4:24:28.442338 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.442377 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 9, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.442435 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 9)
+
+4:24:28.442486 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.442559 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.442692 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.442865 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.443009 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.443156 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.443276 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.443405 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.443560 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.443690 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.443799 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.443895 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.443950 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.444001 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444045 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.444177 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444253 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.444347 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444412 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.444508 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444603 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.444721 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444807 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.444912 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.444972 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.445104 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.445180 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.445307 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.445378 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.445507 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.445652 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.445812 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.445879 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.446025 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.446256 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.446326 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32590.0>
+
+4:24:28.446402 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.446445 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32600.0>}
+
+4:24:28.446500 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.446542 <0.32591.0> ranch_acceptor:start_link(tcp_echo, 10, #Port<0.11>, ranch_tcp, logger)
+
+4:24:28.446611 <0.32591.0> ranch_server:get_connections_sup(tcp_echo, 10)
+
+4:24:28.446663 <0.32591.0> ranch_server:get_connections_sups(tcp_echo)
+
+4:24:28.446712 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[1,<0.32581.0>],
+ [2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.446846 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[2,<0.32582.0>],
+ [3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.447021 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[3,<0.32583.0>],
+ [4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.447217 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[4,<0.32584.0>],
+ [5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.447340 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[5,<0.32585.0>],
+ [6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.447467 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[6,<0.32586.0>],
+ [7,<0.32587.0>],
+ [8,<0.32588.0>],
+ [9,<0.32589.0>],
+ [10,<0.32590.0>]])
+
+4:24:28.447596 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[7,<0.32587.0>],[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.447706 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[8,<0.32588.0>],[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.447809 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[9,<0.32589.0>],[10,<0.32590.0>]])
+
+4:24:28.447895 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([[10,<0.32590.0>]])
+
+4:24:28.447962 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'([])
+
+4:24:28.448058 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> []
+
+4:24:28.448170 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.448224 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{10,<0.32590.0>}]
+
+4:24:28.448313 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.448382 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.448481 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.448575 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.448695 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.448801 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{7,<0.32587.0>},{8,<0.32588.0>},{9,<0.32589.0>},{10,<0.32590.0>}]
+
+4:24:28.448905 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.448958 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.449091 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.449158 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.449281 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.449353 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.449475 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.449568 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.449720 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.449814 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.449950 <0.32591.0>  '--> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1
+
+4:24:28.450020 <0.32591.0> ranch_server:'-get_connections_sups/1-lc$^0/1-0-'/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.450858 <0.32591.0> ranch_server:get_connections_sups/1 --> [{1,<0.32581.0>},
+ {2,<0.32582.0>},
+ {3,<0.32583.0>},
+ {4,<0.32584.0>},
+ {5,<0.32585.0>},
+ {6,<0.32586.0>},
+ {7,<0.32587.0>},
+ {8,<0.32588.0>},
+ {9,<0.32589.0>},
+ {10,<0.32590.0>}]
+
+4:24:28.451442 <0.32591.0>  '--> ranch_server:get_connections_sup/2
+
+4:24:28.451837 <0.32591.0> ranch_server:get_connections_sup/2 --> <0.32581.0>
+
+4:24:28.452007 <0.32591.0>  '--> ranch_acceptor:start_link/5
+
+4:24:28.452145 <0.32591.0> ranch_acceptor:start_link/5 --> {ok,<0.32601.0>}
+
+4:24:28.452237 <0.32591.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.452292 <0.32574.0> ranch_listener_sup:start_link/5 --> {ok,<0.32579.0>}
+
+4:24:28.452347 <0.32574.0>  '--> supervisor:do_start_child_i/3
+
+4:24:28.452389 <0.32578.0> ranch:maybe_started({ok,<0.32579.0>})
+
+4:24:28.452440 <0.32578.0> ranch:maybe_started/1 --> {ok,<0.32579.0>}
+
+4:24:28.452489 <0.32578.0> ranch:start_listener/5 --> {ok,<0.32579.0>}
+
+4:24:28.452542 <0.32578.0>  '--> tcp_echo_app:start/2
+
+4:24:28.452587 <0.32578.0> tcp_echo_sup:start_link()
+
+4:24:28.452627 <0.32602.0> tcp_echo_sup:init([])
+
+4:24:28.452669 <0.32602.0> tcp_echo_sup:init/1 --> {ok,{{one_for_one,10,10},[]}}
+
+4:24:28.452721 <0.32602.0>  '--> supervisor:init/1
+
+4:24:28.452762 <0.32578.0> tcp_echo_sup:start_link/0 --> {ok,<0.32602.0>}
+
+4:24:28.452814 <0.32578.0> tcp_echo_app:start/2 --> {ok,<0.32602.0>}
+
+4:24:28.452879 <0.32578.0>  '--> application_master:start_it_old/4
+
+4:24:33.054375 <0.32592.0> gen_tcp:accept/2 --> {ok,#Port<0.12>}
+
+4:24:33.054528 <0.32592.0> ranch_tcp:accept/2 --> {ok,#Port<0.12>}
+
+4:24:33.054587 <0.32592.0>  '--> ranch_acceptor:loop/5
+
+4:24:33.054622 <0.32592.0> ranch_tcp:controlling_process(#Port<0.12>, <0.32582.0>)
+
+4:24:33.054952 <0.32592.0> gen_tcp:controlling_process(#Port<0.12>, <0.32582.0>)
+
+4:24:33.055028 <0.32592.0> gen_tcp:controlling_process/2 --> ok
+
+4:24:33.055108 <0.32592.0> ranch_tcp:controlling_process/2 --> ok
+
+4:24:33.055165 <0.32592.0>  '--> ranch_acceptor:loop/5
+
+
+-spec start_protocol(pid(), reference(), inet:socket()) -> ok.
+start_protocol(SupPid, MonitorRef, Socket) ->
+	SupPid ! {?MODULE, start_protocol, self(), Socket},
+	receive
+		SupPid ->
+			ok;
+		{'DOWN', MonitorRef, process, SupPid, Reason} ->
+			error(Reason)
+	end.
+
+把信息发给 SupPid 也就是 <0.32582.0>
+
+4:24:33.055222 <0.32592.0> ranch_conns_sup:start_protocol(<0.32582.0>, #Ref<0.3636422955.1867513857.113874>, #Port<0.12>)
+
+
+%%%%
+
+开始 开启 echo_protocol
+			try Protocol:start_link(Ref, Transport, Opts) of
+
+loop(State=#state{parent=Parent, ref=Ref, id=Id, conn_type=ConnType,
+		transport=Transport, protocol=Protocol, opts=Opts, stats_counters_ref=StatsCounters,
+		alarms=Alarms, max_conns=MaxConns, logger=Logger}, CurConns, NbChildren, Sleepers) ->
+	receive
+		{?MODULE, start_protocol, To, Socket} ->
+			try Protocol:start_link(Ref, Transport, Opts) of
+
+
+% 现在是  <0.32582.0>  这个进程在响应
+4:24:33.055275 <0.32582.0> echo_protocol:start_link(tcp_echo, ranch_tcp, [])
+
+这里面起了一个异步进程
+4:24:33.055318 <0.32582.0> echo_protocol:start_link/3 --> {ok,<0.32606.0>}
+
+这里返回一个 进程 <0.32606.0> 
+			try Protocol:start_link(Ref, Transport, Opts) of
+				{ok, Pid} ->
+
+4:24:33.055367 <0.32582.0>  '--> ranch_conns_sup:loop/4
+
+4:24:33.055400 <0.32582.0> ranch_conns_sup:inc_accept({atomics,#Ref<0.3636422955.1867644929.113829>}, 2, 1)
+
+4:24:33.055449 <0.32582.0> ranch_conns_sup:inc_accept/3 --> ok
+
+4:24:33.055493 <0.32582.0>  '--> ranch_conns_sup:loop/4
+
+
+%%%%%%%%
+
+handshake(State=#state{ref=Ref, transport=Transport, handshake_timeout=HandshakeTimeout,
+		max_conns=MaxConns, alarms=Alarms0}, CurConns, NbChildren, Sleepers, To, Socket, SupPid, ProtocolPid) ->
+	case Transport:controlling_process(Socket, ProtocolPid) of
+		ok ->
+			ProtocolPid ! {handshake, Ref, Transport, Socket, HandshakeTimeout},
+			put(SupPid, active),
+			CurConns2 = CurConns + 1,
+			Sleepers2 = if CurConns2 < MaxConns ->
+					To ! self(),
+					Sleepers;
+				true ->
+					[To|Sleepers]
+			end,
+			Alarms1 = trigger_alarms(Ref, Alarms0, CurConns2),
+			loop(State#state{alarms=Alarms1}, CurConns2, NbChildren + 1, Sleepers2);
+
+4:24:33.055572 <0.32582.0> ranch_conns_sup:handshake({state,<0.32580.0>,tcp_echo,2,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 0, 0, [], <0.32592.0>, #Port<0.12>, <0.32606.0>, <0.32606.0>)
+
+%% socket进一步 让 新的进程接管
+4:24:33.055710 <0.32582.0> ranch_tcp:controlling_process(#Port<0.12>, <0.32606.0>)
+
+4:24:33.055786 <0.32582.0> gen_tcp:controlling_process(#Port<0.12>, <0.32606.0>)
+
+4:24:33.055827 <0.32582.0> gen_tcp:controlling_process/2 --> ok
+
+4:24:33.055865 <0.32582.0> ranch_tcp:controlling_process/2 --> ok
+
+4:24:33.055921 <0.32582.0>  '--> ranch_conns_sup:handshake/8
+
+4:24:33.055968 <0.32582.0> ranch_conns_sup:trigger_alarms(tcp_echo, #{}, 1)
+
+4:24:33.056009 <0.32582.0> ranch_conns_sup:trigger_alarms/3 --> #{}
+
+4:24:33.056046 <0.32582.0>  '--> ranch_conns_sup:handshake/8
+
+4:24:33.056086 <0.32582.0> ranch_conns_sup:loop({state,<0.32580.0>,tcp_echo,2,worker,5000,ranch_tcp,echo_protocol,[],5000,
+       1024,
+       {atomics,#Ref<0.3636422955.1867644929.113829>},
+       #{},logger}, 1, 1, [])
+
+这里面起了一个异步进程 ,这个一步进程开始运行
+4:24:33.056171 <0.32606.0> echo_protocol:init(tcp_echo, ranch_tcp, [])
+
+4:24:33.056219 <0.32606.0> ranch:handshake(tcp_echo)
+
+4:24:33.056254 <0.32606.0> ranch:handshake1(tcp_echo, undefined)
+
+4:24:33.056293 <0.32606.0> ranch:handshake_transport(ranch_tcp, handshake, #Port<0.12>, undefined, 5000)
+
+handshake_transport(Transport, Fun, CSocket, undefined, Timeout) ->
+	Transport:Fun(CSocket, Timeout);
+handshake_transport(Transport, Fun, CSocket, {opts, Opts}, Timeout) ->
+	Transport:Fun(CSocket, Opts, Timeout).
+
+4:24:33.056345 <0.32606.0> ranch_tcp:handshake(#Port<0.12>, 5000)
+
+4:24:33.056391 <0.32606.0> ranch_tcp:handshake(#Port<0.12>, [], 5000)
+
+4:24:33.056436 <0.32606.0> ranch_tcp:handshake/3 --> {ok,#Port<0.12>}
+
+4:24:33.056482 <0.32606.0> ranch_tcp:handshake/2 --> {ok,#Port<0.12>}
+
+4:24:33.056525 <0.32606.0> ranch:handshake_transport/5 --> {ok,#Port<0.12>}
+
+4:24:33.056574 <0.32606.0>  '--> ranch:handshake1/2
+
+4:24:33.056609 <0.32606.0> ranch:handshake_result({ok,#Port<0.12>}, tcp_echo, ranch_tcp, #Port<0.12>, 5000)
+
+4:24:33.056731 <0.32606.0> ranch:handshake_result/5 --> {ok,#Port<0.12>}
+
+4:24:33.056824 <0.32606.0> ranch:handshake1/2 --> {ok,#Port<0.12>}
+
+4:24:33.056870 <0.32606.0> ranch:handshake/1 --> {ok,#Port<0.12>}
+
+4:24:33.056908 <0.32606.0>  '--> echo_protocol:init/3
+
+
+
+
+4:24:33.056951 <0.32606.0> echo_protocol:loop(#Port<0.12>, ranch_tcp)
+
+4:24:33.056992 <0.32606.0> ranch_tcp:recv(#Port<0.12>, 0, 60000)
+
+4:24:33.057034 <0.32606.0> gen_tcp:recv(#Port<0.12>, 0, 60000)
+
+4:24:33.057078 <0.32592.0> ranch_conns_sup:start_protocol/3 --> ok
+
+4:24:33.057118 <0.32592.0>  '--> ranch_acceptor:loop/5
+
+4:24:33.057150 <0.32592.0> ranch_acceptor:flush(logger)
+
+4:24:33.057185 <0.32592.0> ranch_acceptor:flush/1 --> ok
+
+4:24:33.057219 <0.32592.0>  '--> ranch_acceptor:loop/5
+
+4:24:33.057253 <0.32592.0> ranch_acceptor:loop(#Port<0.11>, ranch_tcp, logger, <0.32582.0>, #Ref<0.3636422955.1867513857.113874>)
+
+4:24:33.057309 <0.32592.0> ranch_tcp:accept(#Port<0.11>, infinity)
+
+4:24:33.057350 <0.32592.0> gen_tcp:accept(#Port<0.11>, infinity)
+
+4:24:45.092871 <0.32606.0> gen_tcp:recv/3 --> {ok,<<"22223333\r\n">>}
+
+4:24:45.093052 <0.32606.0> ranch_tcp:recv/3 --> {ok,<<"22223333\r\n">>}
+
+4:24:45.093156 <0.32606.0>  '--> echo_protocol:loop/2
+
+4:24:45.093251 <0.32606.0> ranch_tcp:send(#Port<0.12>, <<"22223333\r\n">>)
+
+4:24:45.093374 <0.32606.0> gen_tcp:send(#Port<0.12>, <<"22223333\r\n">>)
+
+4:24:45.093475 <0.32606.0> gen_tcp:send/2 --> ok
+
+4:24:45.093549 <0.32606.0> ranch_tcp:send/2 --> ok
+
+4:24:45.093615 <0.32606.0>  '--> echo_protocol:loop/2
+
+4:24:45.093693 <0.32606.0> echo_protocol:loop(#Port<0.12>, ranch_tcp)
+
+4:24:45.093774 <0.32606.0> ranch_tcp:recv(#Port<0.12>, 0, 60000)
+
+4:24:45.093851 <0.32606.0> gen_tcp:recv(#Port<0.12>, 0, 60000)
