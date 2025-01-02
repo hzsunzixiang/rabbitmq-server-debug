@@ -2,8 +2,8 @@
 
 
 make 
-C_SCRIPT=helloworld
-SERVICE_SCRIPT=helloworld.service
+C_SCRIPT=helloworld_c
+SERVICE_SCRIPT=helloworld_c.service
 
 sudo systemctl stop $SERVICE_SCRIPT
 

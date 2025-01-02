@@ -1,7 +1,7 @@
 .PHONY:clean all
 CC=g++
 CFLAGS=-Wall -g -lsystemd
-BIN=helloworld
+BIN=helloworld_c
 all:$(BIN)
 %:%.c
 	$(CC) $(CFLAGS)  $< -o $@ 
