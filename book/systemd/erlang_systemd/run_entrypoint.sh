@@ -6,6 +6,7 @@ SERVICE_SCRIPT=helloworld.service
 
 sudo systemctl stop $SERVICE_SCRIPT
 
+chmod +x helloworld.sh
 sudo cp $ERLANG_SCRIPT /usr/local/bin/
 sudo cp $SERVICE_SCRIPT /etc/systemd/system/
 

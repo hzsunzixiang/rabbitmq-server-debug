@@ -7,7 +7,9 @@ make -f erlang.mk bootstrap
 
 
 # 获取所有的 ebin
-ericksun@centos7-mq1:~/program/rabbitmq-server-debug/book/erlang_systemd (main)$ for i in $(find ~/program/rabbitmq-server-debug/book/erlang_systemd/   -name ebin); do echo -pa $i; done |tr '\n'  ' '
+DIR_NAME=/home/ericksun/workspace/rabbitmq-server-debug/book/systemd/erlang_systemd
+for i in $(find $DIR_NAME -name ebin); do echo -pa $i; done |tr '\n'  ' '
+ericksun@centos7-mq1:~/program/rabbitmq-server-debug/book/erlang_systemd (main)$ for i in $(find $DIR_NAME -name ebin); do echo -pa $i; done |tr '\n'  ' '
 
 
 
