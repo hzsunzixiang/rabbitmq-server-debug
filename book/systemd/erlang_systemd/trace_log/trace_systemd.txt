@@ -1,0 +1,491 @@
+
+22:7:04.302652 <0.124.0> systemd_app:start(normal, [])
+
+22:7:04.303075 <0.124.0> systemd_kmsg_formatter:auto_install()
+
+22:7:04.303381 <0.124.0> systemd_kmsg_formatter:'-auto_install/0-lc$^0/1-0-'([#{id => default,module => logger_std_h,
+   config =>
+       #{type => standard_io,burst_limit_enable => true,drop_mode_qlen => 200,
+         flush_qlen => 1000,sync_mode_qlen => 10,
+         overload_kill_restart_after => 5000,burst_limit_max_count => 500,
+         burst_limit_window_time => 1000,overload_kill_enable => false,
+         overload_kill_mem_size => 3000000,overload_kill_qlen => 20000,
+         filesync_repeat_interval => no_repeat},
+   level => all,
+   filters =>
+       [{remote_gl,{fun logger_filters:remote_gl/2,stop}},
+        {domain,{fun logger_filters:domain/2,{log,super,[otp,sasl]}}},
+        {no_domain,{fun logger_filters:domain/2,{log,undefined,[]}}}],
+   filter_default => stop,
+   formatter =>
+       {logger_formatter,#{single_line => false,legacy_header => true}}}])
+
+22:7:04.303821 <0.124.0> systemd_kmsg_formatter:auto_install(#{id=>default, module=>logger_std_h, config=>#{type=>standard_io, burst_limit_enable=>true, drop_mode_qlen=>200, flush_qlen=>1000, sync_mode_qlen=>10, overload_kill_restart_after=>5000, burst_limit_max_count=>500, burst_limit_window_time=>1000, overload_kill_enable=>false, overload_kill_mem_size=>3000000, overload_kill_qlen=>20000, filesync_repeat_interval=>no_repeat}, level=>all, filters=>[{remote_gl,{fun logger_filters:remote_gl/2,stop}},
+ {domain,{fun logger_filters:domain/2,{log,super,[otp,sasl]}}},
+ {no_domain,{fun logger_filters:domain/2,{log,undefined,[]}}}], filter_default=>stop, formatter=>{logger_formatter,#{single_line => false,legacy_header => true}}})
+
+22:7:04.304160 <0.124.0> systemd:is_journal(standard_io)
+
+22:7:04.304270 <0.124.0> systemd:get_journal_stream()
+
+22:7:04.304369 <0.124.0> systemd:get_journal_stream/0 --> error
+
+22:7:04.304427 <0.124.0>  '--> systemd:is_journal/1
+
+22:7:04.304472 <0.124.0> systemd:is_journal/1 --> false
+
+22:7:04.304518 <0.124.0>  '--> systemd_kmsg_formatter:auto_install/1
+
+22:7:04.304588 <0.124.0> systemd_kmsg_formatter:auto_install/1 --> ok
+
+22:7:04.304635 <0.124.0>  '--> systemd_kmsg_formatter:'-auto_install/0-lc$^0/1-0-'/1
+
+22:7:04.304674 <0.124.0> systemd_kmsg_formatter:'-auto_install/0-lc$^0/1-0-'([])
+
+22:7:04.304706 <0.124.0> systemd_kmsg_formatter:'-auto_install/0-lc$^0/1-0-'/1 --> []
+
+22:7:04.304752 <0.124.0> systemd_kmsg_formatter:'-auto_install/0-lc$^0/1-0-'/1 --> []
+
+22:7:04.304795 <0.124.0>  '--> systemd_kmsg_formatter:auto_install/0
+
+22:7:04.304834 <0.124.0> systemd_kmsg_formatter:auto_install/0 --> ok
+
+22:7:04.304890 <0.124.0>  '--> systemd_app:start/2
+
+22:7:04.304956 <0.124.0> systemd_sup:start_link([])
+
+22:7:04.305028 <0.125.0> systemd_sup:init([])
+
+22:7:04.305119 <0.125.0> systemd_sup:notify_socket()
+
+22:7:04.305191 <0.125.0> systemd_sup:unset(notify)
+
+22:7:04.305379 <0.125.0> systemd_sup:unset(notify, true)
+
+22:7:04.305449 <0.125.0> systemd:unset_env(notify)
+
+22:7:04.305556 <0.125.0> systemd:unset_env/1 --> ok
+
+22:7:04.305645 <0.125.0> systemd_sup:unset/2 --> ok
+
+22:7:04.305730 <0.125.0> systemd_sup:unset/1 --> ok
+
+22:7:04.305769 <0.125.0>  '--> systemd_sup:notify_socket/0
+
+22:7:04.305820 <0.125.0> systemd_sup:notify_socket/0 --> "/run/systemd/notify"
+
+22:7:04.305894 <0.125.0>  '--> systemd_sup:init/1
+
+22:7:04.305948 <0.125.0> systemd_sup:watchdog()
+
+22:7:04.305987 <0.125.0> systemd_sup:unset(watchdog)
+
+22:7:04.306037 <0.125.0> systemd_sup:unset(watchdog, true)
+
+22:7:04.306075 <0.125.0> systemd:unset_env(watchdog)
+
+22:7:04.306120 <0.125.0> systemd:unset_env/1 --> ok
+
+22:7:04.306164 <0.125.0> systemd_sup:unset/2 --> ok
+
+22:7:04.306210 <0.125.0> systemd_sup:unset/1 --> ok
+
+22:7:04.306244 <0.125.0>  '--> systemd_sup:watchdog/0
+
+22:7:04.306279 <0.125.0> systemd_sup:watchdog/0 --> {false,infinity}
+
+22:7:04.306317 <0.125.0>  '--> systemd_sup:init/1
+
+22:7:04.306361 <0.125.0> systemd_sup:init/1 --> {ok,{#{strategy => one_for_one},
+     [#{id => socket,
+        start => {systemd_socket,start_link,["/run/systemd/notify"]}},
+      #{id => watchdog,
+        start => {systemd_watchdog,start_link,[{false,infinity}]}}]}}
+
+22:7:04.306481 <0.125.0>  '--> supervisor:init/1
+
+22:7:04.306530 <0.125.0> systemd_socket:start_link("/run/systemd/notify")
+
+22:7:04.306616 <0.126.0> systemd_socket:init("/run/systemd/notify")
+
+22:7:04.306679 <0.126.0> socket:open(local, dgram)
+
+22:7:04.306778 <0.126.0> socket:open(local, dgram, 0)
+
+22:7:04.306821 <0.126.0> socket:open(local, dgram, 0, #{})
+
+22:7:04.306861 <0.126.0> socket:open/4 --> {ok,{'$socket',#Ref<0.2107994365.3564765185.127750>}}
+
+22:7:04.306914 <0.126.0> socket:open/3 --> {ok,{'$socket',#Ref<0.2107994365.3564765185.127750>}}
+
+22:7:04.306967 <0.126.0> socket:open/2 --> {ok,{'$socket',#Ref<0.2107994365.3564765185.127750>}}
+
+22:7:04.307019 <0.126.0>  '--> systemd_socket:init/1
+
+22:7:04.307127 <0.126.0> systemd_socket:init/1 --> {ok,{{'$socket',#Ref<0.2107994365.3564765185.127750>},"/run/systemd/notify"}}
+
+22:7:04.307222 <0.126.0>  '--> gen_server:init_it/2
+
+22:7:04.307321 <0.125.0> systemd_socket:start_link/1 --> {ok,<0.126.0>}
+
+22:7:04.307438 <0.125.0>  '--> supervisor:do_start_child_i/3
+
+22:7:04.307547 <0.125.0> systemd_watchdog:start_link({false,infinity})
+
+22:7:04.307670 <0.127.0> systemd_watchdog:init({false,infinity})
+
+22:7:04.307783 <0.127.0> systemd_watchdog:notify({state,infinity,false})
+
+22:7:04.307849 <0.127.0> systemd_watchdog:notify/1 --> ok
+
+22:7:04.308123 <0.127.0>  '--> systemd_watchdog:init/1
+
+22:7:04.308238 <0.127.0> systemd_watchdog:init/1 --> {ok,{state,infinity,false}}
+
+22:7:04.308404 <0.127.0>  '--> gen_server:init_it/2
+
+22:7:04.308473 <0.125.0> systemd_watchdog:start_link/1 --> {ok,<0.127.0>}
+
+22:7:04.308596 <0.125.0>  '--> supervisor:do_start_child_i/3
+
+22:7:04.308702 <0.124.0> systemd_sup:start_link/1 --> {ok,<0.125.0>}
+
+22:7:04.308865 <0.124.0> systemd_app:start/2 --> {ok,<0.125.0>}
+
+22:7:04.309118 <0.124.0>  '--> application_master:start_it_old/4
+
+22:7:09.310359 <0.133.0> systemd:notify([ready,{status,"booting"}])
+
+22:7:09.310990 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([ready,{status,"booting"}])
+
+22:7:09.311237 <0.133.0> systemd:normalize_state(ready)
+
+22:7:09.311366 <0.133.0> systemd:normalize_state/1 --> {ready,"1"}
+
+22:7:09.311469 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.311558 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([{status,"booting"}])
+
+22:7:09.311660 <0.133.0> systemd:normalize_state({status,"booting"})
+
+22:7:09.311729 <0.133.0> systemd:normalize_state/1 --> {"STATUS","booting"}
+
+22:7:09.311798 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.311886 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([])
+
+22:7:09.311964 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> []
+
+22:7:09.312029 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.312078 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> [{"STATUS","booting"}]
+
+22:7:09.312141 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.312187 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> [{ready,"1"},{"STATUS","booting"}]
+
+22:7:09.312258 <0.133.0>  '--> systemd:notify/1
+
+22:7:09.312319 <0.133.0> systemd_socket:send([{ready,"1"},{"STATUS","booting"}], 0, [])
+
+22:7:09.312386 <0.133.0> systemd_protocol:encode([{ready,"1"},{"STATUS","booting"}])
+
+22:7:09.312441 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([{ready,"1"},{"STATUS","booting"}])
+
+22:7:09.312510 <0.133.0> systemd_protocol:encode_field(ready, "1")
+
+22:7:09.312601 <0.133.0> systemd_protocol:field_name(ready)
+
+22:7:09.312681 <0.133.0> systemd_protocol:field_name(<<"ready">>)
+
+22:7:09.312751 <0.133.0> systemd_protocol:field_name/1 --> <<"READY">>
+
+22:7:09.312821 <0.133.0> systemd_protocol:field_name/1 --> <<"READY">>
+
+22:7:09.312898 <0.133.0>  '--> systemd_protocol:encode_field/2
+
+22:7:09.312981 <0.133.0> systemd_protocol:encode_field/2 --> [<<"READY">>,<<"=">>,<<"1">>,<<"\n">>]
+
+22:7:09.313094 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.313173 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([{"STATUS","booting"}])
+
+22:7:09.313234 <0.133.0> systemd_protocol:encode_field("STATUS", "booting")
+
+22:7:09.313286 <0.133.0> systemd_protocol:field_name("STATUS")
+
+22:7:09.313370 <0.133.0> systemd_protocol:field_name/1 --> "STATUS"
+
+22:7:09.313449 <0.133.0>  '--> systemd_protocol:encode_field/2
+
+22:7:09.313505 <0.133.0> systemd_protocol:encode_field/2 --> [<<"STATUS">>,<<"=">>,<<"booting">>,<<"\n">>]
+
+22:7:09.313562 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.313610 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([])
+
+22:7:09.313684 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> []
+
+22:7:09.313748 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.313811 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> [[<<"STATUS">>,<<"=">>,<<"booting">>,<<"\n">>]]
+
+22:7:09.313879 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.313932 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> [[<<"READY">>,<<"=">>,<<"1">>,<<"\n">>],
+ [<<"STATUS">>,<<"=">>,<<"booting">>,<<"\n">>]]
+
+22:7:09.314034 <0.133.0>  '--> systemd_protocol:encode/1
+
+22:7:09.314097 <0.133.0> systemd_protocol:encode/1 --> [<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,<<"booting">>,
+ <<"\n">>]
+
+22:7:09.314182 <0.133.0>  '--> systemd_socket:send/3
+
+22:7:09.314245 <0.126.0> systemd_socket:handle_call({send,[<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,
+       <<"booting">>,<<"\n">>],
+      0,[]}, {<0.133.0>,[alias|#Ref<0.0.17027.2107994365.3564699650.125515>]}, {{'$socket',#Ref<0.2107994365.3564765185.127750>},"/run/systemd/notify"})
+
+22:7:09.314382 <0.126.0> systemd_socket:encode_fds([])
+
+22:7:09.314441 <0.126.0> systemd_socket:encode_fds/1 --> []
+
+22:7:09.314505 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.314564 <0.126.0> systemd_socket:encode_auth(0)
+
+22:7:09.314658 <0.126.0> systemd_socket:encode_auth/1 --> []
+
+22:7:09.314773 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.314860 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,<<"booting">>,
+ <<"\n">>], ctrl=>[]})
+
+22:7:09.315046 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,<<"booting">>,
+ <<"\n">>], ctrl=>[]}, [], infinity)
+
+22:7:09.315213 <0.126.0> socket:deadline(infinity)
+
+22:7:09.315301 <0.126.0> socket:deadline/1 --> infinity
+
+22:7:09.315366 <0.126.0>  '--> socket:sendmsg/4
+
+22:7:09.315432 <0.126.0> socket:sendmsg_deadline(#Ref<0.2107994365.3564765185.127750>, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,<<"booting">>,
+ <<"\n">>], ctrl=>[]}, [], infinity, false, [<<"READY">>,<<"=">>,<<"1">>,<<"\n">>,<<"STATUS">>,<<"=">>,<<"booting">>,
+ <<"\n">>])
+
+22:7:09.315645 <0.126.0> socket:sendmsg_deadline/6 --> ok
+
+22:7:09.315755 <0.126.0> socket:sendmsg/4 --> ok
+
+22:7:09.315797 <0.126.0> socket:sendmsg/2 --> ok
+
+22:7:09.315852 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.315894 <0.126.0> systemd_socket:handle_call/3 --> {reply,ok,
+       {{'$socket',#Ref<0.2107994365.3564765185.127750>},
+        "/run/systemd/notify"}}
+
+22:7:09.315989 <0.126.0>  '--> gen_server:try_handle_call/4
+
+22:7:09.316040 <0.133.0> systemd_socket:send/3 --> ok
+
+22:7:09.316105 <0.133.0> systemd:notify/1 --> ok
+
+22:7:09.316159 <0.133.0>  '--> frequency:start_link/0
+
+22:7:09.316219 <0.133.0> systemd:notify([{status,"Processing  data"}])
+
+22:7:09.316287 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([{status,"Processing  data"}])
+
+22:7:09.316390 <0.133.0> systemd:normalize_state({status,"Processing  data"})
+
+22:7:09.316434 <0.133.0> systemd:normalize_state/1 --> {"STATUS","Processing  data"}
+
+22:7:09.316496 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.316554 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([])
+
+22:7:09.316604 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> []
+
+22:7:09.316650 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:09.316687 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> [{"STATUS","Processing  data"}]
+
+22:7:09.316752 <0.133.0>  '--> systemd:notify/1
+
+22:7:09.316795 <0.133.0> systemd_socket:send([{"STATUS","Processing  data"}], 0, [])
+
+22:7:09.316865 <0.133.0> systemd_protocol:encode([{"STATUS","Processing  data"}])
+
+22:7:09.316934 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([{"STATUS","Processing  data"}])
+
+22:7:09.316988 <0.133.0> systemd_protocol:encode_field("STATUS", "Processing  data")
+
+22:7:09.317047 <0.133.0> systemd_protocol:field_name("STATUS")
+
+22:7:09.317108 <0.133.0> systemd_protocol:field_name/1 --> "STATUS"
+
+22:7:09.317160 <0.133.0>  '--> systemd_protocol:encode_field/2
+
+22:7:09.317211 <0.133.0> systemd_protocol:encode_field/2 --> [<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>]
+
+22:7:09.317272 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.317330 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([])
+
+22:7:09.317385 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> []
+
+22:7:09.317441 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:09.317498 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> [[<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>]]
+
+22:7:09.317607 <0.133.0>  '--> systemd_protocol:encode/1
+
+22:7:09.317666 <0.133.0> systemd_protocol:encode/1 --> [<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>]
+
+22:7:09.317759 <0.133.0>  '--> systemd_socket:send/3
+
+22:7:09.317822 <0.126.0> systemd_socket:handle_call({send,[<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>],0,[]}, {<0.133.0>,[alias|#Ref<0.0.17027.2107994365.3564699650.125520>]}, {{'$socket',#Ref<0.2107994365.3564765185.127750>},"/run/systemd/notify"})
+
+22:7:09.317952 <0.126.0> systemd_socket:encode_fds([])
+
+22:7:09.318003 <0.126.0> systemd_socket:encode_fds/1 --> []
+
+22:7:09.318057 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.318105 <0.126.0> systemd_socket:encode_auth(0)
+
+22:7:09.318166 <0.126.0> systemd_socket:encode_auth/1 --> []
+
+22:7:09.318274 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.318330 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>], ctrl=>[]})
+
+22:7:09.318485 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>], ctrl=>[]}, [], infinity)
+
+22:7:09.318648 <0.126.0> socket:deadline(infinity)
+
+22:7:09.318712 <0.126.0> socket:deadline/1 --> infinity
+
+22:7:09.318767 <0.126.0>  '--> socket:sendmsg/4
+
+22:7:09.318832 <0.126.0> socket:sendmsg_deadline(#Ref<0.2107994365.3564765185.127750>, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>], ctrl=>[]}, [], infinity, false, [<<"STATUS">>,<<"=">>,<<"Processing  data">>,<<"\n">>])
+
+22:7:09.319009 <0.126.0> socket:sendmsg_deadline/6 --> ok
+
+22:7:09.319113 <0.126.0> socket:sendmsg/4 --> ok
+
+22:7:09.319177 <0.126.0> socket:sendmsg/2 --> ok
+
+22:7:09.319227 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:09.319275 <0.126.0> systemd_socket:handle_call/3 --> {reply,ok,
+       {{'$socket',#Ref<0.2107994365.3564765185.127750>},
+        "/run/systemd/notify"}}
+
+22:7:09.319382 <0.126.0>  '--> gen_server:try_handle_call/4
+
+22:7:09.319431 <0.133.0> systemd_socket:send/3 --> ok
+
+22:7:09.319482 <0.133.0> systemd:notify/1 --> ok
+
+22:7:09.319539 <0.133.0>  '--> frequency:start_link/0
+
+22:7:14.312037 <0.133.0> systemd:notify([{status,"After Processing  data"}])
+
+22:7:14.312327 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([{status,"After Processing  data"}])
+
+22:7:14.312464 <0.133.0> systemd:normalize_state({status,"After Processing  data"})
+
+22:7:14.312556 <0.133.0> systemd:normalize_state/1 --> {"STATUS","After Processing  data"}
+
+22:7:14.312786 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:14.312856 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'([])
+
+22:7:14.312905 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> []
+
+22:7:14.312939 <0.133.0>  '--> systemd:'-notify/1-lc$^0/1-0-'/1
+
+22:7:14.312991 <0.133.0> systemd:'-notify/1-lc$^0/1-0-'/1 --> [{"STATUS","After Processing  data"}]
+
+22:7:14.313034 <0.133.0>  '--> systemd:notify/1
+
+22:7:14.313112 <0.133.0> systemd_socket:send([{"STATUS","After Processing  data"}], 0, [])
+
+22:7:14.313214 <0.133.0> systemd_protocol:encode([{"STATUS","After Processing  data"}])
+
+22:7:14.313316 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([{"STATUS","After Processing  data"}])
+
+22:7:14.313407 <0.133.0> systemd_protocol:encode_field("STATUS", "After Processing  data")
+
+22:7:14.313454 <0.133.0> systemd_protocol:field_name("STATUS")
+
+22:7:14.313500 <0.133.0> systemd_protocol:field_name/1 --> "STATUS"
+
+22:7:14.313543 <0.133.0>  '--> systemd_protocol:encode_field/2
+
+22:7:14.313586 <0.133.0> systemd_protocol:encode_field/2 --> [<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>]
+
+22:7:14.313684 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:14.313723 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'([])
+
+22:7:14.313764 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> []
+
+22:7:14.313800 <0.133.0>  '--> systemd_protocol:'-encode/1-lc$^0/1-0-'/1
+
+22:7:14.313845 <0.133.0> systemd_protocol:'-encode/1-lc$^0/1-0-'/1 --> [[<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>]]
+
+22:7:14.313905 <0.133.0>  '--> systemd_protocol:encode/1
+
+22:7:14.313939 <0.133.0> systemd_protocol:encode/1 --> [<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>]
+
+22:7:14.314000 <0.133.0>  '--> systemd_socket:send/3
+
+22:7:14.314032 <0.126.0> systemd_socket:handle_call({send,[<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>],0,[]}, {<0.133.0>,[alias|#Ref<0.0.17027.2107994365.3564699650.125746>]}, {{'$socket',#Ref<0.2107994365.3564765185.127750>},"/run/systemd/notify"})
+
+22:7:14.314138 <0.126.0> systemd_socket:encode_fds([])
+
+22:7:14.314226 <0.126.0> systemd_socket:encode_fds/1 --> []
+
+22:7:14.314266 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:14.314297 <0.126.0> systemd_socket:encode_auth(0)
+
+22:7:14.314327 <0.126.0> systemd_socket:encode_auth/1 --> []
+
+22:7:14.314368 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:14.314470 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>], ctrl=>[]})
+
+22:7:14.314783 <0.126.0> socket:sendmsg({'$socket',#Ref<0.2107994365.3564765185.127750>}, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>], ctrl=>[]}, [], infinity)
+
+22:7:14.315090 <0.126.0> socket:deadline(infinity)
+
+22:7:14.315193 <0.126.0> socket:deadline/1 --> infinity
+
+22:7:14.315251 <0.126.0>  '--> socket:sendmsg/4
+
+22:7:14.315311 <0.126.0> socket:sendmsg_deadline(#Ref<0.2107994365.3564765185.127750>, #{addr=>#{path=>"/run/systemd/notify", family=>local}, iov=>[<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>], ctrl=>[]}, [], infinity, false, [<<"STATUS">>,<<"=">>,<<"After Processing  data">>,<<"\n">>])
+
+22:7:14.315501 <0.126.0> socket:sendmsg_deadline/6 --> ok
+
+22:7:14.315571 <0.126.0> socket:sendmsg/4 --> ok
+
+22:7:14.315662 <0.126.0> socket:sendmsg/2 --> ok
+
+22:7:14.315782 <0.126.0>  '--> systemd_socket:handle_call/3
+
+22:7:14.315872 <0.126.0> systemd_socket:handle_call/3 --> {reply,ok,
+       {{'$socket',#Ref<0.2107994365.3564765185.127750>},
+        "/run/systemd/notify"}}
+
+22:7:14.316033 <0.126.0>  '--> gen_server:try_handle_call/4
+
+22:7:14.316155 <0.133.0> systemd_socket:send/3 --> ok
+
+22:7:14.316250 <0.133.0> systemd:notify/1 --> ok
+
+22:7:14.316375 <0.133.0>  '--> frequency:start_link/0
