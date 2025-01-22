@@ -1,4 +1,5 @@
-
+#!/bin/bash
+#set -x 
 rmq_realpath() {
     local path=$1
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 _rmq_env_now()
 {
 	    date '+%Y-%m-%d %H:%M:%S'

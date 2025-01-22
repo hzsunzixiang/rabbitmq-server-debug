@@ -18,10 +18,16 @@ start_link() ->
     {ok, _} = application:ensure_all_started(systemd),
     timer:sleep(5000),
     systemd:notify([ready, {status, "booting"}]),
-    io:format('Startup complete after notify\n'),
+    io:format('after ready: Startup complete after notify\n'),
+    timer:sleep(5000),
     systemd:notify([{status, "Processing  data"}]),
+    io:format('after:Processing  data: Startup complete after notify\n'),
     timer:sleep(5000),
     systemd:notify([{status, "After Processing  data"}]),
+    io:format('after:After Processing  data : Startup complete after notify\n'),
+    timer:sleep(5000),
+    systemd:notify([ready, {status, "booted"}]),
+    io:format('after:ready booted \n'),
     gen_server:start_link({local, frequency}, frequency, [], []).
 
 %% stop() -> ok.
