@@ -4,7 +4,7 @@ if __name__ == '__main__':
     import systemd.daemon
 
     print('Starting up ...')
-    time.sleep(10)
+    time.sleep(5)
     print('Startup complete before notify')
     systemd.daemon.notify('READY=1')
     print('Startup complete after notify')

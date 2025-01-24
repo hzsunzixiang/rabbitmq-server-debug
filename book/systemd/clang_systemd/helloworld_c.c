@@ -7,17 +7,12 @@
 
 int main(int argc, char *argv[]) {
 	printf("Starting up ...");
-	sleep(10);
+	sleep(5);
 	printf("Startup complete before notify");
-
-	// Send a READY message to systemd
 	sd_notify(0, "READY=1");
-
-	// Send a STATUS message to systemd
+	sleep(5);
 	sd_notify(0, "STATUS=status message");
-
-	// Send a WATCHDOG message to systemd
-	//sd_notify(0, "WATCHDOG=1");
+	sleep(5);
 
 	for(;;) 
 	{

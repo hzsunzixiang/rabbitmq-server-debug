@@ -1,20 +1,14 @@
 #!/bin/bash
 
-echo "Hello, World!"
-
-mkfifo /tmp/helloworld.sock
-
+#sleep 5 
 systemd-notify --ready --status="Waiting for data …....."
+sleep 10
 
 while : ; do
         echo "...NOTIFY_SOCKET:[ $NOTIFY_SOCKET ]..." > /tmp/notify.txt
-        read -r a < /tmp/helloworld.sock
-
-        systemd-notify --status="Processing $a"   
- 
-		# Do something with $a …
-		sleep 10
-		echo "receive: $a"
-
-        systemd-notify --status="Waiting for data…"
+        systemd-notify --status="do something hello....."   
+	# Do something with
+	sleep 5 
+        systemd-notify --status="do something world....."   
+	sleep 5 
 done

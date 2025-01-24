@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-make 
+#make 
 C_SCRIPT=helloworld_c
 SERVICE_SCRIPT=helloworld_c.service
 
